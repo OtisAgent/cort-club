@@ -1,0 +1,34 @@
+<section class="cort-tv cort-tv-pipeline">
+  <div class="cort-tv-pipeline__inner">
+    <div class="cort-tv-pipeline__header">
+      <span class="cort-label reveal">{{ section.settings.eyebrow | default: 'Content Pipeline' }}</span>
+      <h2 class="cort-tv-pipeline__title reveal reveal-delay-1">{{ section.settings.title | default: 'One night. A full content loop.' }}</h2>
+      <p class="cort-tv-pipeline__body reveal reveal-delay-2">{{ section.settings.body | default: 'From one night on court, CØRT TV creates a full content loop: match moments, sponsor visibility, social reels, player stories and community reach.' }}</p>
+    </div>
+    <div class="cort-pipeline">
+      {% assign steps = "◉ Event or League Night,◈ Capture,▶ Live Clips,◼ Highlights,⊕ Social Reels,↑ Sponsor Report" | split: "," %}
+      {% assign step_labels = "Event or League Night,Capture,Live Clips,Highlights,Social Reels,Sponsor Report" | split: "," %}
+      {% for step in steps %}
+        {% unless forloop.first %}
+          <div class="cort-pipeline__arrow"></div>
+        {% endunless %}
+        <div class="cort-pipeline__step reveal reveal-delay-{{ forloop.index }}">
+          <div class="cort-pipeline__circle">{{ step | split: " " | first }}</div>
+          <span class="cort-pipeline__label">{{ step_labels[forloop.index0] }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CORT TV Pipeline",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Content Pipeline" },
+    { "type": "text", "id": "title", "label": "Title", "default": "One night. A full content loop." },
+    { "type": "textarea", "id": "body", "label": "Body copy", "default": "From one night on court, CØRT TV creates a full content loop: match moments, sponsor visibility, social reels, player stories and community reach." }
+  ],
+  "presets": [{ "name": "CORT TV Pipeline" }]
+}
+{% endschema %}

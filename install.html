@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CØRT. — Connect to Shopify</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #000;
+    color: #fff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .card {
+    max-width: 520px;
+    width: 100%;
+    border: 1px solid #333;
+    padding: 2.5rem;
+  }
+  .logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .logo span { color: #FFEA00; }
+  h1 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+  p { font-size: 0.875rem; color: #888; margin-bottom: 1.5rem; line-height: 1.5; }
+  label { font-size: 0.8rem; color: #666; display: block; margin-bottom: 0.4rem; }
+  input {
+    width: 100%;
+    background: #111;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    margin-bottom: 1.25rem;
+    outline: none;
+  }
+  input:focus { border-color: #FFEA00; }
+  button {
+    width: 100%;
+    background: #FFEA00;
+    color: #000;
+    border: none;
+    padding: 0.875rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+  }
+  button:hover { background: #ffe000; }
+  .note { margin-top: 1rem; font-size: 0.75rem; color: #555; text-align: center; margin-bottom: 0; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">cørt<span>.</span></div>
+  <h1>Connect OTIS to Shopify</h1>
+  <p>Paste your Shopify app Client ID below and click Connect. You'll be taken to Shopify to approve access — then redirected back with your authorisation code.</p>
+
+  <label>Client ID (API Key)</label>
+  <input type="text" id="clientId" placeholder="e.g. abc123def456..." autocomplete="off" spellcheck="false">
+
+  <button onclick="connect()">Connect to Shopify →</button>
+
+  <p class="note">You'll be redirected to Shopify to approve. After approving, copy the code shown and send it to OTIS via the secure form in chat.</p>
+</div>
+
+<script>
+  function connect() {
+    const clientId = document.getElementById('clientId').value.trim();
+    if (!clientId) {
+      alert('Please paste your Client ID first.');
+      return;
+    }
+    const scopes = [
+      'read_themes', 'write_themes',
+      'read_products', 'write_products',
+      'read_content', 'write_content',
+      'read_script_tags', 'write_script_tags',
+      'read_navigation', 'write_navigation'
+    ].join(',');
+
+    const redirectUri = 'https://otisagent.github.io/cort-club/oauth-callback.html';
+    const state = 'cort-nav-2026';
+    const shop = 'ugrxn9-10.myshopify.com';
+
+    const url = `https://${shop}/admin/oauth/authorize?client_id=${encodeURIComponent(clientId)}&scope=${encodeURIComponent(scopes)}&redirect_uri=${encodeURIComponent(redirectUri)}&state=${state}`;
+    window.location.href = url;
+  }
+
+  // If client_id is passed as a URL param, auto-fill and auto-redirect
+  const params = new URLSearchParams(window.location.search);
+  const prefill = params.get('client_id');
+  if (prefill) {
+    document.getElementById('clientId').value = prefill;
+    connect();
+  }
+</script>
+</body>
+</html>

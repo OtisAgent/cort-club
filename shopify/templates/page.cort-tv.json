@@ -1,0 +1,188 @@
+{
+  "sections": {
+    "cort-tv-hero": {
+      "type": "cort-tv-hero",
+      "settings": {}
+    },
+    "cort-tv-ticker": {
+      "type": "cort-tv-ticker",
+      "settings": {}
+    },
+    "cort-tv-what-we-do": {
+      "type": "cort-tv-what-we-do",
+      "blocks": {
+        "block-broadcast": {
+          "type": "card",
+          "settings": {
+            "icon": "◉",
+            "title": "Broadcast",
+            "body": "Live nights, finals, showcase matches and event coverage built for digital audiences."
+          }
+        },
+        "block-highlights": {
+          "type": "card",
+          "settings": {
+            "icon": "◼",
+            "title": "Highlights",
+            "body": "Short-form clips, player moments, rally edits and weekly recap content for social platforms."
+          }
+        },
+        "block-sponsorship": {
+          "type": "card",
+          "settings": {
+            "icon": "◆",
+            "title": "Sponsorship",
+            "body": "Brand placements across leagues, content series, court graphics, newsletters and social reels."
+          }
+        }
+      },
+      "block_order": [
+        "block-broadcast",
+        "block-highlights",
+        "block-sponsorship"
+      ],
+      "settings": {}
+    },
+    "cort-tv-format-grid": {
+      "type": "cort-tv-format-grid",
+      "blocks": {
+        "fmt-1": {
+          "type": "format",
+          "settings": {
+            "title": "Match of the Week",
+            "body": "One featured match with highlights, score graphics and sponsor placement."
+          }
+        },
+        "fmt-2": {
+          "type": "format",
+          "settings": {
+            "title": "League Night Recap",
+            "body": "Weekly recap from CØRT Play leagues and divisions across all skill levels."
+          }
+        },
+        "fmt-3": {
+          "type": "format",
+          "settings": {
+            "title": "Americano / Mexicano Nights",
+            "body": "Fast social formats turned into shareable content with live leaderboards."
+          }
+        },
+        "fmt-4": {
+          "type": "format",
+          "settings": {
+            "title": "Finals & Tournaments",
+            "body": "Brackets, winners, trophy moments and sponsor reels from every CØRT event."
+          }
+        },
+        "fmt-5": {
+          "type": "format",
+          "settings": {
+            "title": "Player Stories",
+            "body": "Short features on local players, rivalries and progression through the divisions."
+          }
+        },
+        "fmt-6": {
+          "type": "format",
+          "settings": {
+            "title": "Club Spotlight",
+            "body": "Feature content for partner clubs, venues and communities across the UK."
+          }
+        }
+      },
+      "block_order": ["fmt-1", "fmt-2", "fmt-3", "fmt-4", "fmt-5", "fmt-6"],
+      "settings": {}
+    },
+    "cort-tv-sponsor-map": {
+      "type": "cort-tv-sponsor-map",
+      "blocks": {
+        "p-1": { "type": "placement", "settings": { "placement": "Broadcast title sponsor" } },
+        "p-2": { "type": "placement", "settings": { "placement": "Scoreboard logo" } },
+        "p-3": { "type": "placement", "settings": { "placement": "Lower-third sponsor" } },
+        "p-4": { "type": "placement", "settings": { "placement": "Player of the Match sponsor" } },
+        "p-5": { "type": "placement", "settings": { "placement": "League table sponsor" } },
+        "p-6": { "type": "placement", "settings": { "placement": "Reel intro / outro sponsor" } },
+        "p-7": { "type": "placement", "settings": { "placement": "Newsletter feature" } },
+        "p-8": { "type": "placement", "settings": { "placement": "Event signage" } },
+        "p-9": { "type": "placement", "settings": { "placement": "Social caption placement" } },
+        "p-10": { "type": "placement", "settings": { "placement": "Product placement" } }
+      },
+      "block_order": ["p-1", "p-2", "p-3", "p-4", "p-5", "p-6", "p-7", "p-8", "p-9", "p-10"],
+      "settings": {}
+    },
+    "cort-tv-content-pipeline": {
+      "type": "cort-tv-content-pipeline",
+      "settings": {}
+    },
+    "cort-tv-package-cards": {
+      "type": "cort-tv-package-cards",
+      "blocks": {
+        "pkg-1": {
+          "type": "package",
+          "settings": {
+            "tier": "Package 01",
+            "title": "Content Partner",
+            "description": "For local brands that want visibility in CØRT content.",
+            "features": "Social reel placement\nNewsletter mention\nWebsite partner card\nMonthly content recap",
+            "featured": false,
+            "cta_text": "Enquire"
+          }
+        },
+        "pkg-2": {
+          "type": "package",
+          "settings": {
+            "tier": "Package 02",
+            "title": "League Partner",
+            "description": "For brands that want to sponsor a CØRT Play league or division.",
+            "features": "League naming opportunity\nScoreboard / leaderboard placement\nWeekly recap content\nFinals content\nPlayer of the Match feature",
+            "featured": true,
+            "cta_text": "Sponsor a League"
+          }
+        },
+        "pkg-3": {
+          "type": "package",
+          "settings": {
+            "tier": "Package 03",
+            "title": "Broadcast Partner",
+            "description": "For larger media, venue or brand partnerships.",
+            "features": "Featured broadcast nights\nCo-produced content\nMatch of the Week sponsorship\nBrand integration across formats\nPartnership reporting",
+            "featured": false,
+            "cta_text": "Build a Partnership"
+          }
+        }
+      },
+      "block_order": ["pkg-1", "pkg-2", "pkg-3"],
+      "settings": {}
+    },
+    "cort-tv-live-panel": {
+      "type": "cort-tv-live-panel",
+      "settings": {}
+    },
+    "cort-tv-why-it-works": {
+      "type": "cort-tv-why-it-works",
+      "blocks": {
+        "w-1": { "type": "point", "settings": { "text": "More visibility for players." } },
+        "w-2": { "type": "point", "settings": { "text": "More value for sponsors." } },
+        "w-3": { "type": "point", "settings": { "text": "More content for clubs." } },
+        "w-4": { "type": "point", "settings": { "text": "More culture around padel." } }
+      },
+      "block_order": ["w-1", "w-2", "w-3", "w-4"],
+      "settings": {}
+    },
+    "cort-tv-cta": {
+      "type": "cort-tv-cta",
+      "settings": {}
+    }
+  },
+  "order": [
+    "cort-tv-hero",
+    "cort-tv-ticker",
+    "cort-tv-what-we-do",
+    "cort-tv-format-grid",
+    "cort-tv-sponsor-map",
+    "cort-tv-content-pipeline",
+    "cort-tv-package-cards",
+    "cort-tv-live-panel",
+    "cort-tv-why-it-works",
+    "cort-tv-cta"
+  ]
+}

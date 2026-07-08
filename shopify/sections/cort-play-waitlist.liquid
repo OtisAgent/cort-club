@@ -1,0 +1,40 @@
+<section class="cp-waitlist" id="waitlist">
+  <div class="cp-waitlist__inner">
+    <p class="cp-waitlist__eyebrow">Early Access</p>
+    <h2 class="cp-waitlist__heading">Be first to play.</h2>
+    <p class="cp-waitlist__sub">CØRT Play is in development. Drop your email and you'll get early access before anyone else — plus input on what we build first.</p>
+    <form class="cp-waitlist__form" id="cp-waitlist-form" novalidate>
+      <input type="email" class="cp-waitlist__input" placeholder="your@email.com" required id="cp-waitlist-email">
+      <button type="submit" class="cp-waitlist__submit">Join Waitlist</button>
+    </form>
+    <p class="cp-waitlist__note">No spam. Unsubscribe any time.</p>
+    <div class="cp-waitlist__success" id="cp-waitlist-success">✓ You're on the waitlist. We'll be in touch soon.</div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var form = document.getElementById('cp-waitlist-form');
+  var success = document.getElementById('cp-waitlist-success');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var email = document.getElementById('cp-waitlist-email').value.trim();
+    if (!email || !email.includes('@')) return;
+    fetch('https://tbysgqbdpevxwrymtxkf.supabase.co/functions/v1/capture-interest', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, source: 'cort-play-waitlist', tag: 'cort_play' })
+    }).catch(function() {});
+    form.style.display = 'none';
+    success.style.display = 'block';
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "CØRT Play Waitlist",
+  "settings": []
+}
+{% endschema %}

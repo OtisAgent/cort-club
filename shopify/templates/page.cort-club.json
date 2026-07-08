@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "cort-club-hero": {
+      "type": "cort-club-hero",
+      "settings": {}
+    },
+    "cort-club-what": {
+      "type": "cort-club-what",
+      "settings": {}
+    },
+    "cort-club-pillars": {
+      "type": "cort-club-pillars",
+      "settings": {}
+    },
+    "cort-club-events": {
+      "type": "cort-club-events",
+      "settings": {}
+    },
+    "cort-club-join": {
+      "type": "cort-club-join",
+      "settings": {}
+    }
+  },
+  "order": [
+    "cort-club-hero",
+    "cort-club-what",
+    "cort-club-pillars",
+    "cort-club-events",
+    "cort-club-join"
+  ]
+}

@@ -1,0 +1,40 @@
+<section class="cc-join" id="join">
+  <div class="cc-join__inner">
+    <p class="cc-join__label">Join the Club</p>
+    <h2 class="cc-join__heading">Be first on court.</h2>
+    <p class="cc-join__sub">Drop your email and we'll tell you the moment events go live in your area. No spam — just padel.</p>
+    <form class="cc-join__form" id="cc-join-form" novalidate>
+      <input type="email" class="cc-join__input" placeholder="your@email.com" required id="cc-join-email">
+      <button type="submit" class="cc-join__submit">Join Free</button>
+    </form>
+    <p class="cc-join__note">Free to join. Unsubscribe any time.</p>
+    <div class="cc-join__success" id="cc-join-success">✓ You're on the list. We'll be in touch soon.</div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var form = document.getElementById('cc-join-form');
+  var success = document.getElementById('cc-join-success');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var email = document.getElementById('cc-join-email').value.trim();
+    if (!email || !email.includes('@')) return;
+    fetch('https://tbysgqbdpevxwrymtxkf.supabase.co/functions/v1/capture-interest', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, source: 'cort-club-join', tag: 'cort_club' })
+    }).catch(function() {});
+    form.style.display = 'none';
+    success.style.display = 'block';
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "CØRT Club Join CTA",
+  "settings": []
+}
+{% endschema %}

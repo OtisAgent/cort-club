@@ -1,0 +1,32 @@
+{{ 'cort-club.css' | asset_url | stylesheet_tag }}
+
+<section class="cc-hero">
+  <p class="cc-hero__eyebrow">CØRT Club</p>
+  <h1 class="cc-hero__headline">Where padel finds<br><em>its people.</em></h1>
+  <p class="cc-hero__sub">Grassroots padel with structure. Find events, connect with players, grow your game — all in one place.</p>
+  <div class="cc-hero__actions">
+    <a href="#join" class="cc-btn-primary">Join the Club</a>
+    <a href="/pages/cort-play" class="cc-btn-secondary">CØRT Play →</a>
+  </div>
+  <div class="cc-hero__stat-bar">
+    <div class="cc-hero__stat">
+      <div class="cc-hero__stat-num">1</div>
+      <div class="cc-hero__stat-label">Community</div>
+    </div>
+    <div class="cc-hero__stat">
+      <div class="cc-hero__stat-num">4</div>
+      <div class="cc-hero__stat-label">Pillars</div>
+    </div>
+    <div class="cc-hero__stat">
+      <div class="cc-hero__stat-num">∞</div>
+      <div class="cc-hero__stat-label">Matches</div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CØRT Club Hero",
+  "settings": []
+}
+{% endschema %}

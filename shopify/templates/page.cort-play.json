@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "cort-play-hero": {
+      "type": "cort-play-hero",
+      "settings": {}
+    },
+    "cort-play-features": {
+      "type": "cort-play-features",
+      "settings": {}
+    },
+    "cort-play-how": {
+      "type": "cort-play-how",
+      "settings": {}
+    },
+    "cort-play-rating": {
+      "type": "cort-play-rating",
+      "settings": {}
+    },
+    "cort-play-waitlist": {
+      "type": "cort-play-waitlist",
+      "settings": {}
+    }
+  },
+  "order": [
+    "cort-play-hero",
+    "cort-play-features",
+    "cort-play-how",
+    "cort-play-rating",
+    "cort-play-waitlist"
+  ]
+}

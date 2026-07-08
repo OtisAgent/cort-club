@@ -1,0 +1,46 @@
+<section class="cort-tv cort-tv-what">
+  <div class="cort-tv-what__inner">
+    <div class="cort-tv-what__header">
+      <span class="cort-label reveal">{{ section.settings.eyebrow | default: 'What CØRT TV Does' }}</span>
+      <h2 class="cort-tv-what__title reveal reveal-delay-1">{{ section.settings.title | default: 'Three ways brands and clubs get value.' }}</h2>
+    </div>
+    <div class="cort-tv-what__grid">
+      {% for block in section.blocks %}
+        <div class="cort-tv-what__card reveal reveal-delay-{{ forloop.index }}" {{ block.shopify_attributes }}>
+          <span class="cort-tv-what__card-icon">{{ block.settings.icon | default: '◉' }}</span>
+          <h3 class="cort-tv-what__card-title">{{ block.settings.title }}</h3>
+          <p class="cort-tv-what__card-body">{{ block.settings.body }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CØRT TV — What We Do",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "What CØRT TV Does" },
+    { "type": "text", "id": "title", "label": "Section title", "default": "Three ways brands and clubs get value." }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Icon symbol", "default": "◉" },
+        { "type": "text", "id": "title", "label": "Card title", "default": "Broadcast" },
+        { "type": "textarea", "id": "body", "label": "Card body", "default": "Live nights, finals, showcase matches and event coverage built for digital audiences." }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "CØRT TV What We Do",
+    "blocks": [
+      { "type": "card", "settings": { "icon": "◉", "title": "Broadcast", "body": "Live nights, finals, showcase matches and event coverage built for digital audiences." } },
+      { "type": "card", "settings": { "icon": "◼", "title": "Highlights", "body": "Short-form clips, player moments, rally edits and weekly recap content for social platforms." } },
+      { "type": "card", "settings": { "icon": "◆", "title": "Sponsorship", "body": "Brand placements across leagues, content series, court graphics, newsletters and social reels." } }
+    ]
+  }]
+}
+{% endschema %}

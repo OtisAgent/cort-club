@@ -1,0 +1,68 @@
+{{ 'cort-play.css' | asset_url | stylesheet_tag }}
+
+<section class="cp-hero">
+  <div class="cp-hero__badge">Coming Soon — Join the Waitlist</div>
+  <h1 class="cp-hero__headline">Run better padel.<br><span>Track every point.</span></h1>
+  <p class="cp-hero__sub">CØRT Play is the platform for tournament organisers and players — Americano, Mexicano, leagues, live leaderboards, and a rating that follows you everywhere.</p>
+  <div class="cp-hero__actions">
+    <a href="#waitlist" class="cp-btn-primary">Join the Waitlist</a>
+    <a href="/pages/cort-club" class="cp-btn-ghost">CØRT Club →</a>
+  </div>
+  <div class="cp-mock">
+    <div class="cp-mock__bar">
+      <div class="cp-mock__dots">
+        <span class="red"></span>
+        <span class="yellow"></span>
+        <span class="green"></span>
+      </div>
+      <span class="cp-mock__title">play.cortclub.co.uk — CØRT Play</span>
+    </div>
+    <div class="cp-mock__body">
+      <div class="cp-mock__panel">
+        <div class="cp-mock__panel-label">Live Leaderboard — Sheffield Americano</div>
+        <div class="cp-mock__leaderboard-row">
+          <span class="cp-mock__leaderboard-pos">1</span>
+          <span class="cp-mock__leaderboard-name">Ford / Martinez</span>
+          <span class="cp-mock__leaderboard-pts">42 pts</span>
+        </div>
+        <div class="cp-mock__leaderboard-row">
+          <span class="cp-mock__leaderboard-pos">2</span>
+          <span class="cp-mock__leaderboard-name">Johnson / Patel</span>
+          <span class="cp-mock__leaderboard-pts">38 pts</span>
+        </div>
+        <div class="cp-mock__leaderboard-row">
+          <span class="cp-mock__leaderboard-pos">3</span>
+          <span class="cp-mock__leaderboard-name">Walker / Chen</span>
+          <span class="cp-mock__leaderboard-pts">35 pts</span>
+        </div>
+        <div class="cp-mock__leaderboard-row">
+          <span class="cp-mock__leaderboard-pos">4</span>
+          <span class="cp-mock__leaderboard-name">Brown / Taylor</span>
+          <span class="cp-mock__leaderboard-pts">33 pts</span>
+        </div>
+        <div class="cp-mock__leaderboard-row">
+          <span class="cp-mock__leaderboard-pos">5</span>
+          <span class="cp-mock__leaderboard-name">Davies / Wilson</span>
+          <span class="cp-mock__leaderboard-pts">29 pts</span>
+        </div>
+      </div>
+      <div class="cp-mock__panel">
+        <div class="cp-mock__panel-label">Your CØRT Rating</div>
+        <div class="cp-mock__rating-ring">
+          <div class="cp-mock__ring">
+            <span class="cp-mock__ring-val">4.2</span>
+          </div>
+          <div class="cp-mock__ring-label">Club Level</div>
+          <div class="cp-mock__ring-sub">↑ +0.3 this month</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CØRT Play Hero",
+  "settings": []
+}
+{% endschema %}
