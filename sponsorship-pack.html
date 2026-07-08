@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CØRT TV — Sponsorship Pack 2025</title>
+<style>
+  /* ── Reset & base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #000000;
+    --white: #ffffff;
+    --yellow: #FFEA00;
+    --grey-light: #F2F2F2;
+    --grey-mid: #8a8a8a;
+    --grey-dark: #1a1a1a;
+    --font: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  html { font-family: var(--font); background: var(--grey-light); color: var(--black); }
+
+  /* ── Page shell ── */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--white);
+    margin: 0 auto 32px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Utility ── */
+  .label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--grey-mid);
+  }
+  .label--yellow { color: var(--yellow); }
+  .label--white  { color: rgba(255,255,255,0.5); }
+
+  strong { font-weight: 700; }
+
+  /* ═══════════════════════════════════════════
+     PAGE 1 — COVER
+  ═══════════════════════════════════════════ */
+  .cover {
+    background: var(--black);
+    color: var(--white);
+    padding: 60px 56px 52px;
+    justify-content: space-between;
+  }
+  .cover__top {}
+  .cover__wordmark {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 6px;
+  }
+  .cover__brand {
+    font-size: 56px;
+    font-weight: 900;
+    letter-spacing: -0.045em;
+    line-height: 1;
+    color: var(--white);
+  }
+  .cover__brand span { color: var(--yellow); }
+  .cover__sub {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.55);
+    margin-top: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .cover__headline {
+    font-size: 46px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    color: var(--white);
+    margin-top: auto;
+  }
+  .cover__headline em {
+    font-style: normal;
+    color: var(--yellow);
+  }
+  .cover__desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    max-width: 340px;
+    margin-top: 20px;
+  }
+
+  .cover__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .cover__contact {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.7;
+  }
+  .cover__year {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+  }
+
+  .cover__stripe {
+    width: 48px;
+    height: 4px;
+    background: var(--yellow);
+    margin: 48px 0 32px;
+  }
+
+  /* ═══════════════════════════════════════════
+     PAGE 2 — ABOUT
+  ═══════════════════════════════════════════ */
+  .about {
+    background: var(--white);
+    padding: 60px 56px;
+    justify-content: space-between;
+  }
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 48px;
+  }
+  .page-header__title {
+    font-size: 34px;
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+    max-width: 280px;
+  }
+  .page-number {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey-mid);
+    text-align: right;
+  }
+  .page-number span {
+    display: block;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--black);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-top: 2px;
+  }
+
+  .about__intro {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.55;
+    letter-spacing: -0.01em;
+    color: var(--black);
+    margin-bottom: 36px;
+    max-width: 420px;
+  }
+
+  .cards-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .card-sm {
+    background: var(--grey-light);
+    padding: 22px 20px;
+    border-radius: 2px;
+  }
+  .card-sm__icon {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--black);
+  }
+  .card-sm__title {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .card-sm__body {
+    font-size: 12px;
+    color: var(--grey-mid);
+    line-height: 1.55;
+  }
+
+  .about__stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1.5px solid var(--black);
+    padding-top: 24px;
+  }
+  .stat {
+    padding-right: 24px;
+  }
+  .stat__number {
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--black);
+  }
+  .stat__number em {
+    font-style: normal;
+    color: var(--yellow);
+    background: var(--black);
+    padding: 0 3px;
+  }
+  .stat__label {
+    font-size: 11px;
+    color: var(--grey-mid);
+    margin-top: 5px;
+    line-height: 1.4;
+  }
+
+  /* ═══════════════════════════════════════════
+     PAGE 3 — CONTENT FORMATS
+  ═══════════════════════════════════════════ */
+  .formats {
+    background: var(--black);
+    color: var(--white);
+    padding: 60px 56px;
+  }
+  .formats .page-header__title { color: var(--white); }
+  .formats .page-number { color: rgba(255,255,255,0.35); }
+  .formats .page-number span { color: var(--white); }
+
+  .formats__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-top: 36px;
+  }
+  .format-card {
+    background: var(--grey-dark);
+    padding: 28px 26px;
+    position: relative;
+    overflow: hidden;
+  }
+  .format-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--yellow);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .format-card:nth-child(1)::before { opacity: 1; }
+  .format-card__num {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.25);
+    margin-bottom: 8px;
+  }
+  .format-card__title {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .format-card__body {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.55;
+  }
+
+  /* ═══════════════════════════════════════════
+     PAGE 4 — SPONSOR PLACEMENTS
+  ═══════════════════════════════════════════ */
+  .placements {
+    background: var(--white);
+    padding: 60px 56px;
+  }
+  .placements__intro {
+    font-size: 14px;
+    color: var(--grey-mid);
+    line-height: 1.6;
+    max-width: 380px;
+    margin-bottom: 36px;
+  }
+  .placement-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+  .placement-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 18px;
+    border: 1.5px solid var(--grey-light);
+    border-radius: 2px;
+  }
+  .placement-item__dot {
+    width: 8px;
+    height: 8px;
+    background: var(--yellow);
+    border-radius: 50%;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+  .placement-item__text {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--black);
+    line-height: 1.3;
+  }
+  .placement-item__sub {
+    font-size: 11px;
+    color: var(--grey-mid);
+    margin-top: 3px;
+    line-height: 1.4;
+  }
+
+  .placement-note {
+    background: var(--black);
+    color: var(--white);
+    padding: 20px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.5;
+  }
+  .placement-note span { color: var(--yellow); }
+
+  /* ═══════════════════════════════════════════
+     PAGE 5 — PACKAGES
+  ═══════════════════════════════════════════ */
+  .packages {
+    background: var(--grey-light);
+    padding: 60px 56px;
+  }
+  .packages .page-header__title { color: var(--black); }
+
+  .packages__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 36px;
+  }
+  .pkg-card {
+    background: var(--white);
+    padding: 28px 22px 24px;
+    border-radius: 2px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .pkg-card--featured {
+    background: var(--black);
+    color: var(--white);
+    box-shadow: 6px 6px 0 var(--yellow);
+  }
+  .pkg-card__tier {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--grey-mid);
+    margin-bottom: 10px;
+  }
+  .pkg-card--featured .pkg-card__tier { color: rgba(255,255,255,0.4); }
+  .pkg-card__title {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+  .pkg-card__desc {
+    font-size: 11.5px;
+    color: var(--grey-mid);
+    line-height: 1.55;
+    margin-bottom: 20px;
+  }
+  .pkg-card--featured .pkg-card__desc { color: rgba(255,255,255,0.5); }
+  .pkg-card__price {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .pkg-card--featured .pkg-card__price { color: var(--yellow); }
+  .pkg-card__price-note {
+    font-size: 11px;
+    color: var(--grey-mid);
+    margin-bottom: 20px;
+  }
+  .pkg-card--featured .pkg-card__price-note { color: rgba(255,255,255,0.4); }
+  .pkg-card__divider {
+    height: 1px;
+    background: var(--grey-light);
+    margin-bottom: 16px;
+  }
+  .pkg-card--featured .pkg-card__divider { background: rgba(255,255,255,0.1); }
+  .pkg-card__features {
+    list-style: none;
+    margin-bottom: auto;
+  }
+  .pkg-card__features li {
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 5px 0;
+    color: var(--black);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .pkg-card--featured .pkg-card__features li { color: rgba(255,255,255,0.8); }
+  .pkg-card__features li::before {
+    content: '✓';
+    color: var(--yellow);
+    font-weight: 900;
+    flex-shrink: 0;
+    background: var(--black);
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    margin-top: 1px;
+  }
+  .pkg-card--featured .pkg-card__features li::before {
+    background: var(--yellow);
+    color: var(--black);
+  }
+  .pkg-card__cta {
+    display: block;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    margin-top: 20px;
+    background: var(--grey-light);
+    color: var(--black);
+  }
+  .pkg-card--featured .pkg-card__cta {
+    background: var(--yellow);
+    color: var(--black);
+  }
+
+  .packages__note {
+    font-size: 11.5px;
+    color: var(--grey-mid);
+    margin-top: 20px;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* ═══════════════════════════════════════════
+     PAGE 6 — PIPELINE + WHY IT WORKS
+  ═══════════════════════════════════════════ */
+  .pipeline-page {
+    background: var(--white);
+    padding: 60px 56px;
+  }
+  .pipeline__intro {
+    font-size: 14px;
+    color: var(--grey-mid);
+    line-height: 1.6;
+    max-width: 400px;
+    margin-bottom: 40px;
+  }
+  .pipeline-steps {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    margin-bottom: 48px;
+    position: relative;
+  }
+  .pipeline-steps::before {
+    content: '';
+    position: absolute;
+    top: 22px; left: 24px;
+    right: 24px; height: 2px;
+    background: var(--grey-light);
+    z-index: 0;
+  }
+  .pip-step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .pip-step__circle {
+    width: 44px;
+    height: 44px;
+    background: var(--black);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .pip-step:first-child .pip-step__circle { background: var(--yellow); color: var(--black); }
+  .pip-step__label {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-align: center;
+    max-width: 68px;
+    line-height: 1.3;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    border-top: 1.5px solid var(--black);
+    padding-top: 32px;
+    margin-top: 8px;
+  }
+  .why-item {
+    padding: 20px 20px;
+    background: var(--black);
+    color: var(--white);
+  }
+  .why-item__icon {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: var(--yellow);
+  }
+  .why-item__text {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+
+  /* ═══════════════════════════════════════════
+     PAGE 7 — CONTACT / CTA
+  ═══════════════════════════════════════════ */
+  .contact-page {
+    background: var(--black);
+    color: var(--white);
+    padding: 60px 56px;
+    justify-content: space-between;
+  }
+  .contact-page .page-header__title { color: var(--white); }
+  .contact-page .page-number { color: rgba(255,255,255,0.3); }
+  .contact-page .page-number span { color: var(--white); }
+
+  .contact-headline {
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: -0.045em;
+    line-height: 1.05;
+    margin: 48px 0 28px;
+    max-width: 360px;
+  }
+  .contact-headline em {
+    font-style: normal;
+    color: var(--yellow);
+  }
+  .contact-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    max-width: 340px;
+    margin-bottom: 48px;
+  }
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .contact-row__icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .contact-row__detail {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+  }
+  .contact-row__detail span {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 2px;
+  }
+
+  .contact-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px;
+  }
+  .contact-footer__brand {
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    color: var(--white);
+  }
+  .contact-footer__brand span { color: var(--yellow); }
+  .contact-footer__legal {
+    font-size: 10px;
+    color: rgba(255,255,255,0.25);
+    text-align: right;
+    line-height: 1.5;
+  }
+
+  /* ═══════════════════════════════════════════
+     PRINT STYLES
+  ═══════════════════════════════════════════ */
+  @media print {
+    html { background: white; }
+    .page {
+      margin: 0;
+      page-break-after: always;
+      box-shadow: none;
+    }
+    .page:last-child { page-break-after: avoid; }
+    @page {
+      size: A4;
+      margin: 0;
+    }
+  }
+
+  /* Screen: add shadow to pages */
+  @media screen {
+    .page { box-shadow: 0 4px 32px rgba(0,0,0,0.12); }
+    body { padding: 40px 0; }
+  }
+
+  @media (max-width: 240mm) {
+    .page { width: 100%; min-height: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     PAGE 1 — COVER
+══════════════════════════════════ -->
+<div class="page cover">
+  <div class="cover__top">
+    <div class="cover__wordmark">Partnership Proposal</div>
+    <div class="cover__brand">CØRT <span>TV</span></div>
+    <div class="cover__sub">Padel's broadcast &amp; sponsorship platform</div>
+  </div>
+
+  <div class="cover__stripe"></div>
+
+  <div class="cover__headline">
+    Padel,<br>broadcast<br><em>better.</em>
+  </div>
+  <p class="cover__desc">
+    CØRT TV connects brands with the grassroots padel community through live coverage, match content, league naming rights and a full digital content loop — every event, every week.
+  </p>
+
+  <div style="height: 48px;"></div>
+
+  <div class="cover__bottom">
+    <div class="cover__contact">
+      cortclub.co.uk/pages/cort-tv<br>
+      Enquiries: media@cortclub.co.uk
+    </div>
+    <div class="cover__year">2025 / 2026</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     PAGE 2 — ABOUT CØRT TV
+══════════════════════════════════ -->
+<div class="page about">
+  <div class="page-header">
+    <div>
+      <div class="label" style="margin-bottom:8px;">02 — About</div>
+      <h2 class="page-header__title">Three ways brands get value from CØRT TV.</h2>
+    </div>
+    <div class="page-number">CØRT TV <span>02</span></div>
+  </div>
+
+  <p class="about__intro">
+    CØRT TV is the broadcast and content arm of CØRT Club — the grassroots padel platform built for players, clubs and the brands that want to be part of the fastest-growing racket sport in the UK.
+  </p>
+
+  <div class="cards-3">
+    <div class="card-sm">
+      <div class="card-sm__icon">◉</div>
+      <div class="card-sm__title">Broadcast</div>
+      <p class="card-sm__body">Live nights, finals, showcase matches and event coverage built for digital audiences.</p>
+    </div>
+    <div class="card-sm">
+      <div class="card-sm__icon">◼</div>
+      <div class="card-sm__title">Highlights</div>
+      <p class="card-sm__body">Short-form clips, player moments, rally edits and weekly recap content for social platforms.</p>
+    </div>
+    <div class="card-sm">
+      <div class="card-sm__icon">◆</div>
+      <div class="card-sm__title">Sponsorship</div>
+      <p class="card-sm__body">Brand placements across leagues, content series, court graphics, newsletters and social reels.</p>
+    </div>
+  </div>
+
+  <div class="about__stat-row">
+    <div class="stat">
+      <div class="stat__number">2<em>M+</em></div>
+      <div class="stat__label">UK padel players projected by 2030 (LTA)</div>
+    </div>
+    <div class="stat">
+      <div class="stat__number">87<em>%</em></div>
+      <div class="stat__label">Of padel players aged 18–45 — high-spending demographic</div>
+    </div>
+    <div class="stat">
+      <div class="stat__number">4<em>×</em></div>
+      <div class="stat__label">YoY growth in UK padel club openings, 2022–2025</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     PAGE 3 — CONTENT FORMATS
+══════════════════════════════════ -->
+<div class="page formats">
+  <div class="page-header">
+    <div>
+      <div class="label label--yellow" style="margin-bottom:8px;">03 — Content</div>
+      <h2 class="page-header__title">What we produce every week.</h2>
+    </div>
+    <div class="page-number">CØRT TV <span>03</span></div>
+  </div>
+
+  <div class="formats__grid">
+    <div class="format-card">
+      <div class="format-card__num">01</div>
+      <div class="format-card__title">Match of the Week</div>
+      <p class="format-card__body">One featured match with highlights, score graphics and sponsor placement. Shared across all CØRT channels.</p>
+    </div>
+    <div class="format-card">
+      <div class="format-card__num">02</div>
+      <div class="format-card__title">League Night Recap</div>
+      <p class="format-card__body">Weekly recap from CØRT Play leagues and divisions across all skill levels — standings, results, standout moments.</p>
+    </div>
+    <div class="format-card">
+      <div class="format-card__num">03</div>
+      <div class="format-card__title">Americano / Mexicano Nights</div>
+      <p class="format-card__body">Fast social formats turned into shareable content with live leaderboards and bracket graphics.</p>
+    </div>
+    <div class="format-card">
+      <div class="format-card__num">04</div>
+      <div class="format-card__title">Finals &amp; Tournaments</div>
+      <p class="format-card__body">Brackets, winners, trophy moments and sponsor reels from every CØRT event. Premium visibility slot.</p>
+    </div>
+    <div class="format-card">
+      <div class="format-card__num">05</div>
+      <div class="format-card__title">Player Stories</div>
+      <p class="format-card__body">Short features on local players, rivalries and progression through the divisions. High organic reach.</p>
+    </div>
+    <div class="format-card">
+      <div class="format-card__num">06</div>
+      <div class="format-card__title">Club Spotlight</div>
+      <p class="format-card__body">Feature content for partner clubs, venues and communities across the UK. Dual-audience reach.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     PAGE 4 — SPONSOR PLACEMENTS
+══════════════════════════════════ -->
+<div class="page placements">
+  <div class="page-header">
+    <div>
+      <div class="label" style="margin-bottom:8px;">04 — Placement</div>
+      <h2 class="page-header__title">Where your brand appears.</h2>
+    </div>
+    <div class="page-number">CØRT TV <span>04</span></div>
+  </div>
+
+  <p class="placements__intro">
+    Every package includes a curated set of placements across broadcast, social and in-person touchpoints. All placements are confirmed and reported back to you after each event.
+  </p>
+
+  <div class="placement-grid">
+    <div class="placement-item">
+      <div class="placement-item__dot"></div>
+      <div>
+        <div class="placement-item__text">Broadcast Title Sponsor</div>
+        <div class="placement-item__sub">Named sponsor of the full broadcast night</div>
+      </div>
+    </div>
+    <div class="placement-item">
+      <div class="placement-item__dot"></div>
+      <div>
+        <div class="placement-item__text">Scoreboard Logo</div>
+        <div class="placement-item__sub">Brand logo on the on-screen scoreboard graphic</div>
+      </div>
+    </div>
+    <div class="placement-item">
+      <div class="placement-item__dot"></div>
+      <div>
+        <div class="placement-item__text">Lower-Third Sponsor</div>
+        <div class="placement-item__sub">Name / logo on commentary lower thirds</div>
+      </div>
+    </div>
+    <div class="placement-item">
+      <div class="placement-item__dot"></div>
+      <div>
+        <div class="placement-item__text">Player of the Match Sponsor</div>
+        <div class="placement-item__sub">Branded POTM graphic across all clips</div>
+      </div>
+    </div>
+    <div class="placement-item">
+      <div class="placement-item__dot"></div>
+      <div>
+        <div class="placement-item__text">League Table Sponsor</div>
+        <div class="placement-item__sub">Logo on the league standings table in-app and on-screen</div>
+      </div>
+    </div>
+    <div class="placement-item">
+      <div class="placement-item__dot"></div>
+      <div>
+        <div class="placement-item__text">Reel Intro / Outro</div>
+        <div class="placement-item__sub">3-second branded card on every social reel</div>
+      </div>
+    </div>
+    <div class="placement-item">
+      <div class="placement-item__dot"></div>
+      <div>
+        <div class="placement-item__text">Newsletter Feature</div>
+        <div class="placement-item__sub">Dedicated mention in the CØRT Club weekly newsletter</div>
+      </div>
+    </div>
+    <div class="placement-item">
+      <div class="placement-item__dot"></div>
+      <div>
+        <div class="placement-item__text">Event Signage</div>
+        <div class="placement-item__sub">On-court banners and venue branding at CØRT events</div>
+      </div>
+    </div>
+    <div class="placement-item">
+      <div class="placement-item__dot"></div>
+      <div>
+        <div class="placement-item__text">Social Caption Placement</div>
+        <div class="placement-item__sub">Sponsor tag and mention across CØRT social posts</div>
+      </div>
+    </div>
+    <div class="placement-item">
+      <div class="placement-item__dot"></div>
+      <div>
+        <div class="placement-item__text">Product Placement</div>
+        <div class="placement-item__sub">Product visible in match, training or court content</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="placement-note">
+    Every sponsor receives a <span>post-event report</span> — placement screenshots, reach figures and content delivered. No guesswork.
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     PAGE 5 — PACKAGES
+══════════════════════════════════ -->
+<div class="page packages">
+  <div class="page-header">
+    <div>
+      <div class="label" style="margin-bottom:8px;">05 — Packages</div>
+      <h2 class="page-header__title">Three ways to partner with CØRT TV.</h2>
+    </div>
+    <div class="page-number">CØRT TV <span>05</span></div>
+  </div>
+
+  <div class="packages__grid">
+
+    <div class="pkg-card">
+      <div class="pkg-card__tier">Package 01</div>
+      <div class="pkg-card__title">Content Partner</div>
+      <p class="pkg-card__desc">For local brands that want consistent visibility in CØRT content — low commitment, high reach.</p>
+      <div class="pkg-card__price">£250</div>
+      <div class="pkg-card__price-note">per month</div>
+      <div class="pkg-card__divider"></div>
+      <ul class="pkg-card__features">
+        <li>Social reel placement (every post)</li>
+        <li>Newsletter mention (weekly)</li>
+        <li>Website partner card</li>
+        <li>Monthly content recap report</li>
+      </ul>
+      <a href="mailto:media@cortclub.co.uk?subject=CØRT TV - Content Partner Enquiry" class="pkg-card__cta">Enquire</a>
+    </div>
+
+    <div class="pkg-card pkg-card--featured">
+      <div class="pkg-card__tier">Package 02 — Most Popular</div>
+      <div class="pkg-card__title">League Partner</div>
+      <p class="pkg-card__desc">For brands that want to sponsor a CØRT Play league, division or event series.</p>
+      <div class="pkg-card__price">£500</div>
+      <div class="pkg-card__price-note">per season / 8-week league</div>
+      <div class="pkg-card__divider"></div>
+      <ul class="pkg-card__features">
+        <li>League naming opportunity</li>
+        <li>Scoreboard &amp; leaderboard logo</li>
+        <li>Weekly recap content</li>
+        <li>Finals event coverage</li>
+        <li>Player of the Match feature</li>
+        <li>Social + newsletter placement</li>
+      </ul>
+      <a href="mailto:media@cortclub.co.uk?subject=CØRT TV - League Partner Enquiry" class="pkg-card__cta">Sponsor a League</a>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-card__tier">Package 03</div>
+      <div class="pkg-card__title">Broadcast Partner</div>
+      <p class="pkg-card__desc">For larger media, venue or brand partnerships with deeper integration and co-produced content.</p>
+      <div class="pkg-card__price">Custom</div>
+      <div class="pkg-card__price-note">tailored to your brief</div>
+      <div class="pkg-card__divider"></div>
+      <ul class="pkg-card__features">
+        <li>Featured broadcast nights</li>
+        <li>Co-produced content series</li>
+        <li>Match of the Week title sponsor</li>
+        <li>Full brand integration</li>
+        <li>Multi-format content delivery</li>
+        <li>Dedicated partnership report</li>
+      </ul>
+      <a href="mailto:media@cortclub.co.uk?subject=CØRT TV - Broadcast Partner Enquiry" class="pkg-card__cta">Build a Partnership</a>
+    </div>
+
+  </div>
+
+  <p class="packages__note">All packages are flexible — mix and match placements to fit your brief. Custom proposals available on request.</p>
+</div>
+
+
+<!-- ══════════════════════════════════
+     PAGE 6 — CONTENT PIPELINE + WHY
+══════════════════════════════════ -->
+<div class="page pipeline-page">
+  <div class="page-header">
+    <div>
+      <div class="label" style="margin-bottom:8px;">06 — Process</div>
+      <h2 class="page-header__title">One night. A full content loop.</h2>
+    </div>
+    <div class="page-number">CØRT TV <span>06</span></div>
+  </div>
+
+  <p class="pipeline__intro">
+    From one night on court, CØRT TV creates a full content loop: match moments, sponsor visibility, social reels, player stories and community reach — all delivered and reported back to you.
+  </p>
+
+  <div class="pipeline-steps">
+    <div class="pip-step">
+      <div class="pip-step__circle">◉</div>
+      <div class="pip-step__label">Event or League Night</div>
+    </div>
+    <div class="pip-step">
+      <div class="pip-step__circle">◈</div>
+      <div class="pip-step__label">Capture</div>
+    </div>
+    <div class="pip-step">
+      <div class="pip-step__circle">▶</div>
+      <div class="pip-step__label">Live Clips</div>
+    </div>
+    <div class="pip-step">
+      <div class="pip-step__circle">◼</div>
+      <div class="pip-step__label">Highlights</div>
+    </div>
+    <div class="pip-step">
+      <div class="pip-step__circle">⊕</div>
+      <div class="pip-step__label">Social Reels</div>
+    </div>
+    <div class="pip-step">
+      <div class="pip-step__circle">↑</div>
+      <div class="pip-step__label">Sponsor Report</div>
+    </div>
+  </div>
+
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-item__icon">▶</div>
+      <div class="why-item__text">More visibility for players.</div>
+    </div>
+    <div class="why-item">
+      <div class="why-item__icon">◆</div>
+      <div class="why-item__text">More value for sponsors.</div>
+    </div>
+    <div class="why-item">
+      <div class="why-item__icon">◉</div>
+      <div class="why-item__text">More content for clubs.</div>
+    </div>
+    <div class="why-item">
+      <div class="why-item__icon">⊕</div>
+      <div class="why-item__text">More culture around padel.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     PAGE 7 — CONTACT / CTA
+══════════════════════════════════ -->
+<div class="page contact-page">
+  <div class="page-header">
+    <div>
+      <div class="label label--white" style="margin-bottom:8px;">07 — Let's talk</div>
+      <h2 class="page-header__title">Ready to get your brand on court?</h2>
+    </div>
+    <div class="page-number">CØRT TV <span>07</span></div>
+  </div>
+
+  <div class="contact-headline">
+    Let's build something<br><em>together.</em>
+  </div>
+  <p class="contact-sub">
+    Whether you want to sponsor a league, feature in our content, or build a full broadcast partnership — we'll put together a proposal that fits your budget and goals.
+  </p>
+
+  <div class="contact-details">
+    <div class="contact-row">
+      <div class="contact-row__icon">@</div>
+      <div class="contact-row__detail">
+        <span>Email</span>
+        media@cortclub.co.uk
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-row__icon">◉</div>
+      <div class="contact-row__detail">
+        <span>Website</span>
+        cortclub.co.uk/pages/cort-tv
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-row__icon">◆</div>
+      <div class="contact-row__detail">
+        <span>Location</span>
+        Sheffield, South Yorkshire — UK-wide coverage
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-footer">
+    <div class="contact-footer__brand">CØRT <span>TV</span></div>
+    <div class="contact-footer__legal">
+      CØRT Club · Partnership Pack 2025/26<br>
+      Prices are indicative and subject to brief
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
