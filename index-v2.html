@@ -459,7 +459,6 @@
       color: var(--accent);
       margin: -14px 0 28px;
     }
-    .bundle-note::before { content: '⊕'; font-size: 15px; }
 
     /* ── Partner strip ── */
     .partner-strip {
@@ -492,18 +491,13 @@
     .partner-strip-tracks { list-style: none; margin-bottom: 30px; }
     .partner-strip-tracks li {
       display: flex;
-      align-items: baseline;
+      align-items: flex-start;
       gap: 12px;
       padding: 12px 0;
       border-bottom: 1px solid var(--bg);
       font-size: 14px;
       color: var(--black);
       line-height: 1.55;
-    }
-    .partner-strip-tracks li span:first-child {
-      font-size: 12px;
-      flex-shrink: 0;
-      color: var(--black);
     }
     .partner-strip-tracks strong { font-weight: 800; }
 
@@ -526,6 +520,103 @@
     }
     @media (max-width: 400px) {
       .member-card { padding: 20px 22px; transform: rotate(0); }
+    }
+
+    /* ── Inline SVG icon set ── */
+    .icon {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+    .connector-node-icon .icon { margin: 0 auto; }
+    .pillar-icon .icon { width: 22px; height: 22px; }
+    .partner-strip-tracks li span:first-child {
+      flex-shrink: 0;
+      color: var(--black);
+      padding-top: 2px;
+    }
+    .partner-strip-tracks .icon { width: 18px; height: 18px; }
+    .bundle-note .icon { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* ── Scroll reveals — static without JS (body.js-anim gates everything) ── */
+    @media (prefers-reduced-motion: no-preference) {
+      body.js-anim .reveal { opacity: 0; }
+      body.js-anim .reveal.in-view {
+        opacity: 1;
+        animation: reveal-rise 0.6s ease-out backwards;
+        animation-delay: var(--d, 0s);
+      }
+      body.js-anim .connector-node-hub.reveal.in-view {
+        animation-name: reveal-hub;
+        animation-duration: 0.7s;
+      }
+      @keyframes reveal-rise {
+        from { opacity: 0; transform: translateY(18px); }
+      }
+      @keyframes reveal-hub {
+        from { opacity: 0; transform: translateY(18px) scale(0.94); }
+      }
+    }
+    /* Stagger maps (custom props only — harmless without JS) */
+    .events-grid .event-card:nth-child(1) { --d: 0.22s; }
+    .events-grid .event-card:nth-child(2) { --d: 0.30s; }
+    .events-grid .event-card:nth-child(3) { --d: 0.38s; }
+    .pillars-grid .pillar-card:nth-child(2) { --d: 0.08s; }
+    .pillars-grid .pillar-card:nth-child(3) { --d: 0.16s; }
+    .pillars-grid .pillar-card:nth-child(4) { --d: 0.24s; }
+    .tier-grid .tier-card:nth-child(2) { --d: 0.08s; }
+    .tier-grid .tier-card:nth-child(3) { --d: 0.16s; }
+    /* Connector builds left-to-right; hub (5th child) lands with emphasis */
+    .connector-flow > :nth-child(1)  { --d: 0s; }
+    .connector-flow > :nth-child(2)  { --d: 0.07s; }
+    .connector-flow > :nth-child(3)  { --d: 0.14s; }
+    .connector-flow > :nth-child(4)  { --d: 0.21s; }
+    .connector-flow > :nth-child(5)  { --d: 0.30s; }
+    .connector-flow > :nth-child(6)  { --d: 0.44s; }
+    .connector-flow > :nth-child(7)  { --d: 0.51s; }
+    .connector-flow > :nth-child(8)  { --d: 0.58s; }
+    .connector-flow > :nth-child(9)  { --d: 0.65s; }
+    .connector-flow > :nth-child(10) { --d: 0.72s; }
+    .connector-flow > :nth-child(11) { --d: 0.79s; }
+
+    /* ── Bouncing ball — desktop gutter, JS-driven, motion-safe ──
+       Shown only from 1160px up: below that the 1080px content grids
+       reach into the gutter and the ball must never overlap content. */
+    .ball-gutter { display: none; }
+    @media (prefers-reduced-motion: no-preference) and (min-width: 1160px) {
+      body.js-anim .ball-gutter {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 14px;
+        bottom: 0;
+        width: 24px;
+        z-index: 40;
+        pointer-events: none;
+      }
+    }
+    .ball-mover { will-change: transform; }
+    .ball-bounce {
+      --amp: -18px;
+      width: 22px;
+      height: 22px;
+      transform-origin: 50% 100%;
+      animation: ball-bounce 1.5s infinite;
+      transition: --amp 0.25s ease;
+    }
+    .ball-gutter.hop .ball-bounce { --amp: -44px; }
+    .ball-bounce svg { display: block; }
+    @property --amp {
+      syntax: '<length>';
+      inherits: true;
+      initial-value: -18px;
+    }
+    @keyframes ball-bounce {
+      0%   { transform: translateY(var(--amp)); animation-timing-function: cubic-bezier(0.5, 0, 0.9, 0.6); }
+      46%  { transform: translateY(0) scaleX(1) scaleY(1); animation-timing-function: linear; }
+      53%  { transform: translateY(0) scaleX(1.16) scaleY(0.76); animation-timing-function: linear; }
+      60%  { transform: translateY(0) scaleX(1) scaleY(1); animation-timing-function: cubic-bezier(0.1, 0.4, 0.5, 1); }
+      100% { transform: translateY(var(--amp)); }
     }
 
     /* ── Contrast overrides — page-scoped so index.html keeps its look ──
@@ -563,36 +654,56 @@
     </button>
   </nav>
 
+  <!-- BOUNCING BALL — scroll companion (desktop only, appears when JS enables motion) -->
+  <div class="ball-gutter" id="ballGutter" aria-hidden="true">
+    <div class="ball-mover" id="ballMover">
+      <div class="ball-bounce">
+        <svg viewBox="0 0 22 22" width="22" height="22" focusable="false">
+          <defs>
+            <radialGradient id="ballGrad" cx="36%" cy="30%" r="78%">
+              <stop offset="0%" stop-color="#FFF9A6"/>
+              <stop offset="55%" stop-color="#FFEA00"/>
+              <stop offset="100%" stop-color="#E0CE00"/>
+            </radialGradient>
+          </defs>
+          <circle cx="11" cy="11" r="10.4" fill="url(#ballGrad)"/>
+          <path d="M3.4 5.2c3.6 2.6 3.6 9 0 11.6" fill="none" stroke="#D8C700" stroke-width="1.3" stroke-linecap="round"/>
+          <path d="M18.6 5.2c-3.6 2.6-3.6 9 0 11.6" fill="none" stroke="#D8C700" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
   <!-- HERO — EVENTS FIRST -->
   <section class="hero hero-events">
     <div class="hero-inner">
 
       <!-- Ø MARK — white ring + white slash on black -->
-      <div class="hero-mark">
+      <div class="hero-mark reveal">
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
           <circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="8"/>
           <line x1="18" y1="82" x2="82" y2="18" stroke="#fff" stroke-width="9" stroke-linecap="butt"/>
         </svg>
       </div>
 
-      <p class="hero-eyebrow">The home of grassroots padel</p>
+      <p class="hero-eyebrow reveal" style="--d: 0.06s;">The home of grassroots padel</p>
 
       <!-- cørt. with yellow dot -->
-      <div class="hero-wordmark">
+      <div class="hero-wordmark reveal" style="--d: 0.12s;">
         cørt<span class="hero-wordmark-dot"></span>
       </div>
 
-      <p class="hero-headline">Where padel <em>happens.</em></p>
+      <p class="hero-headline reveal" style="--d: 0.18s;">Where padel <em>happens.</em></p>
 
       <!-- PLACEHOLDER EVENTS — pending real listings. Replace with live events before launch. -->
       <div class="events-board">
-        <div class="events-board-head">
+        <div class="events-board-head reveal" style="--d: 0.16s;">
           <span class="events-board-dot"></span>
           <span class="events-board-title">What's on</span>
         </div>
         <div class="events-grid">
 
-          <div class="event-card">
+          <div class="event-card reveal">
             <span class="event-tag">Free to enter</span>
             <h3 class="event-name">Americano Night</h3>
             <p class="event-format">Americano · Social round-robin, all levels</p>
@@ -602,7 +713,7 @@
             </div>
           </div>
 
-          <div class="event-card">
+          <div class="event-card reveal">
             <span class="event-tag">Open</span>
             <h3 class="event-name">King of the Court</h3>
             <p class="event-format">Open session · Winners stay on</p>
@@ -612,7 +723,7 @@
             </div>
           </div>
 
-          <div class="event-card">
+          <div class="event-card reveal">
             <span class="event-tag">Open</span>
             <h3 class="event-name">CØRT League Matchday</h3>
             <p class="event-format">League · Round one, teams of two</p>
@@ -625,9 +736,9 @@
         </div>
       </div>
 
-      <p class="hero-soon">First events landing soon — join the list to hear first.</p>
+      <p class="hero-soon reveal" style="--d: 0.46s;">First events landing soon — join the list to hear first.</p>
 
-      <div class="hero-actions">
+      <div class="hero-actions reveal" style="--d: 0.52s;">
         <a href="#join" class="btn btn-yellow btn-dot">Join the list</a>
       </div>
     </div>
@@ -635,46 +746,75 @@
 
   <!-- CONNECTOR DIAGRAM -->
   <section class="connector" id="connector">
-    <p class="section-eyebrow">How CØRT connects the game</p>
-    <h2 class="section-title">One game.<br>One place.</h2>
+    <p class="section-eyebrow reveal">How CØRT connects the game</p>
+    <h2 class="section-title reveal" style="--d: 0.06s;">One game.<br>One place.</h2>
     <div class="connector-flow">
 
-      <div class="connector-node">
-        <div class="connector-node-icon">◉</div>
+      <div class="connector-node reveal">
+        <div class="connector-node-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <rect x="3" y="5.5" width="18" height="13" rx="1.6"/>
+            <path d="M12 5.5v13"/>
+            <path d="M3 12h4.5M16.5 12h4.5"/>
+          </svg>
+        </div>
         <div class="connector-node-name">Padel clubs</div>
         <div class="connector-node-sub">where it's played</div>
       </div>
-      <span class="connector-arrow" aria-hidden="true"></span>
+      <span class="connector-arrow reveal" aria-hidden="true"></span>
 
-      <div class="connector-node">
-        <div class="connector-node-icon">◆</div>
+      <div class="connector-node reveal">
+        <div class="connector-node-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <rect x="3.5" y="5" width="17" height="15" rx="2"/>
+            <path d="M3.5 9.6h17M8.2 3v3.6M15.8 3v3.6"/>
+            <circle cx="8.4" cy="13.6" r="1" fill="currentColor" stroke="none"/>
+            <circle cx="12" cy="13.6" r="1" fill="currentColor" stroke="none"/>
+            <circle cx="15.6" cy="13.6" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
         <div class="connector-node-name">Events</div>
         <div class="connector-node-sub">where it happens</div>
       </div>
-      <span class="connector-arrow" aria-hidden="true"></span>
+      <span class="connector-arrow reveal" aria-hidden="true"></span>
 
-      <div class="connector-node connector-node-hub">
+      <div class="connector-node connector-node-hub reveal">
         <div class="connector-hub-brand">cørt<span></span></div>
         <div class="connector-hub-tag">The connector</div>
       </div>
-      <span class="connector-arrow" aria-hidden="true"></span>
+      <span class="connector-arrow reveal" aria-hidden="true"></span>
 
-      <div class="connector-node">
-        <div class="connector-node-icon">▶</div>
+      <div class="connector-node reveal">
+        <div class="connector-node-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <rect x="2.8" y="7" width="12.6" height="10" rx="2"/>
+            <path d="M15.4 10.6l5.4-2.8v8.4l-5.4-2.8"/>
+          </svg>
+        </div>
         <div class="connector-node-name">Broadcasting</div>
         <div class="connector-node-sub">where it's watched</div>
       </div>
-      <span class="connector-arrow" aria-hidden="true"></span>
+      <span class="connector-arrow reveal" aria-hidden="true"></span>
 
-      <div class="connector-node">
-        <div class="connector-node-icon">⊕</div>
+      <div class="connector-node reveal">
+        <div class="connector-node-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M10.1 13.9a4.2 4.2 0 0 0 5.9 0l3.2-3.2a4.2 4.2 0 0 0-5.9-5.9l-1.7 1.7"/>
+            <path d="M13.9 10.1a4.2 4.2 0 0 0-5.9 0l-3.2 3.2a4.2 4.2 0 0 0 5.9 5.9l1.7-1.7"/>
+          </svg>
+        </div>
         <div class="connector-node-name">Sponsorship</div>
         <div class="connector-node-sub">where brands plug in</div>
       </div>
-      <span class="connector-arrow" aria-hidden="true"></span>
+      <span class="connector-arrow reveal" aria-hidden="true"></span>
 
-      <div class="connector-node">
-        <div class="connector-node-icon">◼</div>
+      <div class="connector-node reveal">
+        <div class="connector-node-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M5.9 8.2h12.2l-.95 11.1a2 2 0 0 1-2 1.9H8.85a2 2 0 0 1-2-1.9z"/>
+            <path d="M8.8 10.6V6.8a3.2 3.2 0 0 1 6.4 0v3.8"/>
+          </svg>
+        </div>
         <div class="connector-node-name">Shop</div>
         <div class="connector-node-sub">where the game gears up</div>
       </div>
@@ -684,36 +824,60 @@
 
   <!-- FOUR PILLARS -->
   <section class="pillars" id="club">
-    <p class="section-eyebrow">The CØRT Ecosystem</p>
-    <h2 class="section-title">Everything padel.<br>One club.</h2>
+    <p class="section-eyebrow reveal">The CØRT Ecosystem</p>
+    <h2 class="section-title reveal" style="--d: 0.06s;">Everything padel.<br>One club.</h2>
     <div class="pillars-grid">
 
-      <a href="#join" class="pillar-card">
-        <div class="pillar-icon">◉</div>
+      <a href="#join" class="pillar-card reveal">
+        <div class="pillar-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <circle cx="9" cy="8.4" r="3.3"/>
+            <path d="M3.4 20.2c0-3.1 2.5-5.3 5.6-5.3s5.6 2.2 5.6 5.3"/>
+            <path d="M15.6 5.5a3.3 3.3 0 0 1 0 5.8"/>
+            <path d="M17.8 15.4c1.8.7 2.9 2.1 2.9 4"/>
+          </svg>
+        </div>
         <p class="pillar-num"><span class="pillar-num-dot"></span>01 — CØRT Club</p>
         <h3 class="pillar-title">Community</h3>
         <p class="pillar-desc">Events, leagues and a connected network of padel players across the UK — from first-timers to competitors.</p>
         <span class="pillar-link">Join →</span>
       </a>
 
-      <a href="https://cortclub.co.uk/pages/cort-tv" class="pillar-card" id="tv">
-        <div class="pillar-icon">▶</div>
+      <a href="https://cortclub.co.uk/pages/cort-tv" class="pillar-card reveal" id="tv">
+        <div class="pillar-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <rect x="2.8" y="7" width="12.6" height="10" rx="2"/>
+            <path d="M15.4 10.6l5.4-2.8v8.4l-5.4-2.8"/>
+          </svg>
+        </div>
         <p class="pillar-num"><span class="pillar-num-dot"></span>02 — CØRT TV</p>
         <h3 class="pillar-title">Watch</h3>
         <p class="pillar-desc">Live nights, highlights and match content — plus sponsorship and media partnerships for brands entering padel.</p>
         <span class="pillar-link">Watch →</span>
       </a>
 
-      <a href="https://play.cortclub.co.uk" class="pillar-card">
-        <div class="pillar-icon">◆</div>
+      <a href="https://play.cortclub.co.uk" class="pillar-card reveal">
+        <div class="pillar-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M12 2.7c3.7 0 6.4 2.7 6.4 6.1 0 3.2-2.3 5.8-4.9 6.4l-.3 4.4c-.1.9-.6 1.7-1.2 1.7s-1.1-.8-1.2-1.7l-.3-4.4c-2.6-.6-4.9-3.2-4.9-6.4C5.6 5.4 8.3 2.7 12 2.7Z"/>
+            <circle cx="9.8" cy="7.6" r="0.9" fill="currentColor" stroke="none"/>
+            <circle cx="14.2" cy="7.6" r="0.9" fill="currentColor" stroke="none"/>
+            <circle cx="12" cy="10.4" r="0.9" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
         <p class="pillar-num"><span class="pillar-num-dot"></span>03 — CØRT Play</p>
         <h3 class="pillar-title">Run sessions</h3>
         <p class="pillar-desc">Americano, Mexicano, King of the Court — set up and run your sessions in minutes, zero admin.</p>
         <span class="pillar-link">play.cortclub.co.uk →</span>
       </a>
 
-      <a href="#shop" class="pillar-card">
-        <div class="pillar-icon">◼</div>
+      <a href="#shop" class="pillar-card reveal">
+        <div class="pillar-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M5.9 8.2h12.2l-.95 11.1a2 2 0 0 1-2 1.9H8.85a2 2 0 0 1-2-1.9z"/>
+            <path d="M8.8 10.6V6.8a3.2 3.2 0 0 1 6.4 0v3.8"/>
+          </svg>
+        </div>
         <p class="pillar-num"><span class="pillar-num-dot"></span>04 — CØRT Shop</p>
         <h3 class="pillar-title">Shop</h3>
         <p class="pillar-desc">CØRT merch, curated padel gear and bundle deals built for the court — buy more, save more.</p>
@@ -726,7 +890,7 @@
   <!-- SHOP STRIP -->
   <section class="product-section" id="shop">
     <div class="product-inner">
-      <div>
+      <div class="reveal">
         <p class="product-eyebrow">CØRT Shop — Live Now</p>
         <h2 class="product-title">CØRT<br>Grip Socks</h2>
         <p class="product-desc">Our first in-house product. Non-slip grip technology designed for lateral movement on the padel court. Available in black and white.</p>
@@ -738,10 +902,10 @@
           <span class="live-chip"><span class="live-dot"></span>Available now</span>
         </div>
         <div class="product-price">£9.99</div>
-        <p class="bundle-note">Buy more, save more — bundle deals at checkout</p>
+        <p class="bundle-note"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.4"/><path d="M12 8.6v6.8M8.6 12h6.8"/></svg>Buy more, save more — bundle deals at checkout</p>
         <a href="https://ugrxn9-10.myshopify.com/collections/grip-socks" class="btn btn-yellow btn-dot">Shop Grip Socks</a>
       </div>
-      <div class="product-visual">
+      <div class="product-visual reveal" style="--d: 0.12s;">
         <div class="product-visual-mark">
           <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="8"/>
@@ -756,14 +920,14 @@
   <!-- MEMBERSHIP — COMING SOON -->
   <section class="member-section" id="membership">
     <div class="member-inner">
-      <p class="member-eyebrow">CØRT Membership</p>
-      <span class="soon-pill">Coming soon</span>
-      <h2 class="member-title">Membership —<br>coming soon.</h2>
-      <p class="member-desc">
+      <p class="member-eyebrow reveal">CØRT Membership</p>
+      <span class="soon-pill reveal" style="--d: 0.05s;">Coming soon</span>
+      <h2 class="member-title reveal" style="--d: 0.1s;">Membership —<br>coming soon.</h2>
+      <p class="member-desc reveal" style="--d: 0.15s;">
         One card across the whole CØRT ecosystem. We're building the benefits with the community — nothing locked in yet, everything announced soon.
       </p>
 
-      <div class="member-card-wrap">
+      <div class="member-card-wrap reveal" style="--d: 0.2s;">
         <div class="member-card">
           <div class="member-card-top">
             <div class="member-card-brand">cørt<span></span></div>
@@ -781,7 +945,7 @@
 
       <div class="tier-grid">
 
-        <div class="tier-card">
+        <div class="tier-card reveal">
           <p class="tier-name">Courtside</p>
           <div class="tier-price">Free</div>
           <div class="tier-body">
@@ -790,7 +954,7 @@
           </div>
         </div>
 
-        <div class="tier-card">
+        <div class="tier-card reveal">
           <p class="tier-name">Club</p>
           <div class="tier-price">£9<span>/mo</span></div>
           <div class="tier-body">
@@ -799,7 +963,7 @@
           </div>
         </div>
 
-        <div class="tier-card">
+        <div class="tier-card reveal">
           <p class="tier-name">Pro</p>
           <div class="tier-price">£19<span>/mo</span></div>
           <div class="tier-body">
@@ -810,25 +974,25 @@
 
       </div>
 
-      <a href="#join" class="btn btn-yellow btn-dot">Join the waitlist to hear first</a>
-      <p class="member-note">Founding pricing — may change before launch.</p>
+      <a href="#join" class="btn btn-yellow btn-dot reveal">Join the waitlist to hear first</a>
+      <p class="member-note reveal" style="--d: 0.08s;">Founding pricing — may change before launch.</p>
     </div>
   </section>
 
   <!-- PARTNER STRIP -->
   <section class="partner-strip" id="partner">
     <div class="partner-strip-inner">
-      <div>
+      <div class="reveal">
         <p class="section-eyebrow" style="text-align:left;">CØRT Partnerships</p>
         <h2 class="partner-strip-title">Your brand,<br>our court.</h2>
         <p class="partner-strip-desc">
           Sell your gear to the padel community through the CØRT store, or get your restring and repair service listed where players already are. Every partner is vetted.
         </p>
       </div>
-      <div>
+      <div class="reveal" style="--d: 0.12s;">
         <ul class="partner-strip-tracks">
-          <li><span>◼</span><span><strong>Brands</strong> — you hold stock, we list, market and sell it.</span></li>
-          <li><span>◉</span><span><strong>Repair services</strong> — restring, regrip and repair bookings from the community.</span></li>
+          <li><span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5.9 8.2h12.2l-.95 11.1a2 2 0 0 1-2 1.9H8.85a2 2 0 0 1-2-1.9z"/><path d="M8.8 10.6V6.8a3.2 3.2 0 0 1 6.4 0v3.8"/></svg></span><span><strong>Brands</strong> — you hold stock, we list, market and sell it.</span></li>
+          <li><span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2.7c3.7 0 6.4 2.7 6.4 6.1 0 3.2-2.3 5.8-4.9 6.4l-.3 4.4c-.1.9-.6 1.7-1.2 1.7s-1.1-.8-1.2-1.7l-.3-4.4c-2.6-.6-4.9-3.2-4.9-6.4C5.6 5.4 8.3 2.7 12 2.7Z"/><circle cx="9.8" cy="7.6" r="0.9" fill="currentColor" stroke="none"/><circle cx="14.2" cy="7.6" r="0.9" fill="currentColor" stroke="none"/><circle cx="12" cy="10.4" r="0.9" fill="currentColor" stroke="none"/></svg></span><span><strong>Repair services</strong> — restring, regrip and repair bookings from the community.</span></li>
         </ul>
         <a href="partner.html" class="btn btn-black btn-dot">Apply to partner</a>
       </div>
@@ -837,7 +1001,7 @@
 
   <!-- COMMUNITY / WAITLIST -->
   <section class="capture" id="join">
-    <div class="capture-inner">
+    <div class="capture-inner reveal">
       <h2>Join the CØRT Community<span class="cap-dot"></span></h2>
       <p>Events, league news, member drops and more. Be first in.</p>
       <form class="capture-form" onsubmit="return false;">
@@ -906,6 +1070,72 @@
         toggle.setAttribute('aria-expanded', 'false');
       });
     });
+
+    // Motion layer — scroll reveals + bouncing ball.
+    // Gated: no JS = fully static page, reduced motion = fully static page.
+    (function() {
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduceMotion || !('IntersectionObserver' in window)) return;
+
+      document.body.classList.add('js-anim');
+
+      // Reveal on scroll (one observer, unobserve once shown)
+      var revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(function(el) {
+        revealObserver.observe(el);
+      });
+
+      // Bouncing ball — position tracks scroll progress (transform only, rAF-throttled)
+      var gutter = document.getElementById('ballGutter');
+      var mover = document.getElementById('ballMover');
+      if (!gutter || !mover) return;
+
+      var TOP_PAD = 96;    // clears the fixed nav
+      var BOTTOM_PAD = 104; // keeps the ball off the viewport floor
+      var ticking = false;
+
+      function placeBall() {
+        ticking = false;
+        var doc = document.documentElement;
+        var max = doc.scrollHeight - window.innerHeight;
+        var progress = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+        var travel = Math.max(0, window.innerHeight - TOP_PAD - BOTTOM_PAD);
+        mover.style.transform = 'translateY(' + (TOP_PAD + progress * travel).toFixed(1) + 'px)';
+      }
+      function requestPlace() {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(placeBall);
+        }
+      }
+      window.addEventListener('scroll', requestPlace, { passive: true });
+      window.addEventListener('resize', requestPlace, { passive: true });
+      placeBall();
+
+      // Stronger hop when a new section enters the viewport
+      var hopTimer = null;
+      var sectionObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            gutter.classList.add('hop');
+            clearTimeout(hopTimer);
+            hopTimer = setTimeout(function() {
+              gutter.classList.remove('hop');
+            }, 760);
+          }
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('section').forEach(function(section) {
+        sectionObserver.observe(section);
+      });
+    })();
   </script>
 
 </body>
