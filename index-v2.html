@@ -116,14 +116,15 @@
     }
     .event-card {
       background: #0d0d0d;
-      border: 1.5px solid #1f1f1f;
+      border: 1.5px solid var(--accent);
+      box-shadow: 0 0 22px rgba(255,234,0,0.22), 0 0 56px rgba(255,234,0,0.08);
       border-radius: 14px;
       padding: 24px 22px;
       display: flex;
       flex-direction: column;
       transition: border-color 0.15s, transform 0.15s;
     }
-    .event-card:hover { border-color: rgba(255,234,0,0.5); transform: translateY(-2px); }
+    .event-card:hover { box-shadow: 0 0 30px rgba(255,234,0,0.4), 0 0 70px rgba(255,234,0,0.12); transform: translateY(-2px); }
     .event-tag {
       align-self: flex-start;
       font-size: 10px;
@@ -392,9 +393,14 @@
     }
     .tier-card {
       background: #0d0d0d;
-      border: 1.5px solid #1f1f1f;
+      border: 1.5px solid var(--accent);
+      box-shadow: 0 0 22px rgba(255,234,0,0.22), 0 0 56px rgba(255,234,0,0.08);
       border-radius: 14px;
       padding: 28px 26px;
+    }
+    .product-visual {
+      border: 1.5px solid var(--accent);
+      box-shadow: 0 0 22px rgba(255,234,0,0.22), 0 0 56px rgba(255,234,0,0.08);
     }
     .tier-name {
       font-size: 12px;
