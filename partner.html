@@ -167,6 +167,37 @@
     }
     .track-card .btn { margin-top: auto; align-self: flex-start; }
 
+    /* ── Wanted: repair partner callout ── */
+    .wanted { background: var(--black); padding: 92px 24px; text-align: center; }
+    .wanted-inner { max-width: 660px; margin: 0 auto; }
+    .wanted-pill {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: var(--accent);
+      color: var(--black);
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    .wanted-title {
+      font-size: clamp(28px, 5vw, 46px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: #fff;
+      line-height: 1.08;
+      margin-bottom: 18px;
+    }
+    .wanted-title em { font-style: normal; color: var(--accent); }
+    .wanted-desc {
+      font-size: 15px;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.75;
+      margin-bottom: 34px;
+    }
+
     /* ── How it works ── */
     .how { padding: 96px 24px; background: var(--white); border-top: 1.5px solid var(--border); }
     .how-grid {
@@ -467,17 +498,30 @@
         <p class="track-num"><span class="pillar-num-dot"></span>Track 02 — Services</p>
         <h3 class="track-title">Repair network</h3>
         <p class="track-desc">
-          Restring, regrip or repair padel rackets? Get listed where players already are. The CØRT community books your services directly — you do the work, we bring the players.
+          Repair, regrip or restore padel rackets? Get listed where players already are. The CØRT community books your services directly — you do the work, we bring the players.
         </p>
         <ul class="track-list">
           <li>Listed in the CØRT repair network</li>
           <li>Take bookings from the padel community</li>
-          <li>Restring, regrip and repair services</li>
+          <li>Crack repair, regrip and restoration services</li>
+          <li>Send-in repairs routed through CØRT</li>
           <li>Local players routed to your bench</li>
         </ul>
         <a href="#apply-repair" class="btn btn-black btn-dot">Apply as a repairer</a>
       </div>
 
+    </div>
+  </section>
+
+  <!-- WANTED: REPAIR PARTNER -->
+  <section class="wanted">
+    <div class="wanted-inner">
+      <p class="wanted-pill">Wanted</p>
+      <h2 class="wanted-title">We're looking for a <em>racket repair</em> business.</h2>
+      <p class="wanted-desc">
+        Cracked bat? Broken frame? Padel players shouldn't have to bin a racket they love. We want one great repair business on the team: broken rackets get sent in through CØRT, you work your magic, and players get back on court for a fraction of the price of a new bat. You do the craft — we bring the customers, handle the storefront and take a commission on each job.
+      </p>
+      <a href="#apply-repair" class="btn btn-yellow btn-dot">Apply to be our repair partner</a>
     </div>
   </section>
 
@@ -612,7 +656,7 @@
           <div class="field">
             <label>Services offered</label>
             <div class="check-row">
-              <label class="check-chip"><input type="checkbox" name="services" value="restring"><span>Restring</span></label>
+              <label class="check-chip"><input type="checkbox" name="services" value="crack-repair"><span>Crack repair</span></label>
               <label class="check-chip"><input type="checkbox" name="services" value="regrip"><span>Regrip</span></label>
               <label class="check-chip"><input type="checkbox" name="services" value="repair"><span>Repair</span></label>
             </div>
