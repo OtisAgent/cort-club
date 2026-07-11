@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Baseline — Padel News &amp; World Rankings | CØRT</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+    /* ── Nav ── */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      border-radius: 2px;
+      background: #fff;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    nav.scrolled .nav-toggle span { background: var(--black); }
+    nav.menu-open .nav-toggle span { background: #fff; }
+    nav.menu-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    nav.menu-open .nav-toggle span:nth-child(2) { opacity: 0; }
+    nav.menu-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 940px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        background: var(--black);
+        padding: 10px 24px 26px;
+        border-bottom: 1px solid #1a1a1a;
+      }
+      nav.menu-open { background: var(--black); }
+      nav.menu-open .nav-logo { color: #fff; }
+      nav.menu-open .nav-links { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 13px 0;
+        font-size: 16px;
+        color: rgba(255,255,255,0.85) !important;
+      }
+      .nav-links a:hover { color: #fff !important; }
+      .nav-links .nav-join {
+        display: inline-block;
+        width: auto;
+        margin-top: 14px;
+        padding: 10px 24px;
+        color: var(--black) !important;
+      }
+    }
+
+    /* ── Page base ── */
+    body {
+      background: #0d0d0d;
+      color: #fff;
+      font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    /* ── Live ticker ── */
+    .bl-ticker {
+      background: #FFEA00;
+      color: #000;
+      padding: 9px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+    }
+    .bl-ticker-inner {
+      display: inline-flex;
+      gap: 0;
+      animation: ticker-scroll 38s linear infinite;
+    }
+    .bl-ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding-right: 60px;
+    }
+    .bl-ticker-sep {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      background: #000;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    @keyframes ticker-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── Hero ── */
+    .bl-hero {
+      padding: 110px 24px 80px;
+      max-width: 1080px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .bl-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #FFEA00;
+      margin-bottom: 18px;
+    }
+    .bl-hero-title {
+      font-size: clamp(52px, 9vw, 96px);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 0.92;
+      color: #fff;
+      margin-bottom: 22px;
+    }
+    .bl-hero-title .oslash { color: #FFEA00; }
+    .bl-hero-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      max-width: 480px;
+      line-height: 1.65;
+    }
+    .bl-hero-rule {
+      width: 48px;
+      height: 3px;
+      background: #FFEA00;
+      margin: 28px 0 0;
+    }
+
+    /* ── Section headings ── */
+    .bl-section {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .bl-section + .bl-section { padding-top: 0; }
+    .bl-section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 36px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .bl-section-title {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .bl-section-title::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 2px;
+      background: #FFEA00;
+    }
+    .bl-section-link {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #FFEA00;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,234,0,0.3);
+      padding-bottom: 2px;
+      transition: border-color 0.15s;
+    }
+    .bl-section-link:hover { border-color: #FFEA00; }
+
+    /* ── News grid ── */
+    .bl-news-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 16px;
+    }
+    .bl-card {
+      background: #111;
+      border: 1.5px solid #1e1e1e;
+      border-radius: 14px;
+      padding: 28px 26px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.15s, transform 0.15s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .bl-card:hover {
+      border-color: rgba(255,234,0,0.4);
+      transform: translateY(-2px);
+    }
+    .bl-card--lead {
+      border-color: #FFEA00;
+      box-shadow: 0 0 28px rgba(255,234,0,0.18), 0 0 70px rgba(255,234,0,0.07);
+    }
+    .bl-card--lead:hover {
+      box-shadow: 0 0 40px rgba(255,234,0,0.3), 0 0 90px rgba(255,234,0,0.1);
+    }
+    .bl-card-tag {
+      align-self: flex-start;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: #FFEA00;
+      color: #000;
+      padding: 4px 11px;
+      border-radius: 100px;
+      margin-bottom: 18px;
+    }
+    .bl-card-tag--outline {
+      background: transparent;
+      color: rgba(255,255,255,0.7);
+      border: 1.5px solid #2a2a2a;
+    }
+    .bl-card-headline {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .bl-card--lead .bl-card-headline { font-size: 26px; }
+    .bl-card-body {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      flex: 1;
+    }
+    .bl-card-meta {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid #1e1e1e;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+    }
+    .bl-card-source {
+      color: #FFEA00;
+    }
+
+    /* ── Rankings ── */
+    .bl-rankings {
+      background: #0a0a0a;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .bl-rankings-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    .bl-rank-title {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .bl-rank-title::before {
+      content: '';
+      display: inline-block;
+      width: 16px;
+      height: 2px;
+      background: #FFEA00;
+    }
+    .bl-rank-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .bl-rank-row:last-child { border-bottom: none; }
+    .bl-rank-num {
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.25);
+      min-width: 22px;
+    }
+    .bl-rank-num--1 { color: #FFEA00; font-size: 13px; }
+    .bl-rank-pair {
+      flex: 1;
+    }
+    .bl-rank-names {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #fff;
+      line-height: 1.25;
+    }
+    .bl-rank-country {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 2px;
+      font-weight: 500;
+    }
+    .bl-rank-pts {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: rgba(255,255,255,0.55);
+      text-align: right;
+    }
+    .bl-rank-pts--1 { color: #FFEA00; }
+    .bl-rank-pts span {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-top: 2px;
+    }
+    .bl-rank-note {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      margin-top: 20px;
+      line-height: 1.55;
+    }
+    .bl-rank-note a {
+      color: rgba(255,234,0,0.6);
+      text-decoration: none;
+    }
+    .bl-rank-note a:hover { color: #FFEA00; }
+
+    /* ── Events ── */
+    .bl-events-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .bl-event {
+      background: #111;
+      border: 1.5px solid #1e1e1e;
+      border-radius: 14px;
+      padding: 26px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .bl-event:hover { border-color: rgba(255,234,0,0.35); transform: translateY(-2px); }
+    .bl-event--uk {
+      border-color: #FFEA00;
+      box-shadow: 0 0 26px rgba(255,234,0,0.15), 0 0 60px rgba(255,234,0,0.06);
+    }
+    .bl-event-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .bl-event-badge {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 4px 11px;
+      border-radius: 100px;
+    }
+    .bl-event-badge--major { background: #FFEA00; color: #000; }
+    .bl-event-badge--p1 { background: #fff; color: #000; }
+    .bl-event-badge--p2 { background: #2a2a2a; color: rgba(255,255,255,0.7); }
+    .bl-event-badge--uk { background: #FFEA00; color: #000; }
+    .bl-event-days {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.4);
+      text-align: right;
+    }
+    .bl-event-name {
+      font-size: 21px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: #fff;
+      line-height: 1.1;
+    }
+    .bl-event-details {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+    }
+    .bl-event-details span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .bl-event-details span::before {
+      content: '◆';
+      font-size: 7px;
+      color: #FFEA00;
+      flex-shrink: 0;
+    }
+    .bl-event-footer {
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid #1e1e1e;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .bl-event-note {
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.35);
+      font-style: italic;
+      line-height: 1.4;
+    }
+    .bl-ticket-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: #FFEA00;
+      color: #000;
+      padding: 9px 18px;
+      border-radius: 100px;
+      transition: opacity 0.15s, transform 0.15s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .bl-ticket-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .bl-ticket-btn--outline {
+      background: transparent;
+      color: rgba(255,255,255,0.6);
+      border: 1.5px solid #2a2a2a;
+    }
+    .bl-ticket-btn--outline:hover { border-color: #FFEA00; color: #FFEA00; }
+
+    /* ── Bottom CTA ── */
+    .bl-cta {
+      background: #0a0a0a;
+      border-top: 1px solid #1a1a1a;
+      padding: 90px 24px;
+      text-align: center;
+    }
+    .bl-cta-inner { max-width: 580px; margin: 0 auto; }
+    .bl-cta-eyebrow {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #FFEA00;
+      margin-bottom: 18px;
+    }
+    .bl-cta-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+    .bl-cta-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    /* ── Scroll reveals ── */
+    @media (prefers-reduced-motion: no-preference) {
+      body.js-anim .reveal { opacity: 0; }
+      body.js-anim .reveal.in-view {
+        opacity: 1;
+        animation: reveal-rise 0.55s ease-out backwards;
+        animation-delay: var(--d, 0s);
+      }
+      @keyframes reveal-rise {
+        from { opacity: 0; transform: translateY(16px); }
+      }
+    }
+    .bl-news-grid .bl-card:nth-child(2) { --d: 0.07s; }
+    .bl-news-grid .bl-card:nth-child(3) { --d: 0.14s; }
+    .bl-events-grid .bl-event:nth-child(2) { --d: 0.07s; }
+    .bl-events-grid .bl-event:nth-child(3) { --d: 0.07s; }
+    .bl-events-grid .bl-event:nth-child(4) { --d: 0.14s; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .bl-news-grid { grid-template-columns: 1fr; }
+      .bl-rankings-inner { grid-template-columns: 1fr; gap: 48px; }
+      .bl-events-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Nav colour overrides ── */
+    .nav-links a { color: rgba(255,255,255,0.85); }
+    nav.scrolled .nav-links a { color: rgba(255,255,255,0.85); }
+    nav.scrolled { background: rgba(13,13,13,0.95); border-bottom-color: #1e1e1e; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="index-v2.html" class="nav-logo">cørt<span class="nav-logo-dot"></span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="https://cortclub.co.uk/pages/cort-club">CØRT Club</a></li>
+      <li><a href="https://cortclub.co.uk/pages/cort-tv">CØRT TV</a></li>
+      <li><a href="https://cortclub.co.uk/collections/all">CØRT Shop</a></li>
+      <li><a href="https://play.cortclub.co.uk">CØRT Play</a></li>
+      <li><a href="https://cortclub.co.uk/pages/cort-partners">CØRT Partners</a></li>
+      <li><a href="baseline.html" style="color:#FFEA00 !important;">The Baseline</a></li>
+      <li><a href="mailto:admin@cortclub.co.uk" class="nav-join">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- LIVE TICKER -->
+  <div class="bl-ticker" aria-label="Live padel news ticker">
+    <div class="bl-ticker-inner" aria-hidden="true">
+      <!-- two identical sets for seamless loop -->
+      <span class="bl-ticker-item">London P1 — First Premier Padel event on UK soil <span class="bl-ticker-sep"></span> Aug 4–9, 2026 · Olympia, London</span>
+      <span class="bl-ticker-item">Tapia / Coello — Men's World No.1 · 21,480 FIP points <span class="bl-ticker-sep"></span></span>
+      <span class="bl-ticker-item">Triay / Brea — Women's World No.1 · 17,651 FIP points <span class="bl-ticker-sep"></span></span>
+      <span class="bl-ticker-item">Pretoria P2 — July 27–Aug 2 · South Africa makes its Premier Padel debut <span class="bl-ticker-sep"></span></span>
+      <span class="bl-ticker-item">France Major — Sep 7–13, 2026 · Premier Padel's third Major of the season <span class="bl-ticker-sep"></span></span>
+      <span class="bl-ticker-item">2026 season — 26 tournaments · 18 countries · one world ranking <span class="bl-ticker-sep"></span></span>
+      <!-- duplicate for loop -->
+      <span class="bl-ticker-item">London P1 — First Premier Padel event on UK soil <span class="bl-ticker-sep"></span> Aug 4–9, 2026 · Olympia, London</span>
+      <span class="bl-ticker-item">Tapia / Coello — Men's World No.1 · 21,480 FIP points <span class="bl-ticker-sep"></span></span>
+      <span class="bl-ticker-item">Triay / Brea — Women's World No.1 · 17,651 FIP points <span class="bl-ticker-sep"></span></span>
+      <span class="bl-ticker-item">Pretoria P2 — July 27–Aug 2 · South Africa makes its Premier Padel debut <span class="bl-ticker-sep"></span></span>
+      <span class="bl-ticker-item">France Major — Sep 7–13, 2026 · Premier Padel's third Major of the season <span class="bl-ticker-sep"></span></span>
+      <span class="bl-ticker-item">2026 season — 26 tournaments · 18 countries · one world ranking <span class="bl-ticker-sep"></span></span>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="bl-hero">
+    <p class="bl-hero-eyebrow reveal">Padel · News · Rankings · Events</p>
+    <h1 class="bl-hero-title reveal" style="--d:0.08s;">The<br>Baseline<span class="oslash">.</span></h1>
+    <p class="bl-hero-sub reveal" style="--d:0.14s;">The state of the game. World rankings, tour news and every upcoming event — in one place.</p>
+    <div class="bl-hero-rule reveal" style="--d:0.18s;"></div>
+  </div>
+
+  <!-- NEWS STORIES -->
+  <div class="bl-section">
+    <div class="bl-section-head">
+      <span class="bl-section-title">Latest</span>
+      <a href="https://premierpadel.com/en" target="_blank" rel="noopener" class="bl-section-link">Premier Padel</a>
+    </div>
+    <div class="bl-news-grid">
+
+      <!-- Lead story -->
+      <a href="https://www.ticketmaster.co.uk/london-premier-padel-p1-tickets/artist/5701605" target="_blank" rel="noopener" class="bl-card bl-card--lead reveal">
+        <span class="bl-card-tag">Breaking</span>
+        <h2 class="bl-card-headline">Premier Padel lands in the UK — London P1 is on</h2>
+        <p class="bl-card-body">For the first time in history, a Premier Padel P1 event comes to British soil. The world's best pairs — Tapia, Coello, Galán, Chingotto — head to Olympia London for six days of elite padel. Tickets are live on Ticketmaster now.</p>
+        <div class="bl-card-meta">Aug 4–9, 2026 · Olympia, London · <span class="bl-card-source">Get tickets →</span></div>
+      </a>
+
+      <!-- Story 2 -->
+      <div class="bl-card reveal">
+        <span class="bl-card-tag bl-card-tag--outline">Rankings</span>
+        <h3 class="bl-card-headline">Tapia and Coello extend their lead at the top</h3>
+        <p class="bl-card-body">Agustín Tapia and Arturo Coello sit at 21,480 FIP points — over 3,000 clear of Galán and Chingotto heading into the second half of the 2026 season.</p>
+        <div class="bl-card-meta">FIP World Rankings · July 6, 2026</div>
+      </div>
+
+      <!-- Story 3 -->
+      <div class="bl-card reveal">
+        <span class="bl-card-tag bl-card-tag--outline">Women</span>
+        <h3 class="bl-card-headline">Triay and Brea hold No.1 — González and Josemaría close</h3>
+        <p class="bl-card-body">Gemma Triay and Delfina Brea lead the women's tour on 17,651 points. Their biggest rivals, Bea González and Paula Josemaría, are applying serious pressure heading into the back half of the season.</p>
+        <div class="bl-card-meta">FIP Women's Rankings · July 6, 2026</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WORLD RANKINGS -->
+  <div class="bl-rankings">
+    <div class="bl-rankings-inner">
+
+      <!-- Men -->
+      <div>
+        <p class="bl-rank-title">Men's World Rankings</p>
+
+        <div class="bl-rank-row">
+          <span class="bl-rank-num bl-rank-num--1">01</span>
+          <div class="bl-rank-pair">
+            <div class="bl-rank-names">Agustín Tapia &amp; Arturo Coello</div>
+            <div class="bl-rank-country">Argentina / Spain</div>
+          </div>
+          <div class="bl-rank-pts bl-rank-pts--1">21,480<span>FIP pts</span></div>
+        </div>
+
+        <div class="bl-rank-row">
+          <span class="bl-rank-num">02</span>
+          <div class="bl-rank-pair">
+            <div class="bl-rank-names">Alejandro Galán &amp; Federico Chingotto</div>
+            <div class="bl-rank-country">Spain / Argentina</div>
+          </div>
+          <div class="bl-rank-pts">~18,000<span>FIP pts</span></div>
+        </div>
+
+        <div class="bl-rank-row">
+          <span class="bl-rank-num">03</span>
+          <div class="bl-rank-pair">
+            <div class="bl-rank-names">Juan Lebrón &amp; Ale Galán</div>
+            <div class="bl-rank-country">Spain</div>
+          </div>
+          <div class="bl-rank-pts">Top 5<span>FIP pts</span></div>
+        </div>
+
+        <p class="bl-rank-note">
+          FIP rankings updated weekly. Rankings based on best 22 results across Premier Padel and FIP Tour events.<br>
+          <a href="https://premierpadel.com/en/ranking-male" target="_blank" rel="noopener">Full men's rankings →</a>
+        </p>
+      </div>
+
+      <!-- Women -->
+      <div>
+        <p class="bl-rank-title">Women's World Rankings</p>
+
+        <div class="bl-rank-row">
+          <span class="bl-rank-num bl-rank-num--1">01</span>
+          <div class="bl-rank-pair">
+            <div class="bl-rank-names">Gemma Triay &amp; Delfina Brea</div>
+            <div class="bl-rank-country">Spain / Argentina</div>
+          </div>
+          <div class="bl-rank-pts bl-rank-pts--1">17,651<span>FIP pts</span></div>
+        </div>
+
+        <div class="bl-rank-row">
+          <span class="bl-rank-num">02</span>
+          <div class="bl-rank-pair">
+            <div class="bl-rank-names">Bea González &amp; Paula Josemaría</div>
+            <div class="bl-rank-country">Spain</div>
+          </div>
+          <div class="bl-rank-pts">Top 3<span>FIP pts</span></div>
+        </div>
+
+        <div class="bl-rank-row">
+          <span class="bl-rank-num">03</span>
+          <div class="bl-rank-pair">
+            <div class="bl-rank-names">Ari Sánchez &amp; Paula Josemaría</div>
+            <div class="bl-rank-country">Spain</div>
+          </div>
+          <div class="bl-rank-pts">Top 5<span>FIP pts</span></div>
+        </div>
+
+        <p class="bl-rank-note">
+          Eight of the world's top 10 women compete under the Spanish flag — an unprecedented stat in padel history.<br>
+          <a href="https://premierpadel.com/en/ranking-female" target="_blank" rel="noopener">Full women's rankings →</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- UPCOMING EVENTS -->
+  <div class="bl-section">
+    <div class="bl-section-head">
+      <span class="bl-section-title">Upcoming events</span>
+      <a href="https://premierpadel.com/en/tournaments" target="_blank" rel="noopener" class="bl-section-link">Full calendar</a>
+    </div>
+    <div class="bl-events-grid">
+
+      <!-- London P1 — highlighted -->
+      <div class="bl-event bl-event--uk reveal">
+        <div class="bl-event-top">
+          <span class="bl-event-badge bl-event-badge--p1">P1 · UK First</span>
+          <span class="bl-event-days">6 days</span>
+        </div>
+        <div class="bl-event-name">London Premier Padel P1</div>
+        <div class="bl-event-details">
+          <span>4–9 August 2026</span>
+          <span>Olympia, Hammersmith Road, London W14 8UX</span>
+          <span>First Premier Padel event ever on UK soil</span>
+        </div>
+        <div class="bl-event-footer">
+          <span class="bl-event-note">General sale · Ticketmaster UK</span>
+          <a href="https://www.ticketmaster.co.uk/london-premier-padel-p1-tickets/artist/5701605" target="_blank" rel="noopener" class="bl-ticket-btn">Get tickets</a>
+        </div>
+      </div>
+
+      <!-- Pretoria P2 -->
+      <div class="bl-event reveal">
+        <div class="bl-event-top">
+          <span class="bl-event-badge bl-event-badge--p2">P2 · South Africa</span>
+          <span class="bl-event-days">7 days</span>
+        </div>
+        <div class="bl-event-name">Pretoria Premier Padel P2</div>
+        <div class="bl-event-details">
+          <span>27 July – 2 August 2026</span>
+          <span>Pretoria, South Africa</span>
+          <span>Premier Padel's first ever African stop</span>
+        </div>
+        <div class="bl-event-footer">
+          <span class="bl-event-note">Tickets via Premier Padel</span>
+          <a href="https://premierpadel.com/en/tickets" target="_blank" rel="noopener" class="bl-ticket-btn bl-ticket-btn--outline">See tickets</a>
+        </div>
+      </div>
+
+      <!-- France Major -->
+      <div class="bl-event reveal">
+        <div class="bl-event-top">
+          <span class="bl-event-badge bl-event-badge--major">Major</span>
+          <span class="bl-event-days">7 days</span>
+        </div>
+        <div class="bl-event-name">France Major</div>
+        <div class="bl-event-details">
+          <span>7–13 September 2026</span>
+          <span>France</span>
+          <span>Third Major of the 2026 season</span>
+        </div>
+        <div class="bl-event-footer">
+          <span class="bl-event-note">Tickets via Premier Padel</span>
+          <a href="https://premierpadel.com/en/tickets" target="_blank" rel="noopener" class="bl-ticket-btn bl-ticket-btn--outline">See tickets</a>
+        </div>
+      </div>
+
+      <!-- Barcelona Finals -->
+      <div class="bl-event reveal">
+        <div class="bl-event-top">
+          <span class="bl-event-badge bl-event-badge--major">Season Finals</span>
+          <span class="bl-event-days">7 days</span>
+        </div>
+        <div class="bl-event-name">Premier Padel Finals 2026</div>
+        <div class="bl-event-details">
+          <span>7–13 December 2026</span>
+          <span>Barcelona, Spain</span>
+          <span>Top 8 pairs (men and women) battle for the title</span>
+        </div>
+        <div class="bl-event-footer">
+          <span class="bl-event-note">Tickets via Premier Padel</span>
+          <a href="https://premierpadel.com/en/tickets" target="_blank" rel="noopener" class="bl-ticket-btn bl-ticket-btn--outline">See tickets</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BOTTOM CTA -->
+  <div class="bl-cta">
+    <div class="bl-cta-inner">
+      <p class="bl-cta-eyebrow reveal">On CØRT</p>
+      <h2 class="bl-cta-title reveal" style="--d:0.06s;">Play it. Watch it.<br>Live it.</h2>
+      <p class="bl-cta-sub reveal" style="--d:0.1s;">The Baseline keeps you up to speed with the pro game. CØRT Club puts you in it — events, leagues and a community of players across the UK.</p>
+      <div class="reveal" style="--d:0.14s; display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap;">
+        <a href="index-v2.html" class="btn btn-yellow btn-dot">Join CØRT Club</a>
+        <a href="https://cortclub.co.uk/pages/cort-tv" class="btn" style="background:transparent;border:1.5px solid #2a2a2a;color:rgba(255,255,255,0.7);">Watch CØRT TV</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">cørt<span class="footer-logo-dot"></span></span>
+        <p class="footer-tagline">The home of grassroots padel.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <ul>
+            <li><a href="https://cortclub.co.uk/pages/cort-club">CØRT Club</a></li>
+            <li><a href="https://cortclub.co.uk/pages/cort-tv">CØRT TV</a></li>
+            <li><a href="https://play.cortclub.co.uk">CØRT Play</a></li>
+            <li><a href="https://cortclub.co.uk/collections/all">CØRT Shop</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Baseline</h4>
+          <ul>
+            <li><a href="https://premierpadel.com/en/tournaments" target="_blank" rel="noopener">Full Tour Calendar</a></li>
+            <li><a href="https://premierpadel.com/en/ranking-male" target="_blank" rel="noopener">Men's Rankings</a></li>
+            <li><a href="https://premierpadel.com/en/ranking-female" target="_blank" rel="noopener">Women's Rankings</a></li>
+            <li><a href="https://www.ticketmaster.co.uk/london-premier-padel-p1-tickets/artist/5701605" target="_blank" rel="noopener">London P1 Tickets</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Partners</h4>
+          <ul>
+            <li><a href="https://cortclub.co.uk/pages/cort-partners">Become a Partner</a></li>
+            <li><a href="https://cortclub.co.uk/pages/sponsorship-pack">Sponsor CØRT TV</a></li>
+            <li><a href="mailto:admin@cortclub.co.uk">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 CØRT Club. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll + mobile toggle
+    const nav = document.getElementById('nav');
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 30);
+    }, { passive: true });
+    navToggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('menu-open');
+      navToggle.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    navLinks.addEventListener('click', e => {
+      if (e.target.closest('a')) {
+        nav.classList.remove('menu-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Scroll reveals
+    document.body.classList.add('js-anim');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>
