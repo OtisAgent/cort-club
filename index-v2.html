@@ -83,7 +83,6 @@
     /* ── Hero: events-first ── */
     .hero-events { padding: 130px 24px 90px; }
     .hero-events .hero-inner { max-width: 900px; width: 100%; }
-    .hero-events .hero-mark { width: 54px; height: 54px; margin-bottom: 26px; }
     .hero-events .hero-wordmark { font-size: clamp(52px, 9vw, 84px); }
     .hero-events .hero-headline { margin-bottom: 0; }
 
@@ -182,6 +181,7 @@
       align-items: stretch;
       justify-content: center;
       gap: 10px;
+      position: relative;
     }
     .connector-node {
       flex: 1;
@@ -579,44 +579,29 @@
     .connector-flow > :nth-child(10) { --d: 0.72s; }
     .connector-flow > :nth-child(11) { --d: 0.79s; }
 
-    /* ── Bouncing ball — desktop gutter, JS-driven, motion-safe ──
-       Shown only from 1160px up: below that the 1080px content grids
-       reach into the gutter and the ball must never overlap content. */
-    .ball-gutter { display: none; }
-    @media (prefers-reduced-motion: no-preference) and (min-width: 1160px) {
-      body.js-anim .ball-gutter {
-        display: block;
-        position: fixed;
-        top: 0;
-        right: 14px;
-        bottom: 0;
-        width: 24px;
-        z-index: 40;
-        pointer-events: none;
-      }
-    }
-    .ball-mover { will-change: transform; }
-    .ball-bounce {
-      --amp: -18px;
-      width: 22px;
-      height: 22px;
+    /* ── Tennis ball that bounces along the connector tiles ──
+       JS positions it (transform only) hopping tile → tile when the row
+       scrolls in. Hidden with no JS, under reduced motion, and on the
+       stacked mobile layout (below 900px the row is a vertical column). */
+    .ball-hop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
       transform-origin: 50% 100%;
-      animation: ball-bounce 1.5s infinite;
-      transition: --amp 0.25s ease;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 3;
+      will-change: transform;
     }
-    .ball-gutter.hop .ball-bounce { --amp: -44px; }
-    .ball-bounce svg { display: block; }
-    @property --amp {
-      syntax: '<length>';
-      inherits: true;
-      initial-value: -18px;
+    .ball-hop svg { display: block; }
+    body.js-anim .ball-hop.play { opacity: 1; }
+    @media (prefers-reduced-motion: reduce) {
+      .ball-hop { display: none; }
     }
-    @keyframes ball-bounce {
-      0%   { transform: translateY(var(--amp)); animation-timing-function: cubic-bezier(0.5, 0, 0.9, 0.6); }
-      46%  { transform: translateY(0) scaleX(1) scaleY(1); animation-timing-function: linear; }
-      53%  { transform: translateY(0) scaleX(1.16) scaleY(0.76); animation-timing-function: linear; }
-      60%  { transform: translateY(0) scaleX(1) scaleY(1); animation-timing-function: cubic-bezier(0.1, 0.4, 0.5, 1); }
-      100% { transform: translateY(var(--amp)); }
+    @media (max-width: 899px) {
+      .ball-hop { display: none; }
     }
 
     /* ── Contrast overrides — page-scoped so index.html keeps its look ──
@@ -654,37 +639,10 @@
     </button>
   </nav>
 
-  <!-- BOUNCING BALL — scroll companion (desktop only, appears when JS enables motion) -->
-  <div class="ball-gutter" id="ballGutter" aria-hidden="true">
-    <div class="ball-mover" id="ballMover">
-      <div class="ball-bounce">
-        <svg viewBox="0 0 22 22" width="22" height="22" focusable="false">
-          <defs>
-            <radialGradient id="ballGrad" cx="36%" cy="30%" r="78%">
-              <stop offset="0%" stop-color="#FFF9A6"/>
-              <stop offset="55%" stop-color="#FFEA00"/>
-              <stop offset="100%" stop-color="#E0CE00"/>
-            </radialGradient>
-          </defs>
-          <circle cx="11" cy="11" r="10.4" fill="url(#ballGrad)"/>
-          <path d="M3.4 5.2c3.6 2.6 3.6 9 0 11.6" fill="none" stroke="#D8C700" stroke-width="1.3" stroke-linecap="round"/>
-          <path d="M18.6 5.2c-3.6 2.6-3.6 9 0 11.6" fill="none" stroke="#D8C700" stroke-width="1.3" stroke-linecap="round"/>
-        </svg>
-      </div>
-    </div>
-  </div>
 
   <!-- HERO — EVENTS FIRST -->
   <section class="hero hero-events">
     <div class="hero-inner">
-
-      <!-- Ø MARK — white ring + white slash on black -->
-      <div class="hero-mark reveal">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="8"/>
-          <line x1="18" y1="82" x2="82" y2="18" stroke="#fff" stroke-width="9" stroke-linecap="butt"/>
-        </svg>
-      </div>
 
       <p class="hero-eyebrow reveal" style="--d: 0.06s;">The home of grassroots padel</p>
 
@@ -749,6 +707,23 @@
     <p class="section-eyebrow reveal">How CØRT connects the game</p>
     <h2 class="section-title reveal" style="--d: 0.06s;">One game.<br>One place.</h2>
     <div class="connector-flow">
+
+      <!-- Tennis ball — bounces across the connector tiles when the row scrolls in -->
+      <div class="ball-hop" id="connectorBall" aria-hidden="true">
+        <svg viewBox="0 0 22 22" width="20" height="20" focusable="false">
+          <defs>
+            <radialGradient id="ballGrad" cx="36%" cy="30%" r="78%">
+              <stop offset="0%" stop-color="#FFF9A6"/>
+              <stop offset="55%" stop-color="#FFEA00"/>
+              <stop offset="100%" stop-color="#E0CE00"/>
+            </radialGradient>
+          </defs>
+          <circle cx="11" cy="11" r="10.4" fill="url(#ballGrad)"/>
+          <path d="M3.4 5.2c3.6 2.6 3.6 9 0 11.6" fill="none" stroke="#D8C700" stroke-width="1.3" stroke-linecap="round"/>
+          <path d="M18.6 5.2c-3.6 2.6-3.6 9 0 11.6" fill="none" stroke="#D8C700" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+      </div>
+
 
       <div class="connector-node reveal">
         <div class="connector-node-icon">
@@ -1092,49 +1067,71 @@
         revealObserver.observe(el);
       });
 
-      // Bouncing ball — position tracks scroll progress (transform only, rAF-throttled)
-      var gutter = document.getElementById('ballGutter');
-      var mover = document.getElementById('ballMover');
-      if (!gutter || !mover) return;
+      // Tennis ball — bounces along the connector tiles when the row scrolls in.
+      var flow = document.querySelector('.connector-flow');
+      var ball = document.getElementById('connectorBall');
+      if (!flow || !ball) return;
 
-      var TOP_PAD = 96;    // clears the fixed nav
-      var BOTTOM_PAD = 104; // keeps the ball off the viewport floor
-      var ticking = false;
+      var nodes = flow.querySelectorAll('.connector-node');
+      if (!nodes.length) return;
 
-      function placeBall() {
-        ticking = false;
-        var doc = document.documentElement;
-        var max = doc.scrollHeight - window.innerHeight;
-        var progress = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
-        var travel = Math.max(0, window.innerHeight - TOP_PAD - BOTTOM_PAD);
-        mover.style.transform = 'translateY(' + (TOP_PAD + progress * travel).toFixed(1) + 'px)';
+      function setBall(x, y, squash) {
+        ball.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)' +
+          (squash ? ' scaleX(1.18) scaleY(0.8)' : '');
       }
-      function requestPlace() {
-        if (!ticking) {
-          ticking = true;
-          requestAnimationFrame(placeBall);
+
+      function runBall() {
+        var W = ball.offsetWidth || 20, H = ball.offsetHeight || 20;
+        var pts = [];
+        for (var i = 0; i < nodes.length; i++) {
+          var n = nodes[i];
+          pts.push({
+            x: n.offsetLeft + n.offsetWidth / 2 - W / 2, // centre of each tile
+            y: n.offsetTop - H + 5                        // resting on the tile's top edge
+          });
         }
-      }
-      window.addEventListener('scroll', requestPlace, { passive: true });
-      window.addEventListener('resize', requestPlace, { passive: true });
-      placeBall();
+        var HOP = 46;    // peak height of each hop, px
+        var SEG = 430;   // time per hop, ms
+        var DROP = 360;  // opening drop onto the first tile
+        var start = null;
 
-      // Stronger hop when a new section enters the viewport
-      var hopTimer = null;
-      var sectionObserver = new IntersectionObserver(function(entries) {
+        ball.classList.add('play');
+        requestAnimationFrame(function step(ts) {
+          if (start === null) start = ts;
+          var el = ts - start;
+          var p0 = pts[0];
+          if (el < DROP) {
+            var td = el / DROP;
+            setBall(p0.x, (p0.y - 64) + 64 * td, td > 0.85);
+            return requestAnimationFrame(step);
+          }
+          var e2 = el - DROP;
+          var seg = Math.floor(e2 / SEG);
+          if (seg >= pts.length - 1) {
+            var last = pts[pts.length - 1];
+            return setBall(last.x, last.y, false); // settle on Shop
+          }
+          var t = (e2 - seg * SEG) / SEG;
+          var a = pts[seg], b = pts[seg + 1];
+          var x = a.x + (b.x - a.x) * t;
+          var baseY = a.y + (b.y - a.y) * t;
+          var y = baseY - HOP * Math.sin(Math.PI * t); // parabolic arc
+          setBall(x, y, t > 0.9);                       // squash just before landing
+          requestAnimationFrame(step);
+        });
+      }
+
+      var ranBall = false;
+      var ballObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            gutter.classList.add('hop');
-            clearTimeout(hopTimer);
-            hopTimer = setTimeout(function() {
-              gutter.classList.remove('hop');
-            }, 760);
+          if (entry.isIntersecting && !ranBall && window.innerWidth >= 900) {
+            ranBall = true;
+            runBall();
+            ballObserver.disconnect();
           }
         });
-      }, { threshold: 0.15 });
-      document.querySelectorAll('section').forEach(function(section) {
-        sectionObserver.observe(section);
-      });
+      }, { threshold: 0.55 });
+      ballObserver.observe(flow);
     })();
   </script>
 
