@@ -579,30 +579,6 @@
     .connector-flow > :nth-child(10) { --d: 0.72s; }
     .connector-flow > :nth-child(11) { --d: 0.79s; }
 
-    /* ── Tennis ball that bounces along the connector tiles ──
-       JS positions it (transform only) hopping tile → tile when the row
-       scrolls in. Hidden with no JS, under reduced motion, and on the
-       stacked mobile layout (below 900px the row is a vertical column). */
-    .ball-hop {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 20px;
-      height: 20px;
-      transform-origin: 50% 100%;
-      opacity: 0;
-      pointer-events: none;
-      z-index: 3;
-      will-change: transform;
-    }
-    .ball-hop svg { display: block; }
-    body.js-anim .ball-hop.play { opacity: 1; }
-    @media (prefers-reduced-motion: reduce) {
-      .ball-hop { display: none; }
-    }
-    @media (max-width: 899px) {
-      .ball-hop { display: none; }
-    }
 
     /* ── Contrast overrides — page-scoped so index.html keeps its look ──
        Dark sections: white / ≥ rgba(255,255,255,.82). Light sections:
@@ -631,7 +607,7 @@
       <li><a href="https://cortclub.co.uk/pages/cort-tv">CØRT TV</a></li>
       <li><a href="#shop">CØRT Shop</a></li>
       <li><a href="https://play.cortclub.co.uk">CØRT Play</a></li>
-      <li><a href="partner.html">CORT Partner</a></li>
+      <li><a href="partner.html">CØRT Partners</a></li>
       <li><a href="mailto:admin@cortclub.co.uk" class="nav-join">Contact</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
@@ -708,21 +684,6 @@
     <h2 class="section-title reveal" style="--d: 0.06s;">One game.<br>One place.</h2>
     <div class="connector-flow">
 
-      <!-- Tennis ball — bounces across the connector tiles when the row scrolls in -->
-      <div class="ball-hop" id="connectorBall" aria-hidden="true">
-        <svg viewBox="0 0 22 22" width="20" height="20" focusable="false">
-          <defs>
-            <radialGradient id="ballGrad" cx="36%" cy="30%" r="78%">
-              <stop offset="0%" stop-color="#FFF9A6"/>
-              <stop offset="55%" stop-color="#FFEA00"/>
-              <stop offset="100%" stop-color="#E0CE00"/>
-            </radialGradient>
-          </defs>
-          <circle cx="11" cy="11" r="10.4" fill="url(#ballGrad)"/>
-          <path d="M3.4 5.2c3.6 2.6 3.6 9 0 11.6" fill="none" stroke="#D8C700" stroke-width="1.3" stroke-linecap="round"/>
-          <path d="M18.6 5.2c-3.6 2.6-3.6 9 0 11.6" fill="none" stroke="#D8C700" stroke-width="1.3" stroke-linecap="round"/>
-        </svg>
-      </div>
 
 
       <div class="connector-node reveal">
@@ -958,7 +919,7 @@
   <section class="partner-strip" id="partner">
     <div class="partner-strip-inner">
       <div class="reveal">
-        <p class="section-eyebrow" style="text-align:left;">CORT Partner</p>
+        <p class="section-eyebrow" style="text-align:left;">CØRT Partners</p>
         <h2 class="partner-strip-title">Your brand,<br>our court.</h2>
         <p class="partner-strip-desc">
           Sell your gear to the padel community through the CØRT store, or get your restring and repair service listed where players already are. Every partner is vetted.
@@ -1008,7 +969,7 @@
           <ul>
             <li><a href="https://ugrxn9-10.myshopify.com/collections/grip-socks">Grip Socks</a></li>
             <li><a href="https://ugrxn9-10.myshopify.com/collections/accessories">Accessories</a></li>
-            <li><a href="partner.html">CORT Partner</a></li>
+            <li><a href="partner.html">CØRT Partners</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -1067,71 +1028,6 @@
         revealObserver.observe(el);
       });
 
-      // Tennis ball — bounces along the connector tiles when the row scrolls in.
-      var flow = document.querySelector('.connector-flow');
-      var ball = document.getElementById('connectorBall');
-      if (!flow || !ball) return;
-
-      var nodes = flow.querySelectorAll('.connector-node');
-      if (!nodes.length) return;
-
-      function setBall(x, y, squash) {
-        ball.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)' +
-          (squash ? ' scaleX(1.18) scaleY(0.8)' : '');
-      }
-
-      function runBall() {
-        var W = ball.offsetWidth || 20, H = ball.offsetHeight || 20;
-        var pts = [];
-        for (var i = 0; i < nodes.length; i++) {
-          var n = nodes[i];
-          pts.push({
-            x: n.offsetLeft + n.offsetWidth / 2 - W / 2, // centre of each tile
-            y: n.offsetTop - H + 5                        // resting on the tile's top edge
-          });
-        }
-        var HOP = 46;    // peak height of each hop, px
-        var SEG = 430;   // time per hop, ms
-        var DROP = 360;  // opening drop onto the first tile
-        var start = null;
-
-        ball.classList.add('play');
-        requestAnimationFrame(function step(ts) {
-          if (start === null) start = ts;
-          var el = ts - start;
-          var p0 = pts[0];
-          if (el < DROP) {
-            var td = el / DROP;
-            setBall(p0.x, (p0.y - 64) + 64 * td, td > 0.85);
-            return requestAnimationFrame(step);
-          }
-          var e2 = el - DROP;
-          var seg = Math.floor(e2 / SEG);
-          if (seg >= pts.length - 1) {
-            var last = pts[pts.length - 1];
-            return setBall(last.x, last.y, false); // settle on Shop
-          }
-          var t = (e2 - seg * SEG) / SEG;
-          var a = pts[seg], b = pts[seg + 1];
-          var x = a.x + (b.x - a.x) * t;
-          var baseY = a.y + (b.y - a.y) * t;
-          var y = baseY - HOP * Math.sin(Math.PI * t); // parabolic arc
-          setBall(x, y, t > 0.9);                       // squash just before landing
-          requestAnimationFrame(step);
-        });
-      }
-
-      var ranBall = false;
-      var ballObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting && !ranBall && window.innerWidth >= 900) {
-            ranBall = true;
-            runBall();
-            ballObserver.disconnect();
-          }
-        });
-      }, { threshold: 0.55 });
-      ballObserver.observe(flow);
     })();
   </script>
 
