@@ -58,7 +58,7 @@
         width: 100%;
         padding: 13px 0;
         font-size: 16px;
-        color: rgba(255,255,255,0.75) !important;
+        color: rgba(255,255,255,0.85) !important;
       }
       .nav-links a:hover { color: #fff !important; }
       .nav-links .nav-join {
@@ -92,7 +92,7 @@
     .partner-hero-title em { font-style: normal; color: var(--accent); }
     .partner-hero-sub {
       font-size: clamp(15px, 2vw, 17px);
-      color: rgba(255,255,255,0.45);
+      color: rgba(255,255,255,0.82);
       line-height: 1.75;
       max-width: 480px;
       margin: 0 auto 44px;
@@ -225,7 +225,7 @@
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.82);
       margin-top: 18px;
     }
     .commission-title {
@@ -238,7 +238,7 @@
     }
     .commission-desc {
       font-size: 15px;
-      color: rgba(255,255,255,0.45);
+      color: rgba(255,255,255,0.82);
       line-height: 1.75;
       margin-bottom: 26px;
     }
@@ -250,7 +250,7 @@
       padding: 11px 0;
       border-bottom: 1px solid #1a1a1a;
       font-size: 14px;
-      color: rgba(255,255,255,0.7);
+      color: rgba(255,255,255,0.85);
       line-height: 1.55;
     }
     .split-list li:last-child { border-bottom: none; }
@@ -317,7 +317,7 @@
       transition: border-color 0.2s;
     }
     .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--black); }
-    .field input::placeholder, .field textarea::placeholder { color: #aaa; }
+    .field input::placeholder, .field textarea::placeholder { color: #6a6a6a; }
     .field textarea { resize: vertical; min-height: 74px; }
     .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .check-row { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -347,7 +347,7 @@
     .form-submit { width: 100%; justify-content: center; margin-top: 8px; }
     .form-note {
       font-size: 12px;
-      color: #aaa;
+      color: #4a4a4a;
       text-align: center;
       margin-top: 14px;
       line-height: 1.6;
@@ -381,7 +381,7 @@
       color: #fff;
       margin-bottom: 10px;
     }
-    .success-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .success-desc { font-size: 14px; color: rgba(255,255,255,0.82); line-height: 1.7; }
 
     /* ── Responsive ── */
     @media (max-width: 900px) {
@@ -393,6 +393,18 @@
       .track-card, .form-card { padding: 30px 22px; }
       .field-row { grid-template-columns: 1fr; }
     }
+
+    /* ── Contrast overrides — page-scoped so index.html keeps its look ──
+       Dark sections: white / ≥ rgba(255,255,255,.82). Light sections:
+       black body, secondary ≥ #4a4a4a. No yellow text on light. */
+    :root { --muted: #4a4a4a; }
+    .nav-links a { color: rgba(255,255,255,0.85); }
+    nav.scrolled .nav-links a { color: #4a4a4a; }
+    .hero-eyebrow { color: rgba(255,255,255,0.82); }
+    .footer-tagline { color: rgba(255,255,255,0.82); }
+    .footer-col h4 { color: rgba(255,255,255,0.82); }
+    .footer-col a { color: rgba(255,255,255,0.82); }
+    .footer-copy { color: rgba(255,255,255,0.82); }
   </style>
 </head>
 <body>
