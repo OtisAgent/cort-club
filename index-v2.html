@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CØRT Club — The All-in-One Home for the Padel Player</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Nav: extra links + mobile hamburger ── */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      border-radius: 2px;
+      background: #fff;
+      transition: transform 0.2s, opacity 0.2s, background 0.3s;
+    }
+    nav.scrolled .nav-toggle span { background: var(--black); }
+    nav.menu-open .nav-toggle span { background: #fff; }
+    nav.menu-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    nav.menu-open .nav-toggle span:nth-child(2) { opacity: 0; }
+    nav.menu-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 820px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        background: var(--black);
+        padding: 10px 24px 26px;
+        border-bottom: 1px solid #1a1a1a;
+      }
+      nav.menu-open { background: var(--black); }
+      nav.menu-open .nav-logo { color: #fff; }
+      nav.menu-open .nav-links { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 13px 0;
+        font-size: 16px;
+        color: rgba(255,255,255,0.75) !important;
+      }
+      .nav-links a:hover { color: #fff !important; }
+      .nav-links .nav-join {
+        display: inline-block;
+        width: auto;
+        margin-top: 14px;
+        padding: 10px 24px;
+        color: var(--black) !important;
+      }
+    }
+
+    /* ── Hero headline ── */
+    .hero-headline {
+      font-size: clamp(17px, 2.6vw, 22px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+    .hero-headline em { font-style: normal; color: var(--accent); }
+
+    /* ── Pillar icons ── */
+    .pillar-icon { font-size: 18px; color: var(--black); margin-bottom: 16px; }
+
+    /* ── Membership card feature ── */
+    .member-section {
+      background: var(--black);
+      padding: 110px 24px;
+      overflow: hidden;
+    }
+    .member-inner {
+      max-width: 940px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .member-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .member-title {
+      font-size: clamp(30px, 4.5vw, 44px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #fff;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+    .member-desc {
+      font-size: 15px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.75;
+      margin-bottom: 26px;
+    }
+    .member-perks { list-style: none; margin-bottom: 32px; }
+    .member-perks li {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #1a1a1a;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+    }
+    .member-perks li:last-child { border-bottom: none; }
+    .member-perks li::before { content: '◆'; font-size: 10px; color: var(--accent); flex-shrink: 0; }
+
+    .member-card-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 30px 10px;
+    }
+    .member-card {
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 1.586;
+      background: linear-gradient(135deg, #111 0%, #050505 100%);
+      border: 1.5px solid var(--accent);
+      border-radius: 18px;
+      padding: 26px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      box-shadow:
+        0 0 44px rgba(255,234,0,0.22),
+        0 0 110px rgba(255,234,0,0.08),
+        10px 10px 0 rgba(255,234,0,0.85);
+      transform: rotate(-2deg);
+    }
+    .member-card-brand {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #fff;
+      line-height: 1;
+    }
+    .member-card-brand span {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      margin-left: 2px;
+    }
+    .member-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .member-card-chip {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--accent);
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+    .member-card-name {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+    }
+    .member-card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 6px;
+    }
+    .member-card-num {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      color: rgba(255,255,255,0.35);
+    }
+    .member-card-since {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ── Bundle line on shop strip ── */
+    .bundle-note {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      margin: -14px 0 28px;
+    }
+    .bundle-note::before { content: '⊕'; font-size: 15px; }
+
+    /* ── Partner strip ── */
+    .partner-strip {
+      background: var(--white);
+      border-top: 1.5px solid var(--border);
+      padding: 96px 24px;
+    }
+    .partner-strip-inner {
+      max-width: 940px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .partner-strip-title {
+      font-size: clamp(28px, 4.5vw, 42px);
+      font-weight: 900;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+      color: var(--black);
+      margin-bottom: 14px;
+    }
+    .partner-strip-desc {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 440px;
+    }
+    .partner-strip-tracks { list-style: none; margin-bottom: 30px; }
+    .partner-strip-tracks li {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--bg);
+      font-size: 14px;
+      color: var(--black);
+      line-height: 1.55;
+    }
+    .partner-strip-tracks li span:first-child {
+      font-size: 12px;
+      flex-shrink: 0;
+      color: var(--black);
+    }
+    .partner-strip-tracks strong { font-weight: 800; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .member-inner { grid-template-columns: 1fr; gap: 40px; }
+      .member-card-wrap { order: -1; }
+      .partner-strip-inner { grid-template-columns: 1fr; gap: 36px; }
+    }
+    @media (max-width: 400px) {
+      .member-card { padding: 20px 22px; transform: rotate(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="index-v2.html" class="nav-logo">cørt<span class="nav-logo-dot"></span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#club">CØRT Club</a></li>
+      <li><a href="#tv">CØRT TV</a></li>
+      <li><a href="#shop">CØRT Shop</a></li>
+      <li><a href="https://play.cortclub.co.uk">CØRT Play</a></li>
+      <li><a href="partner.html">Partner</a></li>
+      <li><a href="mailto:admin@cortclub.co.uk" class="nav-join">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+
+      <!-- Ø MARK — white ring + white slash on black -->
+      <div class="hero-mark">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="8"/>
+          <line x1="18" y1="82" x2="82" y2="18" stroke="#fff" stroke-width="9" stroke-linecap="butt"/>
+        </svg>
+      </div>
+
+      <p class="hero-eyebrow">The home of grassroots padel</p>
+
+      <!-- cørt. with yellow dot -->
+      <div class="hero-wordmark">
+        cørt<span class="hero-wordmark-dot"></span>
+      </div>
+
+      <p class="hero-sub">Play · Shop · Watch · Win</p>
+      <p class="hero-headline">The all-in-one home for the <em>padel player.</em></p>
+      <p class="hero-tagline">One club for everything — run your sessions, grab your gear, watch the matches and win on court.</p>
+
+      <div class="hero-actions">
+        <a href="#join" class="btn btn-yellow btn-dot">Join CØRT Club</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUR PILLARS -->
+  <section class="pillars" id="club">
+    <p class="section-eyebrow">The CØRT Ecosystem</p>
+    <h2 class="section-title">Everything padel.<br>One club.</h2>
+    <div class="pillars-grid">
+
+      <a href="#join" class="pillar-card">
+        <div class="pillar-icon">◉</div>
+        <p class="pillar-num"><span class="pillar-num-dot"></span>01 — CØRT Club</p>
+        <h3 class="pillar-title">Community</h3>
+        <p class="pillar-desc">Events, leagues and a connected network of padel players across the UK — from first-timers to competitors.</p>
+        <span class="pillar-link">Join →</span>
+      </a>
+
+      <a href="https://cortclub.co.uk/pages/cort-tv" class="pillar-card" id="tv">
+        <div class="pillar-icon">▶</div>
+        <p class="pillar-num"><span class="pillar-num-dot"></span>02 — CØRT TV</p>
+        <h3 class="pillar-title">Watch</h3>
+        <p class="pillar-desc">Live nights, highlights and match content — plus sponsorship and media partnerships for brands entering padel.</p>
+        <span class="pillar-link">Watch →</span>
+      </a>
+
+      <a href="https://play.cortclub.co.uk" class="pillar-card">
+        <div class="pillar-icon">◆</div>
+        <p class="pillar-num"><span class="pillar-num-dot"></span>03 — CØRT Play</p>
+        <h3 class="pillar-title">Run sessions</h3>
+        <p class="pillar-desc">Americano, Mexicano, King of the Court — set up and run your sessions in minutes, zero admin.</p>
+        <span class="pillar-link">play.cortclub.co.uk →</span>
+      </a>
+
+      <a href="#shop" class="pillar-card">
+        <div class="pillar-icon">◼</div>
+        <p class="pillar-num"><span class="pillar-num-dot"></span>04 — CØRT Shop</p>
+        <h3 class="pillar-title">Shop</h3>
+        <p class="pillar-desc">CØRT merch, curated padel gear and bundle deals built for the court — buy more, save more.</p>
+        <span class="pillar-link">Shop →</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- MEMBERSHIP -->
+  <section class="member-section" id="membership">
+    <div class="member-inner">
+      <div>
+        <p class="member-eyebrow">CØRT Membership</p>
+        <h2 class="member-title">Carry the card.<br>Own the court.</h2>
+        <p class="member-desc">
+          One membership across the whole CØRT ecosystem — your pass to the community, the leagues, the drops and the perks.
+        </p>
+        <ul class="member-perks">
+          <li>Priority entry to leagues and events</li>
+          <li>Member pricing across the CØRT Shop</li>
+          <li>Early access to drops and bundle deals</li>
+          <li>Your player profile on CØRT Play</li>
+        </ul>
+        <a href="#join" class="btn btn-yellow btn-dot">Become a member</a>
+      </div>
+      <div class="member-card-wrap">
+        <div class="member-card">
+          <div class="member-card-top">
+            <div class="member-card-brand">cørt<span></span></div>
+            <div class="member-card-chip">Member</div>
+          </div>
+          <div>
+            <div class="member-card-name">A. Player</div>
+            <div class="member-card-meta">
+              <span class="member-card-num">Nº 0001</span>
+              <span class="member-card-since">Est. 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP STRIP -->
+  <section class="product-section" id="shop">
+    <div class="product-inner">
+      <div>
+        <p class="product-eyebrow">CØRT Shop — Live Now</p>
+        <h2 class="product-title">CØRT<br>Grip Socks</h2>
+        <p class="product-desc">Our first in-house product. Non-slip grip technology designed for lateral movement on the padel court. Available in black and white.</p>
+        <div class="chips">
+          <span class="chip">Non-slip grip</span>
+          <span class="chip">Black &amp; White</span>
+          <span class="chip">Medium</span>
+          <span class="chip">Large</span>
+          <span class="live-chip"><span class="live-dot"></span>Available now</span>
+        </div>
+        <div class="product-price">£9.99</div>
+        <p class="bundle-note">Buy more, save more — bundle deals at checkout</p>
+        <a href="https://ugrxn9-10.myshopify.com/collections/grip-socks" class="btn btn-yellow btn-dot">Shop Grip Socks</a>
+      </div>
+      <div class="product-visual">
+        <div class="product-visual-mark">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="8"/>
+            <line x1="18" y1="82" x2="82" y2="18" stroke="#fff" stroke-width="9" stroke-linecap="butt"/>
+          </svg>
+        </div>
+        <span class="product-add-label">Photos coming soon</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNER STRIP -->
+  <section class="partner-strip" id="partner">
+    <div class="partner-strip-inner">
+      <div>
+        <p class="section-eyebrow" style="text-align:left;">Partner with CØRT</p>
+        <h2 class="partner-strip-title">Your brand,<br>our court.</h2>
+        <p class="partner-strip-desc">
+          Sell your gear to the padel community through the CØRT store, or get your restring and repair service listed where players already are. Every partner is vetted.
+        </p>
+      </div>
+      <div>
+        <ul class="partner-strip-tracks">
+          <li><span>◼</span><span><strong>Brands</strong> — you hold stock, we list, market and sell it.</span></li>
+          <li><span>◉</span><span><strong>Repair services</strong> — restring, regrip and repair bookings from the community.</span></li>
+        </ul>
+        <a href="partner.html" class="btn btn-black btn-dot">Apply to partner</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY / WAITLIST -->
+  <section class="capture" id="join">
+    <div class="capture-inner">
+      <h2>Join the CØRT Community<span class="cap-dot"></span></h2>
+      <p>Events, league news, member drops and more. Be first in.</p>
+      <form class="capture-form" onsubmit="return false;">
+        <input type="email" placeholder="Your email address" aria-label="Email address">
+        <button type="submit" class="btn btn-black btn-dot">Join Free</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">cørt<span class="footer-brand-dot"></span></div>
+          <p class="footer-tagline">The padel community. Sheffield and everywhere.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Ecosystem</h4>
+          <ul>
+            <li><a href="#tv">CØRT TV</a></li>
+            <li><a href="#club">CØRT Club</a></li>
+            <li><a href="https://play.cortclub.co.uk">CØRT Play</a></li>
+            <li><a href="#shop">CØRT Shop</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="https://ugrxn9-10.myshopify.com/collections/grip-socks">Grip Socks</a></li>
+            <li><a href="https://ugrxn9-10.myshopify.com/collections/accessories">Accessories</a></li>
+            <li><a href="partner.html">Partner with CØRT</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:admin@cortclub.co.uk">admin@cortclub.co.uk</a></li>
+            <li><a href="#join">Get in touch</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2026 CØRT Club. Part of the CØRT Group.</span>
+        <span class="footer-dot"></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll state
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function() {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Mobile menu
+    var toggle = document.getElementById('navToggle');
+    toggle.addEventListener('click', function() {
+      var open = nav.classList.toggle('menu-open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    document.querySelectorAll('.nav-links a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        nav.classList.remove('menu-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+
+</body>
+</html>
