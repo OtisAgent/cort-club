@@ -149,6 +149,37 @@
     .cn-rank-note a:hover{color:#FFEA00}
 
     /* ── CTA ── */
+    /* ── Player Spotlight ── */
+    .ps{background:#080808;border-top:1px solid #111;border-bottom:1px solid #111;padding:64px 0}
+    .psi{max-width:1200px;margin:0 auto;padding:0 24px}
+    .ps-card{position:relative;border-radius:18px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;min-height:340px}
+    @media(max-width:768px){.ps-card{grid-template-columns:1fr}}
+    .ps-art{position:relative;min-height:280px;overflow:hidden}
+    .ps-body{background:#111;padding:clamp(28px,4vw,52px);display:flex;flex-direction:column;justify-content:center}
+    .ps-pill{display:inline-flex;align-self:flex-start;font-size:9.5px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;padding:4px 10px;border-radius:100px;background:#FFEA00;color:#000;margin-bottom:20px}
+    .ps-h{font-size:clamp(22px,3vw,36px);font-weight:900;letter-spacing:-.04em;line-height:1.05;color:#fff;margin-bottom:12px}
+    .ps-p{font-size:14px;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:24px}
+    .ps-stats{display:flex;gap:28px;margin-bottom:24px;flex-wrap:wrap}
+    .ps-stat{display:flex;flex-direction:column;gap:2px}
+    .ps-stat-n{font-size:22px;font-weight:900;color:#FFEA00;letter-spacing:-.04em}
+    .ps-stat-l{font-size:10px;font-weight:600;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase}
+    .ps-link{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#FFEA00;text-decoration:none}
+    /* ── Court Level ── */
+    .cl{padding:64px 0;background:#0a0a0a}
+    .cli{max-width:1200px;margin:0 auto;padding:0 24px}
+    .cl-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin:32px 0}
+    @media(max-width:600px){.cl-stats{grid-template-columns:1fr}}
+    .cl-stat{background:#111;padding:32px 24px;text-align:center}
+    .cl-stat-n{font-size:clamp(28px,4vw,48px);font-weight:900;color:#FFEA00;letter-spacing:-.05em}
+    .cl-stat-l{font-size:12px;color:rgba(255,255,255,.4);margin-top:6px;letter-spacing:.05em}
+    .cl-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px}
+    @media(max-width:600px){.cl-cards{grid-template-columns:1fr}}
+    .cl-card{background:#111;border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px;text-decoration:none;border:1.5px solid #1a1a1a}
+    .cl-ci{display:inline-flex;font-size:9.5px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;padding:4px 10px;border-radius:100px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);align-self:flex-start}
+    .cl-ch{font-size:clamp(17px,2vw,22px);font-weight:900;letter-spacing:-.03em;color:#fff;line-height:1.2}
+    .cl-cp{font-size:14px;color:rgba(255,255,255,.4);line-height:1.65}
+    .cl-cta{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#FFEA00;margin-top:auto}
+    /* ── CTA ── */
     .cn-cta{padding:96px 24px;text-align:center}
     .cn-cta-inner{max-width:520px;margin:0 auto}
     .cn-cta-ey{font-size:10px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:#FFEA00;margin-bottom:18px}
@@ -604,6 +635,97 @@
         <div class="cn-rank-pts">15,200<span>FIP pts</span></div>
       </div>
       <p class="cn-rank-note">Eight of the world top 10 women represent Spain &mdash; the most dominant national run in padel history.<br><a href="https://premierpadel.com/en/ranking-female" target="_blank" rel="noopener">Full women's rankings &rarr;</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ─── PLAYER SPOTLIGHT ─── -->
+<div class="ps" id="spotlight">
+  <div class="psi">
+    <div class="cn-sec-head">
+      <span class="cn-sec-label">Player spotlight</span>
+      <a href="https://premierpadel.com/en/ranking-male" target="_blank" rel="noopener" class="cn-sec-more">World rankings &rarr;</a>
+    </div>
+    <div class="ps-card">
+      <div class="ps-art">
+        <svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="psbg" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="#0a0a1a"/><stop offset="100%" stop-color="#040408"/></radialGradient>
+            <radialGradient id="psgl" cx="40%" cy="50%" r="55%"><stop offset="0%" stop-color="#ffea00" stop-opacity=".09"/><stop offset="100%" stop-color="#ffea00" stop-opacity="0"/></radialGradient>
+          </defs>
+          <rect width="600" height="340" fill="url(#psbg)"/>
+          <rect width="600" height="340" fill="url(#psgl)"/>
+          <!-- Ghost "01" -->
+          <text x="300" y="310" text-anchor="middle" font-size="320" font-weight="900" fill="rgba(255,234,0,.05)" font-family="Arial Black,Arial,sans-serif">01</text>
+          <!-- Performance pulse lines -->
+          <polygon points="160,340 240,140 260,180 340,80 360,120 420,40 440,80 480,340" fill="rgba(255,234,0,.04)"/>
+          <!-- Grid lines -->
+          <line x1="0" y1="113" x2="600" y2="113" stroke="rgba(255,255,255,.025)" stroke-width="1"/>
+          <line x1="0" y1="227" x2="600" y2="227" stroke="rgba(255,255,255,.025)" stroke-width="1"/>
+          <!-- Accent dots -->
+          <circle cx="80" cy="90" r="4" fill="#FFEA00" opacity=".5"/>
+          <circle cx="520" cy="250" r="3" fill="#FFEA00" opacity=".4"/>
+          <circle cx="300" cy="50" r="5" fill="#FFEA00" opacity=".3"/>
+        </svg>
+      </div>
+      <div class="ps-body">
+        <span class="ps-pill">World No.1</span>
+        <h2 class="ps-h">Agust&iacute;n Tapia &amp; Arturo Coello</h2>
+        <div class="ps-stats">
+          <div class="ps-stat">
+            <span class="ps-stat-n">21,480</span>
+            <span class="ps-stat-l">FIP Points</span>
+          </div>
+          <div class="ps-stat">
+            <span class="ps-stat-n">#1</span>
+            <span class="ps-stat-l">World rank</span>
+          </div>
+          <div class="ps-stat">
+            <span class="ps-stat-n">ARG/ESP</span>
+            <span class="ps-stat-l">Nationality</span>
+          </div>
+        </div>
+        <p class="ps-p">The most dominant pairing in world padel. Tapia and Coello have held No.1 continuously since 2024, building a lead that now stands at over 3,000 points — the widest margin in tour history.</p>
+        <a href="https://premierpadel.com/en/ranking-male" target="_blank" rel="noopener" class="ps-link">Premier Padel profile &rarr;</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── COURT LEVEL ─── -->
+<div class="cl">
+  <div class="cli">
+    <div class="cn-sec-head">
+      <span class="cn-sec-label">Court level</span>
+      <a href="/pages/cort-club" class="cn-sec-more">Join C&Oslash;RT &rarr;</a>
+    </div>
+    <div class="cl-stats">
+      <div class="cl-stat">
+        <div class="cl-stat-n">800+</div>
+        <div class="cl-stat-l">UK padel courts</div>
+      </div>
+      <div class="cl-stat">
+        <div class="cl-stat-n">500k</div>
+        <div class="cl-stat-l">Players in the UK</div>
+      </div>
+      <div class="cl-stat">
+        <div class="cl-stat-n">50%</div>
+        <div class="cl-stat-l">Year-on-year growth</div>
+      </div>
+    </div>
+    <div class="cl-cards">
+      <a href="/pages/cort-club" class="cl-card">
+        <span class="cl-ci">C&Oslash;RT Club</span>
+        <h3 class="cl-ch">Play, compete and connect with the C&Oslash;RT community</h3>
+        <p class="cl-cp">Events, leagues and organised padel across the UK — from first-timers to county-level players.</p>
+        <span class="cl-cta">Join C&Oslash;RT Club &rarr;</span>
+      </a>
+      <a href="https://play.cortclub.co.uk" target="_blank" rel="noopener" class="cl-card">
+        <span class="cl-ci">C&Oslash;RT Play</span>
+        <h3 class="cl-ch">Book a court, find a game, track your progress</h3>
+        <p class="cl-cp">C&Oslash;RT Play connects you with venues, players and bookings in one place — wherever you are in the UK.</p>
+        <span class="cl-cta">Open C&Oslash;RT Play &rarr;</span>
+      </a>
     </div>
   </div>
 </div>
