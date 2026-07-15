@@ -195,6 +195,22 @@
 .cortv2 .cort-tv-desc strong{color:var(--accent)}
 .cortv2 .cort-tv-sub{font-size:13.5px;color:rgba(255,255,255,.7);line-height:1.55;margin-bottom:26px}
 @media(max-width:768px){.cortv2 .play-formats{grid-template-columns:1fr}.cortv2 .cort-tv-inner{grid-template-columns:1fr;gap:32px}.cortv2 .cort-tv-info{text-align:center}.cortv2 .cort-tv-desc{text-align:left}}
+/* Featured products */
+.cortv2 .featured{background:var(--bg);padding:88px 24px}
+.cortv2 .featured-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cortv2 .featured-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s,transform .15s}
+.cortv2 .featured-card:hover{border-color:#000;box-shadow:4px 4px 0 #000;transform:translate(-2px,-2px)}
+.cortv2 .featured-media{position:relative;aspect-ratio:4/3;background:#0d0d0d;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+.cortv2 .featured-media-mark{width:60px;height:60px;opacity:.35}
+.cortv2 .featured-media-label{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.cortv2 .featured-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+.cortv2 .featured-live{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.cortv2 .featured-name{font-size:20px;font-weight:900;letter-spacing:-.02em;color:#000;margin-bottom:8px}
+.cortv2 .featured-desc{font-size:13.5px;color:var(--muted);line-height:1.55;margin-bottom:20px}
+.cortv2 .featured-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--border)}
+.cortv2 .featured-price{font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.cortv2 .featured-cta{font-size:14px;font-weight:800;color:#000}
+@media(max-width:768px){.cortv2 .featured-grid{grid-template-columns:1fr;max-width:420px}}
 </style>
 
 <div class="cortv2">
@@ -321,28 +337,26 @@
     </div>
   </section>
 
-  <!-- SHOP — lifted to top: the storefront is the primary CTA -->
-  <section class="product-section" id="cort-shop">
-    <div class="product-inner">
-      <div class="reveal">
-        <p class="product-eyebrow">CØRT Shop — Live Now</p>
-        <h2 class="product-title">CØRT<br>Grip Socks</h2>
-        <p class="product-desc">Our first in-house product. Non-slip grip technology designed for lateral movement on the padel court. Available in black and white.</p>
-        <div class="chips">
-          <span class="chip">Non-slip grip</span>
-          <span class="chip">Black &amp; White</span>
-          <span class="chip">Medium</span>
-          <span class="chip">Large</span>
-          <span class="live-chip"><span class="live-dot"></span>Available now</span>
+  <!-- FEATURED PRODUCTS -->
+  <section class="featured" id="cort-shop">
+    <p class="section-eyebrow reveal">CØRT Shop</p>
+    <h2 class="section-title reveal" style="--d:.06s">Featured products.</h2>
+    <div class="featured-grid">
+      <a href="https://cortclub.co.uk/collections/all" class="featured-card reveal">
+        <div class="featured-media">
+          <div class="featured-media-mark"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="8"/><line x1="18" y1="82" x2="82" y2="18" stroke="#fff" stroke-width="9" stroke-linecap="butt"/></svg></div>
+          <span class="featured-media-label">Photos coming soon</span>
         </div>
-        <div class="product-price">£9.99</div>
-        <p class="bundle-note"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.4"/><path d="M12 8.6v6.8M8.6 12h6.8"/></svg>Buy more, save more — bundle deals at checkout</p>
-        <a href="https://cortclub.co.uk/collections/all" class="btn btn-yellow btn-dot">Shop the store</a>
-      </div>
-      <div class="product-visual reveal" style="--d:.12s">
-        <div class="product-visual-mark"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="8"/><line x1="18" y1="82" x2="82" y2="18" stroke="#fff" stroke-width="9" stroke-linecap="butt"/></svg></div>
-        <span class="product-add-label">Photos coming soon</span>
-      </div>
+        <div class="featured-body">
+          <span class="featured-live"><span class="live-dot"></span>Live now</span>
+          <h3 class="featured-name">CØRT Grip Socks</h3>
+          <p class="featured-desc">Non-slip grip built for lateral movement on the padel court — black &amp; white.</p>
+          <div class="featured-foot">
+            <span class="featured-price">Price coming soon</span>
+            <span class="featured-cta">Shop →</span>
+          </div>
+        </div>
+      </a>
     </div>
   </section>
 
