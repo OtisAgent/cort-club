@@ -171,6 +171,30 @@
 }
 @media(max-width:520px){.cortv2 .pillars-grid{grid-template-columns:1fr}}
 @media(max-width:400px){.cortv2 .member-card{padding:20px 22px;transform:rotate(0)}}
+/* CØRT Play */
+.cortv2 .cort-play{background:var(--bg);padding:88px 24px;border-bottom:1.5px solid var(--border)}
+.cortv2 .cort-play-inner{max-width:1000px;margin:0 auto;text-align:center}
+.cortv2 .cort-play-lead{max-width:600px;margin:-34px auto 40px;font-size:15px;color:var(--muted);line-height:1.6}
+.cortv2 .play-formats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:40px}
+.cortv2 .play-format{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:28px 22px;text-align:left;transition:border-color .15s,box-shadow .15s,transform .15s}
+.cortv2 .play-format:hover{border-color:#000;box-shadow:4px 4px 0 #000;transform:translate(-2px,-2px)}
+.cortv2 .play-format-name{font-size:19px;font-weight:900;letter-spacing:-.02em;color:#000;margin-bottom:8px}
+.cortv2 .play-format-desc{font-size:13px;color:var(--muted);line-height:1.55}
+/* CØRT TV */
+.cortv2 .cort-tv{background:#000;padding:88px 24px}
+.cortv2 .cort-tv-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.cortv2 .cort-tv-screen{display:flex;flex-direction:column;align-items:center}
+.cortv2 .cort-tv-frame{width:100%;aspect-ratio:16/10;background:#0d0d0d;border:1.5px solid var(--accent);border-radius:16px;box-shadow:0 0 34px rgba(255,234,0,.22),0 0 90px rgba(255,234,0,.08);display:flex;align-items:center;justify-content:center;position:relative}
+.cortv2 .cort-tv-live{position:absolute;top:16px;left:18px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.cortv2 .cort-tv-brand{font-size:clamp(30px,5vw,46px);font-weight:900;letter-spacing:-.04em;color:#fff}
+.cortv2 .cort-tv-brand span{display:inline-block;width:9px;height:9px;background:var(--accent);border-radius:50%;margin:0 6px 0 2px;vertical-align:middle}
+.cortv2 .cort-tv-stand{width:120px;height:10px;background:#0d0d0d;border:1.5px solid #1a1a1a;border-top:none;border-radius:0 0 10px 10px}
+.cortv2 .cort-tv-info{text-align:left}
+.cortv2 .cort-tv-title{font-size:clamp(26px,4vw,38px);font-weight:900;letter-spacing:-.03em;color:#fff;line-height:1.1;margin:6px 0 18px}
+.cortv2 .cort-tv-desc{background:#0d0d0d;border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:16px 18px;font-size:15px;color:#fff;line-height:1.5;margin-bottom:18px}
+.cortv2 .cort-tv-desc strong{color:var(--accent)}
+.cortv2 .cort-tv-sub{font-size:13.5px;color:rgba(255,255,255,.7);line-height:1.55;margin-bottom:26px}
+@media(max-width:768px){.cortv2 .play-formats{grid-template-columns:1fr}.cortv2 .cort-tv-inner{grid-template-columns:1fr;gap:32px}.cortv2 .cort-tv-info{text-align:center}.cortv2 .cort-tv-desc{text-align:left}}
 </style>
 
 <div class="cortv2">
@@ -204,47 +228,12 @@
         <span class="cat-soon">Dropping soon</span>
       </div>
     </div>
-      <p class="hero-cats-tag reveal" style="--d:.42s">One game. <em>One place.</em></p>
       </div>
 
     </div>
   </section>
 
-  <!-- SHOP BY CATEGORY — 3 features -->
-
-
-  <!-- WHAT'S ON — events -->
-  <section class="whats-on" id="cort-whats-on">
-    <div class="whats-on-inner">
-      <div class="events-board">
-        <div class="events-board-head reveal" style="--d:.16s">
-          <span class="events-board-dot"></span>
-          <span class="events-board-title">What's on</span>
-        </div>
-        <div class="events-grid">
-          <div class="event-card reveal">
-            <span class="event-tag">Free to enter</span>
-            <h3 class="event-name">Americano Night</h3>
-            <p class="event-format">Americano · Social round-robin, all levels</p>
-            <div class="event-meta"><span>Sheffield</span><span>Thursday · 7:00pm</span></div>
-          </div>
-          <div class="event-card reveal">
-            <span class="event-tag">Open</span>
-            <h3 class="event-name">King of the Court</h3>
-            <p class="event-format">Open session · Winners stay on</p>
-            <div class="event-meta"><span>Sheffield</span><span>Saturday · 10:00am</span></div>
-          </div>
-          <div class="event-card reveal">
-            <span class="event-tag">Open</span>
-            <h3 class="event-name">CØRT League Matchday</h3>
-            <p class="event-format">League · Round one, teams of two</p>
-            <div class="event-meta"><span>Venue TBC</span><span>Sunday · 2:00pm</span></div>
-          </div>
-        </div>
-      </div>
-      <p class="hero-soon reveal" style="--d:.46s">First events landing soon — join the list to hear first.</p>
-    </div>
-  </section>
+  <!-- (What's On moved below and rebuilt as CØRT TV) -->
 
   <section class="connector" id="cort-connector">
     <p class="section-eyebrow reveal">How CØRT connects the game</p>
@@ -283,6 +272,51 @@
         <div class="connector-node-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.9 8.2h12.2l-.95 11.1a2 2 0 0 1-2 1.9H8.85a2 2 0 0 1-2-1.9z"/><path d="M8.8 10.6V6.8a3.2 3.2 0 0 1 6.4 0v3.8"/></svg></div>
         <div class="connector-node-name">Shop</div>
         <div class="connector-node-sub">where the game gears up</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CØRT PLAY — set up a session -->
+  <section class="cort-play" id="cort-play">
+    <div class="cort-play-inner">
+      <p class="section-eyebrow reveal">CØRT Play</p>
+      <h2 class="section-title reveal" style="--d:.06s">Set up a session<br>in minutes.</h2>
+      <p class="cort-play-lead reveal" style="--d:.1s">Pick a format, add your players, and CØRT runs the rounds and scoring for you — zero admin on the night.</p>
+      <div class="play-formats">
+        <div class="play-format reveal">
+          <div class="play-format-name">Americano</div>
+          <p class="play-format-desc">Everyone plays with everyone. Social round-robin, all levels.</p>
+        </div>
+        <div class="play-format reveal" style="--d:.06s">
+          <div class="play-format-name">Mexicano</div>
+          <p class="play-format-desc">Pairings set by ranking each round — competitive and balanced.</p>
+        </div>
+        <div class="play-format reveal" style="--d:.12s">
+          <div class="play-format-name">King of the Court</div>
+          <p class="play-format-desc">Winners stay on. Fast, knockout-style session play.</p>
+        </div>
+      </div>
+      <a href="https://play.cortclub.co.uk" class="btn btn-yellow btn-dot reveal">Set up a session</a>
+    </div>
+  </section>
+
+  <!-- CØRT TV — what's on / next live broadcast -->
+  <section class="cort-tv" id="cort-whats-on">
+    <div class="cort-tv-inner">
+      <div class="cort-tv-screen reveal">
+        <div class="cort-tv-frame">
+          <span class="cort-tv-live">● Coming soon</span>
+          <div class="cort-tv-brand">cørt<span></span>TV</div>
+        </div>
+        <div class="cort-tv-stand"></div>
+      </div>
+      <div class="cort-tv-info reveal" style="--d:.12s">
+        <p class="section-eyebrow" style="text-align:left;color:rgba(255,255,255,.6)">CØRT TV — What's on</p>
+        <span class="soon-pill">Coming soon</span>
+        <h2 class="cort-tv-title">Next on the<br>live broadcast.</h2>
+        <div class="cort-tv-desc"><strong>Tournament · Mexicano</strong><br>Played at Club de Padel</div>
+        <p class="cort-tv-sub">The next live nights, upcoming matches and highlights — streaming here soon.</p>
+        <a href="/pages/cort-tv" class="btn btn-yellow btn-dot">See full schedule</a>
       </div>
     </div>
   </section>
