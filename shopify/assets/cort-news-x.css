@@ -1,0 +1,27 @@
+.ft{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+button.ccat{font-family:inherit;cursor:pointer;background:none}
+button.ca{background:#FFEA00}
+.fg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:900px){.fg{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.fg{grid-template-columns:1fr}}
+.fc{background:#111;border:1.5px solid #1a1a1a;border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:10px;text-decoration:none;transition:transform .2s,border-color .15s}
+.fc:hover{transform:translateY(-3px);border-color:#3a3a3a}
+.fp{display:inline-flex;align-self:flex-start;font-size:9.5px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;padding:4px 10px;border-radius:100px}
+.fpy{background:#FFEA00;color:#000}
+.fpg{background:rgba(255,255,255,.12);color:#fff}
+.fps{background:transparent;border:1px solid rgba(255,234,0,.5);color:#FFEA00}
+.fd{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.fh{font-size:17px;font-weight:900;letter-spacing:-.02em;line-height:1.2;color:#fff;margin:0}
+.fx{font-size:13px;color:rgba(255,255,255,.6);line-height:1.6;margin:0}
+.fl{margin-top:auto;padding-top:8px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#FFEA00}
+.fe{text-align:center;color:rgba(255,255,255,.4);padding:36px 0;font-size:14px;display:none}
+.nlw{background:#FFEA00}
+.nli{max-width:1200px;margin:0 auto;padding:52px 24px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
+.nlh{font-size:clamp(24px,3.4vw,38px);font-weight:900;letter-spacing:-.04em;color:#000;line-height:1.02;margin:0}
+.nlp{font-size:14px;color:rgba(0,0,0,.72);margin:8px 0 0;max-width:430px;line-height:1.6}
+.nlf{display:flex;gap:10px;flex-wrap:wrap;min-width:280px;flex:1;max-width:520px}
+.nlf input[type=email]{flex:1;min-width:210px;padding:14px 20px;border-radius:100px;border:2px solid #000;background:#fff;font-size:14px;font-family:inherit;outline:none;color:#000}
+.nlb{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:#000;color:#FFEA00;border:none;padding:14px 26px;border-radius:100px;cursor:pointer;font-family:inherit;transition:opacity .15s}
+.nlb:hover{opacity:.85}
+.nln{width:100%;font-size:11.5px;color:rgba(0,0,0,.55)}
+.nlk{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
