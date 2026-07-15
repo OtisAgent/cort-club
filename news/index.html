@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>CØRT News — Updates, Products & Solutions</title></head><body style="margin:0;background:#F2F2F2">
+<div style="background:#FFEA00;color:#000;font:700 12px -apple-system,sans-serif;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:8px 12px">Preview — CØRT News · not live</div>
+<style>
+.cn{--bg:#F2F2F2;--accent:#FFEA00;--accent-dark:#E6D400;--muted:#4a4a4a;--border:#D9D9D9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Inter',sans-serif;color:#000;line-height:1.6;-webkit-font-smoothing:antialiased}
+.cn a{color:inherit}
+.cn .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+/* hero */
+.cn .hero{background:#000;color:#fff;padding:72px 24px 64px;text-align:center}
+.cn .hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:16px}
+.cn .hero-title{font-size:clamp(40px,7vw,72px);font-weight:900;letter-spacing:-.05em;line-height:.95;margin:0}
+.cn .hero-title span{display:inline-block;width:clamp(9px,1.4vw,15px);height:clamp(9px,1.4vw,15px);background:var(--accent);border-radius:50%;margin-left:4px;vertical-align:baseline}
+.cn .hero-sub{font-size:16px;color:rgba(255,255,255,.82);max-width:520px;margin:18px auto 0;line-height:1.7}
+/* newsletter */
+.cn .sub{background:var(--accent);padding:44px 24px}
+.cn .sub-inner{max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between}
+.cn .sub-copy{flex:1.3;min-width:260px}
+.cn .sub-copy h2{font-size:clamp(24px,3.4vw,34px);font-weight:900;letter-spacing:-.03em;margin:0 0 8px}
+.cn .sub-copy p{font-size:15px;color:rgba(0,0,0,.7);margin:0;max-width:440px}
+.cn .sub-form{flex:1;min-width:280px;display:flex;flex-direction:column;gap:10px}
+.cn .sub-row{display:flex;gap:10px;flex-wrap:wrap}
+.cn .sub-form input[type=email]{flex:1;min-width:200px;padding:15px 20px;border-radius:100px;border:2px solid #000;background:#fff;font-size:15px;outline:none;font-family:inherit}
+.cn .sub-btn{display:inline-flex;align-items:center;gap:8px;background:#000;color:#fff;border:none;font-size:15px;font-weight:800;padding:15px 30px;border-radius:100px;cursor:pointer;font-family:inherit}
+.cn .sub-btn::after{content:'';width:7px;height:7px;background:var(--accent);border-radius:50%}
+.cn .sub-note{font-size:12px;color:rgba(0,0,0,.6)}
+.cn .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+/* tabs */
+.cn .feed{padding:56px 24px 80px}
+.cn .tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+.cn .tab{font-size:13px;font-weight:800;letter-spacing:.02em;padding:10px 20px;border-radius:100px;border:1.5px solid var(--border);background:#fff;color:#000;cursor:pointer;transition:all .15s}
+.cn .tab:hover{border-color:#000}
+.cn .tab.on{background:#000;color:#fff;border-color:#000}
+/* cards */
+.cn .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cn .card{background:#fff;border:1.5px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s,transform .15s}
+.cn .card:hover{border-color:#000;box-shadow:5px 5px 0 #000;transform:translate(-2px,-2px)}
+.cn .card-media{aspect-ratio:16/10;background:#0d0d0d;display:flex;align-items:center;justify-content:center;position:relative}
+.cn .card-media .mk{width:54px;height:54px;opacity:.35}
+.cn .card-tag{position:absolute;top:14px;left:14px;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:100px;background:var(--accent);color:#000}
+.cn .card-tag.update{background:#fff;color:#000}
+.cn .card-tag.solution{background:#000;color:var(--accent)}
+.cn .card-body{padding:20px 22px 24px;display:flex;flex-direction:column;flex:1}
+.cn .card-date{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.cn .card-title{font-size:19px;font-weight:900;letter-spacing:-.02em;line-height:1.2;margin:0 0 8px}
+.cn .card-desc{font-size:13.5px;color:var(--muted);line-height:1.55;margin:0 0 18px}
+.cn .card-link{margin-top:auto;font-size:13px;font-weight:800;color:#000}
+.cn .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:40px 0;font-size:15px}
+/* footer */
+.cn .foot{background:#000;color:rgba(255,255,255,.6);text-align:center;padding:40px 24px;font-size:12.5px}
+.cn .foot b{color:#fff}
+@media(max-width:900px){.cn .grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.cn .grid{grid-template-columns:1fr}.cn .sub-inner{flex-direction:column;align-items:flex-start}}
+</style>
+
+<div class="cn">
+
+  <section class="hero">
+    <p class="hero-eyebrow">The home of grassroots padel</p>
+    <h1 class="hero-title">CØRT News<span></span></h1>
+    <p class="hero-sub">Everything new at CØRT — product drops, platform updates and the solutions we're building for players, clubs and brands. Fresh every week.</p>
+  </section>
+
+  <!-- NEWSLETTER SIGN-UP -->
+  <section class="sub">
+    <div class="sub-inner">
+      <div class="sub-copy">
+        <h2>Get CØRT News in your inbox.</h2>
+        <p>One short email when something lands — new gear, features and drops. No spam, just padel.</p>
+      </div>
+      <form class="sub-form" id="cn-sub" onsubmit="return false;">
+        <div class="sub-row">
+          <input type="text" class="hp" id="cn-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="email" placeholder="Your email address" aria-label="Email address" required>
+          <button type="submit" class="sub-btn">Subscribe</button>
+        </div>
+        <span class="sub-note">Subscribe once — we'll email you the CØRT News roundup.</span>
+      </form>
+    </div>
+  </section>
+
+  <!-- FEED -->
+  <section class="feed">
+    <div class="wrap">
+      <div class="tabs" id="cn-tabs">
+        <button class="tab on" data-f="all">All</button>
+        <button class="tab" data-f="update">Updates</button>
+        <button class="tab" data-f="product">New Products</button>
+        <button class="tab" data-f="solution">Solutions</button>
+      </div>
+      <div class="grid" id="cn-grid">
+
+        <a href="#" class="card" data-cat="product">
+          <div class="card-media"><span class="card-tag">New Product</span><svg class="mk" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="8"/><line x1="18" y1="82" x2="82" y2="18" stroke="#fff" stroke-width="9"/></svg></div>
+          <div class="card-body"><div class="card-date">Jul 2026</div><h3 class="card-title">CØRT Grip Socks — live now</h3><p class="card-desc">Our first in-house product: non-slip grip built for lateral movement on the padel court. Black &amp; white.</p><span class="card-link">Read more →</span></div>
+        </a>
+
+        <a href="#" class="card" data-cat="update">
+          <div class="card-media"><span class="card-tag update">Update</span><svg class="mk" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="8"/><line x1="18" y1="82" x2="82" y2="18" stroke="#fff" stroke-width="9"/></svg></div>
+          <div class="card-body"><div class="card-date">Jul 2026</div><h3 class="card-title">New storefront-first homepage</h3><p class="card-desc">CØRT's homepage now leads with the shop and the full ecosystem — Play, TV and the connector in one place.</p><span class="card-link">Read more →</span></div>
+        </a>
+
+        <a href="#" class="card" data-cat="solution">
+          <div class="card-media"><span class="card-tag solution">Solution</span><svg class="mk" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="8"/><line x1="18" y1="82" x2="82" y2="18" stroke="#fff" stroke-width="9"/></svg></div>
+          <div class="card-body"><div class="card-date">Jul 2026</div><h3 class="card-title">CØRT Play — run Americano &amp; Mexicano</h3><p class="card-desc">Set up a session in minutes: pick a format, add players, and CØRT runs the rounds and scoring for you.</p><span class="card-link">Read more →</span></div>
+        </a>
+
+        <a href="#" class="card" data-cat="solution">
+          <div class="card-media"><span class="card-tag solution">Solution</span><svg class="mk" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="8"/><line x1="18" y1="82" x2="82" y2="18" stroke="#fff" stroke-width="9"/></svg></div>
+          <div class="card-body"><div class="card-date">Jul 2026</div><h3 class="card-title">Sell through CØRT — partner storefront</h3><p class="card-desc">Padel brands can now list and sell through the CØRT store on a flat 10% founding rate. You ship, we sell.</p><span class="card-link">Read more →</span></div>
+        </a>
+
+        <a href="#" class="card" data-cat="update">
+          <div class="card-media"><span class="card-tag update">Update</span><svg class="mk" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="8"/><line x1="18" y1="82" x2="82" y2="18" stroke="#fff" stroke-width="9"/></svg></div>
+          <div class="card-body"><div class="card-date">Coming soon</div><h3 class="card-title">CØRT TV — live broadcasts</h3><p class="card-desc">Live nights, highlights and match content are on the way. Sign up to hear when the first broadcast lands.</p><span class="card-link">Read more →</span></div>
+        </a>
+
+        <a href="#" class="card" data-cat="product">
+          <div class="card-media"><span class="card-tag">New Product</span><svg class="mk" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="8"/><line x1="18" y1="82" x2="82" y2="18" stroke="#fff" stroke-width="9"/></svg></div>
+          <div class="card-body"><div class="card-date">Coming soon</div><h3 class="card-title">CØRT Rackets &amp; Apparel</h3><p class="card-desc">Bats and on-court kit are dropping soon. Two new categories join the CØRT shop — first look for subscribers.</p><span class="card-link">Read more →</span></div>
+        </a>
+
+      </div>
+      <p class="empty" id="cn-empty" style="display:none">Nothing here yet in this category — check back soon.</p>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p><b>CØRT News</b> · Operated by CORT CLUB LTD · © 2026 CØRT</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var tabs=document.getElementById('cn-tabs'), grid=document.getElementById('cn-grid'), empty=document.getElementById('cn-empty');
+  tabs.addEventListener('click',function(e){
+    var b=e.target.closest('.tab'); if(!b)return;
+    tabs.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');}); b.classList.add('on');
+    var f=b.getAttribute('data-f'), shown=0;
+    grid.querySelectorAll('.card').forEach(function(c){
+      var ok = f==='all' || c.getAttribute('data-cat')===f;
+      c.style.display = ok?'':'none'; if(ok)shown++;
+    });
+    empty.style.display = shown?'none':'block';
+  });
+  var sf=document.getElementById('cn-sub');
+  sf.addEventListener('submit',function(e){e.preventDefault(); var hp=document.getElementById('cn-hp'); if(hp&&hp.value)return; alert('Preview only — this will connect to CØRT’s Mailchimp list once set up.');});
+})();
+</script>
+
+</body></html>
