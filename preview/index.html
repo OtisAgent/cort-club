@@ -72,6 +72,18 @@
 .cortv2 .product-visual{aspect-ratio:1;background:#111;border-radius:16px;border:1.5px solid var(--accent);box-shadow:0 0 22px rgba(255,234,0,.22),0 0 56px rgba(255,234,0,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .cortv2 .product-visual-mark{width:100px;height:100px;opacity:.2;position:relative;z-index:1}
 .cortv2 .product-add-label{position:absolute;bottom:20px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+.cortv2 .shop-cats{background:var(--bg);padding:80px 24px;border-bottom:1.5px solid var(--border)}
+.cortv2 .cats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1000px;margin:0 auto}
+.cortv2 .cat-card{position:relative;display:flex;flex-direction:column;background:#0d0d0d;border:1.5px solid var(--accent);box-shadow:0 0 22px rgba(255,234,0,.18),0 0 56px rgba(255,234,0,.06);border-radius:14px;padding:30px 26px;min-height:180px;text-decoration:none;color:#fff;transition:transform .15s,box-shadow .15s}
+.cortv2 a.cat-card:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(255,234,0,.34),0 0 70px rgba(255,234,0,.1)}
+.cortv2 .cat-name{font-size:22px;font-weight:900;letter-spacing:-.03em;margin-bottom:8px}
+.cortv2 .cat-name span{color:var(--accent)}
+.cortv2 .cat-desc{font-size:13px;color:rgba(255,255,255,.7);line-height:1.6;margin-bottom:auto}
+.cortv2 .cat-cta{margin-top:22px;font-size:13px;font-weight:800;letter-spacing:.02em;color:var(--accent)}
+.cortv2 .cat-soon{margin-top:22px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.cortv2 .cat-card--soon{border-color:rgba(255,255,255,.12);box-shadow:none}
+.cortv2 .cat-pill{position:absolute;top:16px;right:16px;font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;background:rgba(255,255,255,.08);color:rgba(255,255,255,.55);padding:4px 9px;border-radius:100px}
+@media(max-width:768px){.cortv2 .cats-grid{grid-template-columns:1fr}}
 .cortv2 .member-section{background:#000;padding:110px 24px;overflow:hidden}
 .cortv2 .member-inner{max-width:1000px;margin:0 auto;text-align:center}
 .cortv2 .member-eyebrow{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-bottom:18px}
@@ -218,6 +230,31 @@
       <div class="product-visual reveal" style="--d:.12s">
         <div class="product-visual-mark"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="8"/><line x1="18" y1="82" x2="82" y2="18" stroke="#fff" stroke-width="9" stroke-linecap="butt"/></svg></div>
         <span class="product-add-label">Photos coming soon</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP BY CATEGORY — 3 features -->
+  <section class="shop-cats" id="cort-shop-cats">
+    <p class="section-eyebrow reveal">Shop by category</p>
+    <h2 class="section-title reveal" style="--d:.06s">Gear up.</h2>
+    <div class="cats-grid">
+      <a href="https://cortclub.co.uk/collections/accessories" class="cat-card reveal">
+        <div class="cat-name">cørt <span>Accessories</span></div>
+        <p class="cat-desc">Grip socks, court essentials and the small stuff that makes a difference.</p>
+        <span class="cat-cta">Shop accessories →</span>
+      </a>
+      <div class="cat-card cat-card--soon reveal">
+        <span class="cat-pill">Coming soon</span>
+        <div class="cat-name">cørt <span>Rackets</span></div>
+        <p class="cat-desc">Bats built for every level — from first-timers to competitors.</p>
+        <span class="cat-soon">Dropping soon</span>
+      </div>
+      <div class="cat-card cat-card--soon reveal">
+        <span class="cat-pill">Coming soon</span>
+        <div class="cat-name">cørt <span>Apparel</span></div>
+        <p class="cat-desc">Wear the game — CØRT kit and apparel built for the court.</p>
+        <span class="cat-soon">Dropping soon</span>
       </div>
     </div>
   </section>
