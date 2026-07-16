@@ -21,7 +21,11 @@
 }
 
 @media (max-width: 767px) {
-  /* Yellow Menu tab beside the cørt. logo */
+  /* Yellow Menu tab beside the cørt. logo.
+     The theme hides the whole drawer wrapper when menu-style is 'menu'
+     (#header-component[data-menu-style=menu] .header__drawer{display:none})
+     — override the wrapper as well as the button. */
+  #header-component .header__drawer { display: flex !important; min-height: unset !important; }
   #Details-menu-drawer-container { display: block !important; }
   .header__icon--menu {
     display: inline-flex !important;
