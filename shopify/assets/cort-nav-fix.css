@@ -5,3 +5,15 @@
 footer h2,.section-footer h2{color:#fff!important}
 footer p,footer rte-formatter{color:rgba(255,255,255,.7)!important}
 footer .form__message,footer [class*='email-signup__message']{color:#fff!important}
+
+/* mobile: full 7-tab menu row, swipeable; overflow-list is disabled via cort-mobile-nav.js */
+@media (max-width: 989px){
+.header__navigation-bar-row{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.header__navigation-bar-row::-webkit-scrollbar{display:none}
+.header__navigation-bar-row .menu-list{flex-wrap:nowrap!important;max-width:none!important}
+.header__navigation-bar-row overflow-list{display:flex!important;flex-wrap:nowrap!important}
+overflow-list::part(list){flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none}
+overflow-list::part(more){display:none!important}
+.header__navigation-bar-row .menu-list__list-item{flex:0 0 auto}
+.header__navigation-bar-row .menu-list__link{white-space:nowrap}
+}
