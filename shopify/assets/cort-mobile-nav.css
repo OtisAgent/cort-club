@@ -1,0 +1,60 @@
+/* ====================================================
+   CØRT. — Mobile Nav v2 (yellow Menu tab + theme drawer)
+   ≤767px: yellow "Menu" tab beside the cørt. logo opens
+   the theme drawer (always carries the current main menu).
+   The old custom 5-link drawer is retired. Desktop unchanged.
+   ==================================================== */
+
+/* Kill Horizon view transitions — base.css enables them globally */
+@view-transition { navigation: none; }
+::view-transition-old(root),
+::view-transition-new(root),
+::view-transition-old(main-content),
+::view-transition-new(main-content) { animation: none !important; }
+
+/* Retire the old custom drawer at all widths (stale link list) */
+#cort-hamburger, #cort-nav-drawer, #cort-nav-overlay { display: none !important; }
+
+@media (max-width: 989px) {
+  /* No swipeable tab row — replaced by the Menu tab */
+  .header__navigation-bar-row { display: none !important; }
+}
+
+@media (max-width: 767px) {
+  /* Yellow Menu tab beside the cørt. logo */
+  #Details-menu-drawer-container { display: block !important; }
+  .header__icon--menu {
+    display: inline-flex !important;
+    align-items: center; justify-content: center;
+    width: auto !important; height: auto !important;
+    background: #FFEA00 !important; color: #000 !important;
+    border-radius: 100px; padding: 9px 16px !important;
+    list-style: none; cursor: pointer;
+  }
+  .header__icon--menu::-webkit-details-marker { display: none; }
+  .header__icon--menu .svg-wrapper { display: none !important; }
+  .header__icon--menu::before {
+    content: "Menu \25BE";
+    color: #000; font-size: 12px; font-weight: 800;
+    letter-spacing: .08em; text-transform: uppercase; line-height: 1;
+  }
+  details[open] > .header__icon--menu::before { content: "Close \2715"; }
+
+  /* Theme drawer: dark panel, brand styling for the 7 tabs */
+  .menu-drawer, .menu-drawer__inner-container, .menu-drawer__navigation,
+  .menu-drawer__content, .menu-drawer__utility-links {
+    background: #0a0a0a !important; color: #fff !important;
+  }
+  .menu-drawer__menu-item {
+    color: #fff !important; font-size: 17px !important;
+    font-weight: 800 !important; letter-spacing: -.01em;
+  }
+  .menu-drawer__menu-item:hover, .menu-drawer__menu-item:active { color: #FFEA00 !important; }
+  .menu-drawer__menu-item-text { color: inherit !important; }
+
+  /* Keep header uncluttered on phones (as before) */
+  shopify-account, header-actions { display: none !important; }
+}
+
+/* Prevent body scroll when the old drawer class lingers */
+body.cort-nav-open { overflow: hidden; }
