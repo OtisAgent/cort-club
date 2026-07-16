@@ -464,10 +464,11 @@
       <p class="hero-eyebrow">CØRT Partners</p>
       <h1 class="partner-hero-title">Your brand,<br>on <em>court.</em></h1>
       <p class="partner-hero-sub">
-        CØRT is the home of grassroots padel — leagues, broadcast, community and shop in one place. Partner with us to sell to and serve a community of padel players where they already are.
+        CØRT is the home of grassroots padel — leagues, broadcast, community and shop in one place. List your full catalogue, clear end-of-line stock through CØRT Outlet, or join the repair network.
       </p>
       <div class="hero-actions">
-        <a href="#sell" class="btn btn-yellow btn-dot">Sell through CØRT</a>
+        <a href="#sell" class="btn btn-yellow btn-dot">List your catalogue</a>
+        <a href="#outlet" class="btn btn-outline btn-dot">CØRT Outlet</a>
         <a href="#repair" class="btn btn-outline btn-dot">Repair network</a>
       </div>
     </div>
@@ -475,29 +476,47 @@
 
   <!-- TRACKS -->
   <section class="tracks" id="tracks">
-    <p class="section-eyebrow">Two ways in</p>
+    <p class="section-eyebrow">Three ways in</p>
     <h2 class="section-title">Pick your track.</h2>
     <div class="tracks-grid">
 
       <div class="track-card" id="sell">
         <div class="track-icon">◼</div>
         <p class="track-num"><span class="pillar-num-dot"></span>Track 01 — Brands</p>
-        <h3 class="track-title">Sell through CØRT</h3>
+        <h3 class="track-title">List your full catalogue</h3>
         <p class="track-desc">
-          You keep and ship your stock. We list it, market it and sell it to the padel community through the CØRT storefront. No warehousing handover, no upfront fees — one consistent commission on each sale.
+          Your whole range, live on the CØRT store. You keep and ship your own stock — we list it, market it and sell it to the padel community. No warehousing handover, no upfront fees. One 20% founding commission on each sale.
         </p>
         <ul class="track-list">
-          <li>Your products, listed on the CØRT store</li>
+          <li>Your full catalogue listed on the CØRT store</li>
           <li>Marketed across CØRT TV, leagues and socials</li>
           <li>You hold stock and dispatch direct to the customer</li>
           <li>CØRT handles storefront, checkout and marketing</li>
+          <li>Partner login to manage your products and track sales</li>
         </ul>
         <a href="#apply-brand" class="btn btn-black btn-dot">Apply as a brand</a>
       </div>
 
+      <div class="track-card" id="outlet">
+        <div class="track-icon">⬡</div>
+        <p class="track-num"><span class="pillar-num-dot"></span>Track 02 — CØRT Outlet</p>
+        <h3 class="track-title">Sunday clearance drops</h3>
+        <p class="track-desc">
+          Got end-of-line, last-season or excess stock? CØRT Outlet runs a weekly Sunday clearance — your surplus clears fast, through an excited audience, without ever appearing on your own main storefront. Your brand stays premium; the stock moves.
+        </p>
+        <ul class="track-list">
+          <li>End-of-line and excess stock cleared weekly</li>
+          <li>Sunday drops with countdown — urgency built in</li>
+          <li>Your brand is never cheapened on your own channels</li>
+          <li>Stock can move via the HAF KNECT courier network</li>
+          <li>Outlet mailing list gets first access — built-in demand</li>
+        </ul>
+        <a href="#apply-brand" class="btn btn-yellow btn-dot">Apply — tick Outlet interest</a>
+      </div>
+
       <div class="track-card" id="repair">
         <div class="track-icon">◉</div>
-        <p class="track-num"><span class="pillar-num-dot"></span>Track 02 — Services</p>
+        <p class="track-num"><span class="pillar-num-dot"></span>Track 03 — Services</p>
         <h3 class="track-title">Repair network</h3>
         <p class="track-desc">
           Repair, regrip or restore padel rackets? Get listed where players already are. The CØRT community books your services directly — you do the work, we bring the players.
@@ -586,7 +605,7 @@
       <!-- BRAND FORM -->
       <div class="form-card" id="apply-brand">
         <p class="form-card-eyebrow"><span class="pillar-num-dot"></span>Track 01 — Brands</p>
-        <h3 class="form-card-title">Sell through CØRT</h3>
+        <h3 class="form-card-title">List your full catalogue</h3>
         <form class="partner-form" data-success="success-brand" novalidate>
           <div class="field">
             <label for="b-brand">Brand name</label>
@@ -612,11 +631,33 @@
           </div>
           <div class="field">
             <label for="b-sell">What do you sell?</label>
-            <textarea id="b-sell" name="products" placeholder="Rackets, apparel, accessories…"></textarea>
+            <textarea id="b-sell" name="products" placeholder="Rackets, apparel, accessories, grips…"></textarea>
+          </div>
+          <div class="field">
+            <label for="b-skus">Roughly how many products in your range?</label>
+            <select id="b-skus" name="catalogue_size">
+              <option value="" disabled selected>Select a range</option>
+              <option value="1-10">1–10 products</option>
+              <option value="11-50">11–50 products</option>
+              <option value="51-200">51–200 products</option>
+              <option value="200+">200+ products</option>
+            </select>
           </div>
           <div class="field">
             <label for="b-stock">Where is stock held?</label>
             <input type="text" id="b-stock" name="stock_location" placeholder="City / warehouse location">
+          </div>
+          <div class="field">
+            <label>Are you interested in CØRT Outlet — Sunday clearance drops?</label>
+            <div class="check-row">
+              <label class="check-chip"><input type="radio" name="outlet_interest" value="yes"><span>Yes — I have end-of-line stock</span></label>
+              <label class="check-chip"><input type="radio" name="outlet_interest" value="maybe"><span>Maybe later</span></label>
+              <label class="check-chip"><input type="radio" name="outlet_interest" value="no"><span>Not right now</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="b-notes">Anything else we should know?</label>
+            <textarea id="b-notes" name="notes" placeholder="Seasonal ranges, exclusives, special pricing structures…"></textarea>
           </div>
           <button type="submit" class="btn btn-black btn-dot form-submit">Submit application</button>
           <p class="form-note">Every partner is vetted. We'll come back to you within 48 hours.</p>
@@ -624,13 +665,13 @@
         <div class="success-panel" id="success-brand" hidden>
           <div class="success-icon">◉</div>
           <h3 class="success-title">Application received</h3>
-          <p class="success-desc">We'll come back to you within 48 hours.</p>
+          <p class="success-desc">We'll review your brand and come back within 48 hours. If you're a fit, you'll get a partner login to upload your full catalogue and go live on the CØRT store.</p>
         </div>
       </div>
 
       <!-- REPAIR FORM -->
       <div class="form-card" id="apply-repair">
-        <p class="form-card-eyebrow"><span class="pillar-num-dot"></span>Track 02 — Services</p>
+        <p class="form-card-eyebrow"><span class="pillar-num-dot"></span>Track 03 — Services</p>
         <h3 class="form-card-title">Join the repair network</h3>
         <form class="partner-form" data-success="success-repair" novalidate>
           <div class="field">
