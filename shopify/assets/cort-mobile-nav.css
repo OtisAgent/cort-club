@@ -26,6 +26,8 @@
      (#header-component[data-menu-style=menu] .header__drawer{display:none})
      — override the wrapper as well as the button. */
   #header-component .header__drawer { display: flex !important; min-height: unset !important; }
+  /* cort-nav.css hides <header-drawer> globally (display:none!important) — un-hide on phones */
+  header-drawer, .header-drawer { display: block !important; }
   #Details-menu-drawer-container { display: block !important; }
   .header__icon--menu {
     display: inline-flex !important;
