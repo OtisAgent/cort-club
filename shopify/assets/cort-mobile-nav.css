@@ -1,6 +1,6 @@
 /* ====================================================
-   CØRT. — Mobile Nav v2 (yellow Menu tab + theme drawer)
-   ≤767px: yellow "Menu" tab beside the cørt. logo opens
+   CØRT. — Mobile Nav v2 (yellow hamburger tab + theme drawer)
+   ≤767px: yellow three-lines tab beside the cørt. logo opens
    the theme drawer (always carries the current main menu).
    The old custom 5-link drawer is retired. Desktop unchanged.
    ==================================================== */
@@ -39,12 +39,20 @@
   }
   .header__icon--menu::-webkit-details-marker { display: none; }
   .header__icon--menu .svg-wrapper { display: none !important; }
+  /* Hamburger: three drawn bars (no font glyph — renders identically everywhere) */
   .header__icon--menu::before {
-    content: "Menu \25BE";
-    color: #000; font-size: 12px; font-weight: 800;
-    letter-spacing: .08em; text-transform: uppercase; line-height: 1;
+    content: "";
+    width: 18px; height: 13px;
+    background:
+      linear-gradient(#000, #000) top / 100% 2.5px no-repeat,
+      linear-gradient(#000, #000) center / 100% 2.5px no-repeat,
+      linear-gradient(#000, #000) bottom / 100% 2.5px no-repeat;
   }
-  details[open] > .header__icon--menu::before { content: "Close \2715"; }
+  details[open] > .header__icon--menu::before {
+    content: "\2715";
+    width: auto; height: auto; background: none;
+    color: #000; font-size: 14px; font-weight: 800; line-height: 1;
+  }
 
   /* Theme drawer: dark panel, brand styling for the 7 tabs */
   .menu-drawer, .menu-drawer__inner-container, .menu-drawer__navigation,
