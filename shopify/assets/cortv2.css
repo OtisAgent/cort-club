@@ -3,6 +3,7 @@
 .cortv2 .hero-inner{position:relative;z-index:1;max-width:900px;width:100%}
 .cortv2 .hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-bottom:22px}
 .cortv2 .hero-wordmark{font-size:clamp(52px,9vw,84px);font-weight:900;letter-spacing:-.05em;color:#fff;line-height:.88;margin-bottom:12px;text-align:center}
+.cortv2 .hero-wordmark-img{width:clamp(190px,32vw,280px);height:auto;display:inline-block;vertical-align:middle}
 .cortv2 .hero-wordmark-dot{display:inline-block;width:clamp(10px,1.6vw,16px);height:clamp(10px,1.6vw,16px);background:var(--accent);border-radius:50%;margin-left:3px;vertical-align:clamp(2px,.5vw,5px)}
 .cortv2 .hero-headline{font-size:clamp(17px,2.6vw,22px);font-weight:800;letter-spacing:-.02em;color:#fff;margin-bottom:0}
 .cortv2 .hero-headline em{font-style:normal;color:var(--accent)}
