@@ -147,6 +147,7 @@
           <form class="cp2-form" data-success="brand-ok" action="https://formsubmit.co/ajax/admin@cortclub.co.uk" method="POST">
             <input type="hidden" name="_subject" value="New Brand Partner Application — CØRT">
             <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="track" value="brand">
             <input type="text" name="_honey" style="display:none" tabindex="-1">
             <div class="field"><label>Brand name</label><input type="text" name="brand_name" required></div>
             <div class="field"><label>Registered company name &amp; number</label><input type="text" name="company_details" placeholder="e.g. ACME SPORTS LTD · 12345678" required></div>
@@ -178,6 +179,7 @@
           <form class="cp2-form" data-success="repair-ok" action="https://formsubmit.co/ajax/admin@cortclub.co.uk" method="POST">
             <input type="hidden" name="_subject" value="New Repair Partner Application — CØRT">
             <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="track" value="repair">
             <input type="text" name="_honey" style="display:none" tabindex="-1">
             <div class="field"><label>Business name</label><input type="text" name="business_name" required></div>
             <div class="field"><label>Contact name</label><input type="text" name="contact_name" required></div>
@@ -211,10 +213,14 @@
       e.preventDefault();
       var btn=form.querySelector('[type=submit]');
       btn.textContent='Sending…';btn.disabled=true;
-      fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
-        .then(function(r){return r.json();})
-        .then(function(){form.style.display='none';var s=document.getElementById(form.getAttribute('data-success'));if(s)s.style.display='block';})
-        .catch(function(){btn.textContent='Submit application';btn.disabled=false;});
+      var fd=new FormData(form);
+      var portal=fetch('https://cort-portal.pages.dev/api/apply',{method:'POST',body:fd}).then(function(r){if(!r.ok)throw 0;return r;});
+      var mail=fetch(form.action,{method:'POST',body:fd,headers:{'Accept':'application/json'}}).then(function(r){if(!r.ok)throw 0;return r;});
+      Promise.allSettled([portal,mail]).then(function(rs){
+        if(rs.some(function(r){return r.status==='fulfilled';})){
+          form.style.display='none';var s=document.getElementById(form.getAttribute('data-success'));if(s)s.style.display='block';
+        }else{btn.textContent='Submit application';btn.disabled=false;}
+      });
     });
   });
   var pfItems=document.querySelectorAll('.cp2 .pf-item');
