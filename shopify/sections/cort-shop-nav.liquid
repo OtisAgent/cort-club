@@ -1,0 +1,28 @@
+{% liquid
+  assign current = 'all'
+  if collection and collection.handle
+    assign current = collection.handle
+  endif
+%}
+<nav class="cort-shop-nav" aria-label="Shop categories">
+  <div class="csn-inner">
+    <a href="/collections/all" class="csn-tab{% if current == 'all' or current == 'frontpage' %} csn-on{% endif %}">All</a>
+    <a href="/collections/accessories" class="csn-tab{% if current == 'accessories' %} csn-on{% endif %}">Accessories</a>
+    <a href="/collections/rackets" class="csn-tab{% if current == 'rackets' %} csn-on{% endif %}">Rackets</a>
+    <a href="/collections/apparel" class="csn-tab{% if current == 'apparel' %} csn-on{% endif %}">Apparel</a>
+    <a href="/collections/cort-outlet" class="csn-tab csn-outlet{% if current == 'cort-outlet' %} csn-on{% endif %}">Outlet<span class="csn-sun">Sundays</span></a>
+  </div>
+</nav>
+{% stylesheet %}
+  .cort-shop-nav{background:#000;padding:10px 16px 18px}
+  .csn-inner{max-width:1080px;margin:0 auto;display:flex;gap:8px;justify-content:center;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .csn-inner::-webkit-scrollbar{display:none}
+  .csn-tab{flex-shrink:0;display:inline-flex;align-items:center;gap:7px;padding:9px 20px;border-radius:100px;border:1.5px solid rgba(255,255,255,.14);color:rgba(255,255,255,.65);font-size:13px;font-weight:700;letter-spacing:-.01em;text-decoration:none;white-space:nowrap;transition:all .18s ease}
+  .csn-tab:hover{color:#fff;border-color:rgba(255,255,255,.4);text-decoration:none}
+  .csn-tab.csn-on{background:#FFE600;border-color:#FFE600;color:#000}
+  .csn-sun{font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:#FFE600;color:#000;padding:2px 7px;border-radius:100px}
+  .csn-tab.csn-on .csn-sun{background:#000;color:#FFE600}
+{% endstylesheet %}
+{% schema %}
+{"name":"CORT Shop Nav","tag":"div","class":"cort-shop-nav-wrapper","settings":[],"presets":[{"name":"CORT Shop Nav"}]}
+{% endschema %}
