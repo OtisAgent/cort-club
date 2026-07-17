@@ -144,11 +144,11 @@
         <div class="form-card reveal">
           <h3>Track 01 — Brands</h3>
           <p class="form-sub">List your full catalogue on CØRT<br>Every partner is vetted. We'll come back to you within 48 hours.</p>
-          <form class="cp2-form" data-success="brand-ok" action="https://formsubmit.co/ajax/admin@cortclub.co.uk" method="POST">
-            <input type="hidden" name="_subject" value="New Brand Partner Application — CØRT">
-            <input type="hidden" name="_captcha" value="false">
+          <form class="cp2-form" data-success="brand-ok" method="POST">
             <input type="hidden" name="track" value="brand">
-            <input type="text" name="_honey" style="display:none" tabindex="-1">
+            <input type="hidden" name="_ft" value="">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="field"><label>Brand name</label><input type="text" name="brand_name" required></div>
             <div class="field"><label>Registered company name &amp; number</label><input type="text" name="company_details" placeholder="e.g. ACME SPORTS LTD · 12345678" required></div>
             <div class="field"><label>VAT registered?</label><select name="vat_registered"><option value="" disabled selected>Select one</option><option value="yes">Yes</option><option value="no">No</option></select></div>
@@ -176,11 +176,11 @@
         <div class="form-card reveal" style="--d:.08s" id="apply-repair">
           <h3>Track 03 — Services</h3>
           <p class="form-sub">Join the repair network<br>Every partner is vetted. We'll come back to you within 48 hours.</p>
-          <form class="cp2-form" data-success="repair-ok" action="https://formsubmit.co/ajax/admin@cortclub.co.uk" method="POST">
-            <input type="hidden" name="_subject" value="New Repair Partner Application — CØRT">
-            <input type="hidden" name="_captcha" value="false">
+          <form class="cp2-form" data-success="repair-ok" method="POST">
             <input type="hidden" name="track" value="repair">
-            <input type="text" name="_honey" style="display:none" tabindex="-1">
+            <input type="hidden" name="_ft" value="">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="field"><label>Business name</label><input type="text" name="business_name" required></div>
             <div class="field"><label>Contact name</label><input type="text" name="contact_name" required></div>
             <div class="field"><label>Email</label><input type="email" name="email" required></div>
@@ -208,19 +208,25 @@
     },{threshold:.1,rootMargin:'0px 0px -40px 0px'});
     document.querySelectorAll('.cp2 .reveal').forEach(function(el){obs.observe(el);});
   }
+  // Fetch a signed form token so genuine, browser-loaded submissions are provable
+  // and instant bot posts are rejected. Forms stay usable even if this fails.
+  var PORTAL='https://cort-portal.pages.dev';
+  fetch(PORTAL+'/api/formtoken').then(function(r){return r.json();}).then(function(d){
+    if(d&&d.token)document.querySelectorAll('.cp2-form input[name="_ft"]').forEach(function(i){i.value=d.token;});
+  }).catch(function(){});
   document.querySelectorAll('.cp2-form').forEach(function(form){
     form.addEventListener('submit',function(e){
       e.preventDefault();
+      if(form.querySelector('[name="_honey"]').value||form.querySelector('[name="_gotcha"]').value)return;
       var btn=form.querySelector('[type=submit]');
       btn.textContent='Sending…';btn.disabled=true;
-      var fd=new FormData(form);
-      var portal=fetch('https://cort-portal.pages.dev/api/apply',{method:'POST',body:fd}).then(function(r){if(!r.ok)throw 0;return r;});
-      var mail=fetch(form.action,{method:'POST',body:fd,headers:{'Accept':'application/json'}}).then(function(r){if(!r.ok)throw 0;return r;});
-      Promise.allSettled([portal,mail]).then(function(rs){
-        if(rs.some(function(r){return r.status==='fulfilled';})){
-          form.style.display='none';var s=document.getElementById(form.getAttribute('data-success'));if(s)s.style.display='block';
-        }else{btn.textContent='Submit application';btn.disabled=false;}
-      });
+      fetch(PORTAL+'/api/apply',{method:'POST',body:new FormData(form)})
+        .then(function(r){return r.json();})
+        .then(function(d){
+          if(d&&d.ok!==false){form.style.display='none';var s=document.getElementById(form.getAttribute('data-success'));if(s)s.style.display='block';}
+          else{btn.textContent='Submit application';btn.disabled=false;}
+        })
+        .catch(function(){btn.textContent='Submit application';btn.disabled=false;});
     });
   });
   var pfItems=document.querySelectorAll('.cp2 .pf-item');

@@ -4,6 +4,7 @@
     <h2 class="cc-join__heading">Be first on court.</h2>
     <p class="cc-join__sub">Drop your email and we'll tell you the moment events go live in your area. No spam — just padel.</p>
     <form class="cc-join__form" id="cc-join-form" novalidate>
+      <input type="text" id="cc-join-hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <input type="email" class="cc-join__input" placeholder="your@email.com" required id="cc-join-email">
       <button type="submit" class="cc-join__submit">Join Free</button>
     </form>
@@ -19,6 +20,7 @@
   if (!form) return;
   form.addEventListener('submit', function(e) {
     e.preventDefault();
+    if (document.getElementById('cc-join-hp').value) return;
     var email = document.getElementById('cc-join-email').value.trim();
     if (!email || !email.includes('@')) return;
     fetch('https://tbysgqbdpevxwrymtxkf.supabase.co/functions/v1/capture-interest', {

@@ -4,6 +4,7 @@
     <h2 class="cp-waitlist__heading">Be first to play.</h2>
     <p class="cp-waitlist__sub">CØRT Play is in development. Drop your email and you'll get early access before anyone else — plus input on what we build first.</p>
     <form class="cp-waitlist__form" id="cp-waitlist-form" novalidate>
+      <input type="text" id="cp-waitlist-hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <input type="email" class="cp-waitlist__input" placeholder="your@email.com" required id="cp-waitlist-email">
       <button type="submit" class="cp-waitlist__submit">Join Waitlist</button>
     </form>
@@ -19,6 +20,7 @@
   if (!form) return;
   form.addEventListener('submit', function(e) {
     e.preventDefault();
+    if (document.getElementById('cp-waitlist-hp').value) return;
     var email = document.getElementById('cp-waitlist-email').value.trim();
     if (!email || !email.includes('@')) return;
     fetch('https://tbysgqbdpevxwrymtxkf.supabase.co/functions/v1/capture-interest', {
