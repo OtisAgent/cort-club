@@ -79,7 +79,7 @@
 .cortv2 .cats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1000px;margin:0 auto}
 .cortv2 .cat-card{position:relative;display:flex;flex-direction:column;background:#0d0d0d;border:1.5px solid var(--accent);box-shadow:0 0 22px rgba(255,234,0,.18),0 0 56px rgba(255,234,0,.06);border-radius:14px;padding:30px 26px;min-height:180px;text-decoration:none;color:#fff;transition:transform .15s,box-shadow .15s}
 .cortv2 a.cat-card:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(255,234,0,.34),0 0 70px rgba(255,234,0,.1)}
-.cortv2 .cat-name{font-size:22px;font-weight:900;letter-spacing:-.03em;margin-bottom:8px}
+.cortv2 .cat-name{font-size:clamp(16px,1.4vw,20px);font-weight:900;letter-spacing:-.03em;margin-bottom:8px;white-space:nowrap}
 .cortv2 .cat-name span{color:var(--accent)}
 .cortv2 .cat-desc{font-size:13px;color:rgba(255,255,255,.7);line-height:1.6;margin-bottom:auto}
 .cortv2 .cat-cta{margin-top:22px;font-size:13px;font-weight:800;letter-spacing:.02em;color:var(--accent)}
