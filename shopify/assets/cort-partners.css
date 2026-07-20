@@ -1,0 +1,85 @@
+.cp2{--accent:#FFEA00;--bg:#0D0D0D;--card:#111;--bdr:rgba(255,234,0,.14);--text:rgba(255,255,255,.88);--muted:rgba(255,255,255,.5);background:var(--bg)}
+.cp2 section{padding:80px 24px}
+.cp2 .si{max-width:960px;margin:0 auto}
+.cp2 .eyebrow{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;text-align:center}
+.cp2 h1,.cp2 h2{font-weight:900;letter-spacing:-.04em;color:#fff;line-height:1.05;margin-bottom:14px;text-align:center}
+.cp2 h1{font-size:clamp(32px,5vw,52px)}
+.cp2 h2{font-size:clamp(24px,3.5vw,36px);letter-spacing:-.035em;line-height:1.1}
+.cp2 .btn{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;padding:14px 28px;border-radius:100px;text-decoration:none;cursor:pointer;border:none;font-family:inherit;letter-spacing:-.01em}
+.cp2 .btn::after{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.cp2 .btn-y{background:var(--accent);color:#000}.cp2 .btn-y::after{background:#000}
+.cp2 .btn-w{background:#fff;color:#000}.cp2 .btn-w::after{background:var(--accent)}
+.cp2 .btn-blk{background:#000;color:#fff}.cp2 .btn-blk::after{background:var(--accent)}
+.cp2 .track-card,.cp2 .step,.cp2 .form-card{background:var(--card);border:1.5px solid var(--bdr);border-radius:16px;box-shadow:0 0 0 1px rgba(255,234,0,.04),0 0 32px rgba(255,234,0,.05)}
+.cp2 .track-card,.cp2 .form-card{padding:36px 30px}
+.cp2 .step{padding:36px 28px;text-align:center;border-radius:14px}
+.cp2 .tracks-grid,.cp2 .forms-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:48px}
+.cp2 .track-num{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.cp2 .track-num::before{content:'';display:inline-block;width:6px;height:6px;background:var(--accent);border-radius:50%;flex-shrink:0}
+.cp2 .track-title{font-size:22px;font-weight:900;letter-spacing:-.02em;color:#fff;margin-bottom:8px}
+.cp2 .track-sub{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:24px}
+.cp2 .tl{list-style:none;margin-bottom:30px}
+.cp2 .tl li{font-size:14px;color:var(--text);padding:10px 0;border-bottom:1px solid rgba(255,234,0,.07);display:flex;align-items:flex-start;gap:10px;line-height:1.55}
+.cp2 .tl li::before{content:'◆';font-size:9px;color:var(--accent);flex-shrink:0;margin-top:4px}
+.cp2 .wanted-inner{max-width:760px;margin:0 auto;text-align:center}
+.cp2 .wanted-label{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;background:var(--accent);color:#000;padding:5px 16px;border-radius:100px;margin-bottom:24px}
+.cp2 .wanted-title{font-size:clamp(26px,4vw,38px);font-weight:900;letter-spacing:-.04em;color:#fff;line-height:1.1;margin-bottom:18px}
+.cp2 .wanted-desc{font-size:16px;color:var(--muted);line-height:1.75;margin-bottom:36px}
+.cp2 .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.cp2 .step-num{font-size:44px;font-weight:900;letter-spacing:-.06em;color:var(--accent);line-height:1;margin-bottom:14px}
+.cp2 .step-title{font-size:16px;font-weight:800;color:#fff;margin-bottom:8px}
+.cp2 .step-desc{font-size:13.5px;color:var(--muted);line-height:1.65}
+.cp2 .rate-sec{background:#000;text-align:center}
+.cp2 .rate-num{font-size:clamp(72px,11vw,108px);font-weight:900;letter-spacing:-.07em;color:var(--accent);line-height:.9;margin-bottom:12px}
+.cp2 .rate-label{font-size:20px;font-weight:800;color:#fff;margin-bottom:20px}
+.cp2 .rate-desc{font-size:16px;color:var(--muted);max-width:480px;margin:0 auto 32px;line-height:1.75}
+.cp2 .rb{list-style:none;max-width:540px;margin:0 auto;text-align:left}
+.cp2 .rb li{font-size:14px;color:var(--text);padding:11px 0;border-bottom:1px solid rgba(255,234,0,.07);display:flex;align-items:flex-start;gap:10px;line-height:1.55}
+.cp2 .rb li::before{content:'◆';font-size:9px;color:var(--accent);flex-shrink:0;margin-top:5px}
+.cp2 .sponsor-sec{background:var(--accent);text-align:center}
+.cp2 .sponsor-inner{max-width:680px;margin:0 auto}
+.cp2 .sponsor-title{font-size:clamp(28px,4.5vw,42px);font-weight:900;letter-spacing:-.04em;color:#000;line-height:1.05;margin-bottom:16px}
+.cp2 .sponsor-desc{font-size:16px;color:rgba(0,0,0,.65);line-height:1.8;margin-bottom:40px}
+.cp2 .sponsor-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.cp2 .btn-outline{display:inline-flex;align-items:center;gap:9px;background:rgba(0,0,0,.1);color:#000;font-size:15px;font-weight:700;padding:15px 30px;border-radius:100px;text-decoration:none}
+.cp2 .form-card h3{font-size:20px;font-weight:900;letter-spacing:-.02em;color:#fff;margin-bottom:6px}
+.cp2 .form-sub{font-size:13.5px;color:var(--muted);margin-bottom:28px;line-height:1.6}
+.cp2 .field{margin-bottom:16px}
+.cp2 .field label{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.cp2 .field input,.cp2 .field textarea{width:100%;padding:12px 16px;border:1.5px solid rgba(255,234,0,.12);border-radius:10px;background:#1a1a1a;font-size:14px;color:#fff;font-family:inherit;outline:none;transition:border-color .2s;box-sizing:border-box}
+.cp2 .field input:focus,.cp2 .field textarea:focus{border-color:rgba(255,234,0,.5)}
+.cp2 .field input::placeholder,.cp2 .field textarea::placeholder{color:rgba(255,255,255,.3)}
+.cp2 .field textarea{resize:vertical;min-height:90px}
+.cp2 .cb-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.cp2 .cb-row label{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--text);cursor:pointer}
+.cp2 .form-ok{display:none;text-align:center;padding:32px;background:#0d0d0d;border:1.5px solid var(--accent);border-radius:12px;box-shadow:0 0 22px rgba(255,234,0,.22)}
+.cp2 .form-ok .tick{font-size:28px;margin-bottom:12px}
+.cp2 .form-ok p{font-size:15px;font-weight:700;color:#fff}
+.cp2 .pf-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-top:56px}
+.cp2 .pf-item{display:flex;align-items:center;gap:18px;padding:22px 0;border-bottom:1px solid rgba(255,234,0,.08);cursor:pointer;transition:all .18s;user-select:none}
+.cp2 .pf-item:last-child{border-bottom:none}
+.cp2 .pf-num{font-size:12px;font-weight:800;letter-spacing:.08em;color:rgba(255,255,255,.2);transition:color .2s;min-width:26px;flex-shrink:0}
+.cp2 .pf-title{font-size:19px;font-weight:800;color:rgba(255,255,255,.32);transition:color .2s;letter-spacing:-.02em;flex:1;line-height:1.2}
+.cp2 .pf-arr{font-size:15px;color:transparent;transition:color .2s,transform .2s;flex-shrink:0}
+.cp2 .pf-item.pf-on .pf-num,.cp2 .pf-item:hover .pf-num{color:var(--accent)}
+.cp2 .pf-item.pf-on .pf-title,.cp2 .pf-item:hover .pf-title{color:#fff}
+.cp2 .pf-item.pf-on .pf-arr,.cp2 .pf-item:hover .pf-arr{color:var(--accent);transform:translateX(5px)}
+.cp2 .pf-panels{position:relative;min-height:280px;padding-top:8px}
+.cp2 .pf-panel{position:absolute;top:8px;left:0;width:100%;opacity:0;transform:translateY(12px);transition:opacity .32s,transform .32s;pointer-events:none}
+.cp2 .pf-panel.pf-on{position:relative;opacity:1;transform:translateY(0);pointer-events:auto}
+.cp2 .pf-ico{font-size:26px;color:var(--accent);margin-bottom:20px;line-height:1}
+.cp2 .pf-ptitle{font-size:clamp(22px,3vw,30px);font-weight:900;color:#fff;letter-spacing:-.04em;margin-bottom:14px;line-height:1.05}
+.cp2 .pf-pdesc{font-size:15.5px;color:var(--muted);line-height:1.8;margin-bottom:22px}
+.cp2 .pf-ptag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);opacity:.75}
+@media(max-width:720px){.cp2 .tracks-grid,.cp2 .forms-grid,.cp2 .steps-grid{grid-template-columns:1fr}.cp2 .pf-layout{grid-template-columns:1fr;gap:0}.cp2 .pf-panels{min-height:unset;padding-top:0}.cp2 .pf-panel{position:relative;opacity:0;max-height:0;overflow:hidden;transform:none!important;transition:opacity .3s,max-height .4s;padding-top:0}.cp2 .pf-panel.pf-on{opacity:1;max-height:600px;padding-top:24px}}
+
+/* Mobile + theme-conflict fix (2026-07-20): Horizon base sets .field{display:flex},
+   which forced labels beside inputs and blew the form cards past the phone viewport.
+   Also styles <select> to match inputs (previous rework added selects unstyled). */
+.cp2 .field{display:block}
+.cp2 .forms-grid>*{min-width:0}
+.cp2 .field label{display:block;width:100%;margin-bottom:6px}
+.cp2 .field input,.cp2 .field textarea,.cp2 .field select{width:100%;max-width:100%;min-width:0;box-sizing:border-box}
+.cp2 .field select{padding:12px 16px;border:1.5px solid rgba(255,234,0,.12);border-radius:10px;background:#1a1a1a;font-size:14px;color:#fff;font-family:inherit;outline:none;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path d='M0 0l5 6 5-6z' fill='%23FFEA00'/></svg>");background-repeat:no-repeat;background-position:right 16px center}
+.cp2 .field select:focus{border-color:rgba(255,234,0,.5)}
+.cp2 .cb-row label{display:flex}
