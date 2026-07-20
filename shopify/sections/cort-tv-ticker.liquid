@@ -1,0 +1,16 @@
+<div class="cort-tv cort-tv-ticker" aria-hidden="true">
+  <div class="cort-ticker-track">
+    {% assign items = "cørt TV · Now Broadcasting,Match of the Week · Sheffield,League Night Recap · Division 2,Americano Night · Highlights,cørt TV · Player Stories,Finals & Tournaments · Live,Club Spotlight · Sheffield Padel,cørt TV · Now Broadcasting,Match of the Week · Sheffield,League Night Recap · Division 2,Americano Night · Highlights,cørt TV · Player Stories,Finals & Tournaments · Live,Club Spotlight · Sheffield Padel" | split: "," %}
+    {% for item in items %}
+      <span class="cort-ticker-item">{{ item | replace: 'cørt', "<span class='cbr'>cørt</span>" }}</span>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "cørt TV — Ticker",
+  "settings": [],
+  "presets": [{ "name": "cørt TV Ticker" }]
+}
+{% endschema %}

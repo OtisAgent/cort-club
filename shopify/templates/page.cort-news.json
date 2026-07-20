@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "cort-news",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

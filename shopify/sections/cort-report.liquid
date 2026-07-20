@@ -1,0 +1,53 @@
+{{ 'cortv2.css' | asset_url | stylesheet_tag }}
+
+<div class="cortv2" style="background:#0D0D0D">
+
+  <section style="background:#0D0D0D;padding:80px 24px 56px;border-bottom:1px solid rgba(255,234,0,.1)">
+    <div style="max-width:960px;margin:0 auto">
+      <p class="reveal" style="font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,234,0,.7);margin-bottom:20px"><span class="cbr">cørt</span> — Padel Media</p>
+      <h1 class="reveal" style="--d:.06s;font-size:clamp(40px,7vw,80px);font-weight:900;letter-spacing:-.05em;color:#fff;line-height:.92;margin-bottom:24px">THE<br><em style="font-style:normal;color:#FFEA00"><span class="cbr">cørt</span></em><br>REPORT</h1>
+      <p class="reveal" style="--d:.12s;font-size:17px;color:rgba(255,255,255,.6);line-height:1.75;max-width:540px;margin-bottom:36px">Match reports, league standings, player stories and everything happening in the world of padel — straight from the court.</p>
+      <a href="/blogs/cort-report" class="reveal btn btn-yellow btn-dot" style="--d:.18s">Read The Report</a>
+    </div>
+  </section>
+
+  <section style="background:#0D0D0D;padding:72px 24px">
+    <div style="max-width:960px;margin:0 auto">
+      <p class="section-eyebrow reveal">What we cover</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:32px">
+        <div class="reveal" style="background:#111;border:1.5px solid rgba(255,234,0,.12);border-radius:12px;padding:28px 24px;box-shadow:0 0 0 1px rgba(255,234,0,.04),0 0 32px rgba(255,234,0,.05)">
+          <div style="font-size:22px;color:#FFEA00;margin-bottom:14px">◉</div>
+          <h3 style="font-size:17px;font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:-.02em">Match Reports</h3>
+          <p style="font-size:14px;color:rgba(255,255,255,.5);line-height:1.65;margin:0">cørt League results, match of the week breakdowns and league standings.</p>
+        </div>
+        <div class="reveal" style="--d:.06s;background:#111;border:1.5px solid rgba(255,234,0,.12);border-radius:12px;padding:28px 24px;box-shadow:0 0 0 1px rgba(255,234,0,.04),0 0 32px rgba(255,234,0,.05)">
+          <div style="font-size:22px;color:#FFEA00;margin-bottom:14px">◆</div>
+          <h3 style="font-size:17px;font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:-.02em">Player Stories</h3>
+          <p style="font-size:14px;color:rgba(255,255,255,.5);line-height:1.65;margin:0">The players building the padel scene — from first games to competitive league runs.</p>
+        </div>
+        <div class="reveal" style="--d:.12s;background:#111;border:1.5px solid rgba(255,234,0,.12);border-radius:12px;padding:28px 24px;box-shadow:0 0 0 1px rgba(255,234,0,.04),0 0 32px rgba(255,234,0,.05)">
+          <div style="font-size:22px;color:#FFEA00;margin-bottom:14px">◼</div>
+          <h3 style="font-size:17px;font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:-.02em">Padel World</h3>
+          <p style="font-size:14px;color:rgba(255,255,255,.5);line-height:1.65;margin:0">International tour news, gear reviews, technique and the growth of the game worldwide.</p>
+        </div>
+        <div class="reveal" style="--d:.18s;background:#111;border:1.5px solid rgba(255,234,0,.12);border-radius:12px;padding:28px 24px;box-shadow:0 0 0 1px rgba(255,234,0,.04),0 0 32px rgba(255,234,0,.05)">
+          <div style="font-size:22px;color:#FFEA00;margin-bottom:14px">▶</div>
+          <h3 style="font-size:17px;font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:-.02em">cørt TV Recaps</h3>
+          <p style="font-size:14px;color:rgba(255,255,255,.5);line-height:1.65;margin:0">Written recaps of every broadcast — scores, highlights and what to watch next.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#FFEA00;padding:72px 24px;text-align:center">
+    <p style="font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(0,0,0,.45);margin-bottom:12px">New reports weekly</p>
+    <h2 style="font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-.04em;color:#000;line-height:1.05;margin-bottom:14px">Padel, written well.</h2>
+    <p style="font-size:16px;color:rgba(0,0,0,.6);line-height:1.75;max-width:440px;margin:0 auto 28px">Every piece written by people who play the game. No filler, no noise — just padel.</p>
+    <a href="/blogs/cort-report" style="display:inline-flex;align-items:center;gap:9px;background:#000;color:#fff;font-size:15px;font-weight:700;padding:15px 32px;border-radius:100px;text-decoration:none">Read the latest <span style="display:inline-block;width:7px;height:7px;background:#FFEA00;border-radius:50%"></span></a>
+  </section>
+
+</div>
+
+{% schema %}
+{"name":"the cørt report","tag":"div","class":"cort-report-wrapper","settings":[],"presets":[{"name":"the cørt report"}]}
+{% endschema %}

@@ -1,0 +1,87 @@
+{{ 'cort-tv.css' | asset_url | stylesheet_tag }}
+{{ 'cort-tv.js' | asset_url | script_tag }}
+
+<section class="cort-tv cort-tv-hero" id="cort-tv-hero">
+
+  <!-- Animated court-line background -->
+  <div class="cort-tv-hero__court-bg" aria-hidden="true">
+    <svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <rect class="cort-court-line" x="150" y="80" width="900" height="440" style="animation-delay:0.2s"/>
+      <line class="cort-court-line" x1="600" y1="80" x2="600" y2="520" style="animation-delay:0.6s"/>
+      <line class="cort-court-line" x1="150" y1="300" x2="1050" y2="300" style="animation-delay:0.9s"/>
+      <line class="cort-court-line" x1="300" y1="80" x2="300" y2="300" style="animation-delay:1.1s"/>
+      <line class="cort-court-line" x1="900" y1="80" x2="900" y2="300" style="animation-delay:1.1s"/>
+      <line class="cort-court-line" x1="300" y1="300" x2="300" y2="520" style="animation-delay:1.3s"/>
+      <line class="cort-court-line" x1="900" y1="300" x2="900" y2="520" style="animation-delay:1.3s"/>
+    </svg>
+  </div>
+
+  <div class="cort-tv-hero__inner">
+
+    <div class="cort-tv-hero__copy">
+      <div class="cort-tv-hero__eyebrow reveal">
+        {{ section.settings.eyebrow | default: "<span class='cbr'>cørt</span> TV" }}
+      </div>
+      <h1 class="cort-tv-hero__title reveal reveal-delay-1">
+        {{ section.settings.title | default: 'Padel,<br>broadcast<br>better.' }}
+      </h1>
+      <p class="cort-tv-hero__body reveal reveal-delay-2">
+        {{ section.settings.body | default: 'League nights, match highlights, player stories and sponsor-ready content from the court. cørt TV turns every match into broadcast-quality moments — media, brand partnerships and coverage built for the sport.' }}
+      </p>
+      <div class="cort-tv-hero__ctas reveal reveal-delay-3">
+        <a href="{{ section.settings.cta_primary_url | default: '/pages/contact' }}" class="cort-btn cort-btn--primary">
+          {{ section.settings.cta_primary_text | default: 'Partner with cørt TV' }} →
+        </a>
+        <a href="{{ section.settings.cta_secondary_url | default: '#cort-tv-formats' }}" class="cort-btn cort-btn--outline">
+          {{ section.settings.cta_secondary_text | default: 'Explore formats' }}
+        </a>
+      </div>
+    </div>
+
+    <div class="cort-tv-hero__mock reveal reveal-delay-2">
+      <div class="cort-broadcast-mock">
+        <div class="cort-broadcast-mock__top-bar">
+          <span class="cort-broadcast-mock__brand"><span class="cbr">cørt</span> TV</span>
+          <span class="cort-live-pill"><span class="cort-live-pill__dot"></span>LIVE</span>
+        </div>
+        <div class="cort-broadcast-mock__screen">
+          <div class="cort-broadcast-mock__court-lines" aria-hidden="true">
+            <svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg">
+              <rect x="60" y="30" width="520" height="300" stroke="white" stroke-width="1.5" fill="none" opacity="0.3"/>
+              <line x1="320" y1="30" x2="320" y2="330" stroke="white" stroke-width="1" opacity="0.2"/>
+              <line x1="60" y1="180" x2="580" y2="180" stroke="white" stroke-width="1" opacity="0.2"/>
+              <line x1="150" y1="30" x2="150" y2="180" stroke="white" stroke-width="0.8" opacity="0.15"/>
+              <line x1="490" y1="30" x2="490" y2="180" stroke="white" stroke-width="0.8" opacity="0.15"/>
+            </svg>
+          </div>
+          <div class="cort-broadcast-mock__centre-text">Match of the Week · Sheffield</div>
+        </div>
+        <div class="cort-broadcast-mock__scoreboard">
+          <div class="cort-broadcast-mock__team"><span class="cort-broadcast-mock__team-name">FORD / JONES</span></div>
+          <div class="cort-broadcast-mock__score" data-count-to="12">12</div>
+          <div class="cort-broadcast-mock__divider">—</div>
+          <div class="cort-broadcast-mock__score" data-count-to="10">10</div>
+          <div class="cort-broadcast-mock__team"><span class="cort-broadcast-mock__team-name">SMITH / TAYLOR</span></div>
+        </div>
+        <div class="cort-broadcast-mock__footer">Division 2 Final · Presented by <span class="cbr">cørt</span> Club</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "cørt TV — Hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow label", "default": "<span class='cbr'>cørt<\/span> TV" },
+    { "type": "text", "id": "title", "label": "Headline", "default": "Padel, broadcast better." },
+    { "type": "textarea", "id": "body", "label": "Body copy", "default": "League nights, match highlights, player stories and sponsor-ready content from the court. cørt TV turns every match into broadcast-quality moments — media, brand partnerships and coverage built for the sport." },
+    { "type": "text", "id": "cta_primary_text", "label": "Primary CTA text", "default": "Partner with cørt TV" },
+    { "type": "url", "id": "cta_primary_url", "label": "Primary CTA link" },
+    { "type": "text", "id": "cta_secondary_text", "label": "Secondary CTA text", "default": "Explore formats" },
+    { "type": "url", "id": "cta_secondary_url", "label": "Secondary CTA link" }
+  ],
+  "presets": [{ "name": "cørt TV Hero" }]
+}
+{% endschema %}

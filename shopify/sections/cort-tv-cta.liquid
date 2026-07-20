@@ -1,0 +1,20 @@
+<section class="cort-tv cort-tv-cta-block">
+  <h2 class="cort-tv-cta-block__title reveal">{{ section.settings.title | default: 'Bring your brand onto the court.' }}</h2>
+  <p class="cort-tv-cta-block__body reveal reveal-delay-1">{{ section.settings.body | default: 'Partner with cørt TV for league sponsorships, broadcast content, player stories and event media.' }}</p>
+  <a href="{{ section.settings.cta_url | default: '/pages/contact' }}" class="cort-btn cort-btn--primary reveal reveal-delay-2">
+    {{ section.settings.cta_text | default: 'Partner with cørt TV' }} →
+  </a>
+</section>
+
+{% schema %}
+{
+  "name": "cørt TV CTA Block",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Bring your brand onto the court." },
+    { "type": "textarea", "id": "body", "label": "Body", "default": "Partner with cørt TV for league sponsorships, broadcast content, player stories and event media." },
+    { "type": "text", "id": "cta_text", "label": "CTA text", "default": "Partner with cørt TV" },
+    { "type": "url", "id": "cta_url", "label": "CTA link" }
+  ],
+  "presets": [{ "name": "cørt TV CTA Block" }]
+}
+{% endschema %}

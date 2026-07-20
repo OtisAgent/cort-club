@@ -1,7 +1,7 @@
 <section class="cort-tv cort-tv-what">
   <div class="cort-tv-what__inner">
     <div class="cort-tv-what__header">
-      <span class="cort-label reveal">{{ section.settings.eyebrow | default: 'What cørt TV Does' }}</span>
+      <span class="cort-label reveal">{{ section.settings.eyebrow | default: "What <span class='cbr'>cørt</span> TV Does" }}</span>
       <h2 class="cort-tv-what__title reveal reveal-delay-1">{{ section.settings.title | default: 'Three ways brands and clubs get value.' }}</h2>
     </div>
     <div class="cort-tv-what__grid">
@@ -20,7 +20,7 @@
 {
   "name": "cørt TV — What We Do",
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "What cørt TV Does" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "What <span class='cbr'>cørt<\/span> TV Does" },
     { "type": "text", "id": "title", "label": "Section title", "default": "Three ways brands and clubs get value." }
   ],
   "blocks": [

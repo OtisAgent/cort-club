@@ -1,0 +1,65 @@
+<section class="cort-tv cort-tv-packages">
+  <div class="cort-tv-packages__inner">
+    <div class="cort-tv-packages__header">
+      <span class="cort-label reveal">{{ section.settings.eyebrow | default: "<span class='cbr'>cørt</span> TV Packages" }}</span>
+      <h2 class="cort-tv-packages__title reveal reveal-delay-1">{{ section.settings.title | default: 'Choose how you partner with us.' }}</h2>
+      <p class="cort-tv-packages__subtitle reveal reveal-delay-2">{{ section.settings.subtitle | default: 'All packages are tailored. Enquire to discuss what works for your brand.' }}</p>
+    </div>
+    <div class="cort-tv-packages__grid">
+      {% for block in section.blocks %}
+        <div class="cort-package-card{% if block.settings.featured %} cort-package-card--featured{% endif %} reveal reveal-delay-{{ forloop.index }}" {{ block.shopify_attributes }}>
+          <div class="cort-package-card__tier">{{ block.settings.tier }}</div>
+          <h3 class="cort-package-card__title">{{ block.settings.title }}</h3>
+          <p class="cort-package-card__desc">{{ block.settings.description }}</p>
+          <ul class="cort-package-card__features">
+            {% assign features = block.settings.features | newline_to_br | split: '<br />' %}
+            {% for feature in features %}
+              {% if feature != blank %}
+                <li>{{ feature | strip }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+          <div class="cort-package-card__cta">
+            <a href="{{ block.settings.cta_url | default: '/pages/contact' }}" class="cort-btn{% if block.settings.featured %} cort-btn--primary{% else %} cort-btn--outline{% endif %}">
+              {{ block.settings.cta_text | default: 'Enquire' }} →
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "cørt TV Packages",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "<span class='cbr'>cørt<\/span> TV Packages" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Choose how you partner with us." },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "All packages are tailored. Enquire to discuss what works for your brand." }
+  ],
+  "blocks": [
+    {
+      "type": "package",
+      "name": "Package",
+      "settings": [
+        { "type": "text", "id": "tier", "label": "Tier label", "default": "Package 01" },
+        { "type": "text", "id": "title", "label": "Package title", "default": "Content Partner" },
+        { "type": "textarea", "id": "description", "label": "Short description", "default": "For local brands that want visibility in cørt content." },
+        { "type": "textarea", "id": "features", "label": "Features (one per line)", "default": "Social reel placement\nNewsletter mention\nWebsite partner card\nMonthly content recap" },
+        { "type": "checkbox", "id": "featured", "label": "Highlight this card", "default": false },
+        { "type": "text", "id": "cta_text", "label": "CTA text", "default": "Enquire" },
+        { "type": "url", "id": "cta_url", "label": "CTA link" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "cørt TV Packages",
+    "blocks": [
+      { "type": "package", "settings": { "tier": "Package 01", "title": "Content Partner", "description": "For local brands that want visibility in cørt content.", "features": "Social reel placement\nNewsletter mention\nWebsite partner card\nMonthly content recap", "featured": false, "cta_text": "Enquire" } },
+      { "type": "package", "settings": { "tier": "Package 02", "title": "League Partner", "description": "For brands that want to sponsor a cørt Play league or division.", "features": "League naming opportunity\nScoreboard \/ leaderboard placement\nWeekly recap content\nFinals content\nPlayer of the Match feature", "featured": true, "cta_text": "Sponsor a League" } },
+      { "type": "package", "settings": { "tier": "Package 03", "title": "Broadcast Partner", "description": "For larger media, venue or brand partnerships.", "features": "Featured broadcast nights\nCo-produced content\nMatch of the Week sponsorship\nBrand integration across formats\nPartnership reporting", "featured": false, "cta_text": "Build a Partnership" } }
+    ]
+  }]
+}
+{% endschema %}

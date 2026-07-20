@@ -1,0 +1,76 @@
+<section class="cort-tv cort-tv-sponsor-map">
+  <div class="cort-tv-sponsor-map__inner">
+    <div class="cort-tv-sponsor-map__header">
+      <span class="cort-label reveal">{{ section.settings.eyebrow | default: 'Sponsor Placement' }}</span>
+      <h2 class="cort-tv-sponsor-map__title reveal reveal-delay-1">{{ section.settings.title | default: 'Where your brand appears.' }}</h2>
+    </div>
+    <div class="cort-tv-sponsor-map__layout">
+
+      <!-- Mock broadcast screen -->
+      <div class="cort-tv-sponsor-map__mock reveal reveal-delay-1">
+        <div class="cort-sponsor-mock__bar">
+          <span class="cort-sponsor-mock__label"><span class="cbr">cørt</span> TV · Match of the Week</span>
+          <span class="cort-live-pill"><span class="cort-live-pill__dot"></span>LIVE</span>
+        </div>
+        <div class="cort-sponsor-mock__screen">
+          <span class="cort-sponsor-mock__annotation cort-sponsor-mock__annotation--top">Title Sponsor</span>
+          <span class="cort-sponsor-mock__annotation cort-sponsor-mock__annotation--bottom-left">Lower Third</span>
+          <span class="cort-sponsor-mock__annotation cort-sponsor-mock__annotation--bottom-right">Scoreboard Logo</span>
+        </div>
+        <div class="cort-sponsor-mock__score-bar">
+          <span>FORD / JONES</span>
+          <span class="cort-sponsor-mock__score-yellow">12</span>
+          <span style="color:#555">—</span>
+          <span class="cort-sponsor-mock__score-yellow">10</span>
+          <span>SMITH / TAYLOR</span>
+          <span style="margin-left:auto;font-size:10px;color:#555;letter-spacing:0.04em">YOUR LOGO HERE</span>
+        </div>
+        <div class="cort-sponsor-mock__lower-third">Player of the Match: Alex M. · Presented by Your Brand</div>
+      </div>
+
+      <!-- Inventory list -->
+      <div class="reveal reveal-delay-2">
+        <ul class="cort-tv-sponsor-map__inventory">
+          {% for block in section.blocks %}
+            <li {{ block.shopify_attributes }}>{{ block.settings.placement }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "cørt TV — Sponsor Map",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Sponsor Placement" },
+    { "type": "text", "id": "title", "label": "Section title", "default": "Where your brand appears." }
+  ],
+  "blocks": [
+    {
+      "type": "placement",
+      "name": "Placement",
+      "settings": [
+        { "type": "text", "id": "placement", "label": "Placement name", "default": "Broadcast title sponsor" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "cørt TV Sponsor Map",
+    "blocks": [
+      { "type": "placement", "settings": { "placement": "Broadcast title sponsor" } },
+      { "type": "placement", "settings": { "placement": "Scoreboard logo" } },
+      { "type": "placement", "settings": { "placement": "Lower-third sponsor" } },
+      { "type": "placement", "settings": { "placement": "Player of the Match sponsor" } },
+      { "type": "placement", "settings": { "placement": "League table sponsor" } },
+      { "type": "placement", "settings": { "placement": "Reel intro \/ outro sponsor" } },
+      { "type": "placement", "settings": { "placement": "Newsletter feature" } },
+      { "type": "placement", "settings": { "placement": "Event signage" } },
+      { "type": "placement", "settings": { "placement": "Social caption placement" } },
+      { "type": "placement", "settings": { "placement": "Product placement" } }
+    ]
+  }]
+}
+{% endschema %}

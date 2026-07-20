@@ -1,0 +1,70 @@
+<section class="cort-tv cort-tv-live">
+  <div class="cort-tv-live__inner">
+
+    <div class="cort-tv-live__copy">
+      <span class="cort-label reveal">{{ section.settings.eyebrow | default: 'Live Broadcast Product' }}</span>
+      <h2 class="cort-tv-live__title reveal reveal-delay-1">{{ section.settings.title | default: 'This is not just a padel club. This is a media platform.' }}</h2>
+      <p class="cort-tv-live__body reveal reveal-delay-2">{{ section.settings.body | default: 'cørt TV gives clubs, players and brands a way to turn everyday matches into stories people want to watch and share.' }}</p>
+      <div class="reveal reveal-delay-3">
+        <a href="{{ section.settings.cta_url | default: '/pages/contact' }}" class="cort-btn cort-btn--primary">
+          {{ section.settings.cta_text | default: 'Partner with cørt TV' }} →
+        </a>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-2">
+      <div class="cort-live-mock">
+        <div class="cort-live-mock__header">
+          <div class="cort-live-mock__title-block">
+            <span class="cort-live-mock__event">Match of the Week</span>
+            <span class="cort-live-mock__sub">Division 2 Final · Sheffield</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span class="cort-live-pill"><span class="cort-live-pill__dot"></span>LIVE</span>
+            <span class="cort-live-mock__clock">00:00</span>
+          </div>
+        </div>
+        <div class="cort-live-mock__scores">
+          <div class="cort-live-mock__team-row">
+            <span class="cort-live-mock__team-name">FORD / JONES</span>
+            <span class="cort-live-mock__team-score" data-count-to="{{ section.settings.score_a | default: 12 }}">{{ section.settings.score_a | default: 12 }}</span>
+          </div>
+          <div class="cort-live-mock__team-row">
+            <span class="cort-live-mock__team-name">SMITH / TAYLOR</span>
+            <span class="cort-live-mock__team-score" data-count-to="{{ section.settings.score_b | default: 10 }}">{{ section.settings.score_b | default: 10 }}</span>
+          </div>
+        </div>
+        <div class="cort-live-mock__sponsor">Presented by: <strong><span class="cbr">cørt</span> Club</strong> · Player of the Match: Alex M.</div>
+        <div class="cort-live-mock__ticker">
+          <div class="cort-live-mock__ticker-track">
+            <span class="cort-live-mock__ticker-item">Next: Americano Night Highlights</span>
+            <span class="cort-live-mock__ticker-item">League Night Recap — Division 1 — Available Now</span>
+            <span class="cort-live-mock__ticker-item"><span class="cbr">cørt</span> Play — Entries Open for Mexicano Night</span>
+            <span class="cort-live-mock__ticker-item">Club Spotlight: Sheffield Padel Club</span>
+            <span class="cort-live-mock__ticker-item">Next: Americano Night Highlights</span>
+            <span class="cort-live-mock__ticker-item">League Night Recap — Division 1 — Available Now</span>
+            <span class="cort-live-mock__ticker-item"><span class="cbr">cørt</span> Play — Entries Open for Mexicano Night</span>
+            <span class="cort-live-mock__ticker-item">Club Spotlight: Sheffield Padel Club</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "cørt TV Live Panel",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Live Broadcast Product" },
+    { "type": "text", "id": "title", "label": "Title", "default": "This is not just a padel club. This is a media platform." },
+    { "type": "textarea", "id": "body", "label": "Body", "default": "cørt TV gives clubs, players and brands a way to turn everyday matches into stories people want to watch and share." },
+    { "type": "text", "id": "cta_text", "label": "CTA text", "default": "Partner with cørt TV" },
+    { "type": "url", "id": "cta_url", "label": "CTA link" },
+    { "type": "number", "id": "score_a", "label": "Score — Team A", "default": 12 },
+    { "type": "number", "id": "score_b", "label": "Score — Team B", "default": 10 }
+  ],
+  "presets": [{ "name": "cørt TV Live Panel" }]
+}
+{% endschema %}

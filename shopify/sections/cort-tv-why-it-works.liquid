@@ -1,0 +1,46 @@
+<section class="cort-tv cort-tv-why">
+  <div class="cort-tv-why__inner">
+    <div class="cort-tv-why__header">
+      <span class="cort-label reveal">{{ section.settings.eyebrow | default: 'Why It Works' }}</span>
+      <h2 class="cort-tv-why__title reveal reveal-delay-1">{{ section.settings.title | default: 'Padel is social, fast and made for content.' }}</h2>
+      <p class="cort-tv-why__body reveal reveal-delay-2">{{ section.settings.body | default: 'cørt TV gives clubs, players and brands a way to turn everyday matches into stories people want to watch and share.' }}</p>
+    </div>
+    <div class="cort-tv-why__grid">
+      {% for block in section.blocks %}
+        <div class="cort-tv-why__point reveal reveal-delay-{{ forloop.index }}" {{ block.shopify_attributes }}>
+          <div class="cort-tv-why__point-num">0{{ forloop.index }}</div>
+          <p class="cort-tv-why__point-text">{{ block.settings.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "cørt TV Why It Works",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Why It Works" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Padel is social, fast and made for content." },
+    { "type": "textarea", "id": "body", "label": "Body", "default": "cørt TV gives clubs, players and brands a way to turn everyday matches into stories people want to watch and share." }
+  ],
+  "blocks": [
+    {
+      "type": "point",
+      "name": "Proof Point",
+      "settings": [
+        { "type": "textarea", "id": "text", "label": "Point text", "default": "More visibility for players." }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "cørt TV Why It Works",
+    "blocks": [
+      { "type": "point", "settings": { "text": "More visibility for players." } },
+      { "type": "point", "settings": { "text": "More value for sponsors." } },
+      { "type": "point", "settings": { "text": "More content for clubs." } },
+      { "type": "point", "settings": { "text": "More culture around padel." } }
+    ]
+  }]
+}
+{% endschema %}

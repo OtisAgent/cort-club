@@ -1,0 +1,50 @@
+<section class="cort-tv cort-tv-formats" id="cort-tv-formats">
+  <div class="cort-tv-formats__inner">
+    <div class="cort-tv-formats__header">
+      <span class="cort-label reveal">{{ section.settings.eyebrow | default: "<span class='cbr'>cørt</span> TV Formats" }}</span>
+      <h2 class="cort-tv-formats__title reveal reveal-delay-1">{{ section.settings.title | default: 'Six formats. Every type of content.' }}</h2>
+    </div>
+    <div class="cort-tv-formats__grid">
+      {% for block in section.blocks %}
+        {% assign delay_index = forloop.index | modulo: 3 | plus: 1 %}
+        <div class="cort-tv-format-card reveal reveal-delay-{{ delay_index }}" {{ block.shopify_attributes }}>
+          <span class="cort-tv-format-card__num">0{{ forloop.index }}</span>
+          <h3 class="cort-tv-format-card__title">{{ block.settings.title }}</h3>
+          <p class="cort-tv-format-card__body">{{ block.settings.body }}</p>
+          <span class="cort-tv-format-card__link">Watch format →</span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "cørt TV — Format Grid",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "<span class='cbr'>cørt<\/span> TV Formats" },
+    { "type": "text", "id": "title", "label": "Section title", "default": "Six formats. Every type of content." }
+  ],
+  "blocks": [
+    {
+      "type": "format",
+      "name": "Format",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Format title", "default": "Match of the Week" },
+        { "type": "textarea", "id": "body", "label": "Description", "default": "One featured match with highlights, score graphics and sponsor placement." }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "cørt TV Format Grid",
+    "blocks": [
+      { "type": "format", "settings": { "title": "Match of the Week", "body": "One featured match with highlights, score graphics and sponsor placement." } },
+      { "type": "format", "settings": { "title": "League Night Recap", "body": "Weekly recap from cørt Play leagues and divisions across all skill levels." } },
+      { "type": "format", "settings": { "title": "Americano \/ Mexicano Nights", "body": "Fast social formats turned into shareable content with live leaderboards." } },
+      { "type": "format", "settings": { "title": "Finals & Tournaments", "body": "Brackets, winners, trophy moments and sponsor reels from every cørt event." } },
+      { "type": "format", "settings": { "title": "Player Stories", "body": "Short features on local players, rivalries and progression through the divisions." } },
+      { "type": "format", "settings": { "title": "Club Spotlight", "body": "Feature content for partner clubs, venues and communities across the UK." } }
+    ]
+  }]
+}
+{% endschema %}
