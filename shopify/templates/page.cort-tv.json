@@ -57,7 +57,7 @@
           "type": "format",
           "settings": {
             "title": "League Night Recap",
-            "body": "Weekly recap from CØRT Play leagues and divisions across all skill levels."
+            "body": "Weekly recap from cørt Play leagues and divisions across all skill levels."
           }
         },
         "fmt-3": {
@@ -71,7 +71,7 @@
           "type": "format",
           "settings": {
             "title": "Finals & Tournaments",
-            "body": "Brackets, winners, trophy moments and sponsor reels from every CØRT event."
+            "body": "Brackets, winners, trophy moments and sponsor reels from every cørt event."
           }
         },
         "fmt-5": {
@@ -121,7 +121,7 @@
           "settings": {
             "tier": "Package 01",
             "title": "Content Partner",
-            "description": "For local brands that want visibility in CØRT content.",
+            "description": "For local brands that want visibility in cørt content.",
             "features": "Social reel placement\nNewsletter mention\nWebsite partner card\nMonthly content recap",
             "featured": false,
             "cta_text": "Enquire"
@@ -132,7 +132,7 @@
           "settings": {
             "tier": "Package 02",
             "title": "League Partner",
-            "description": "For brands that want to sponsor a CØRT Play league or division.",
+            "description": "For brands that want to sponsor a cørt Play league or division.",
             "features": "League naming opportunity\nScoreboard / leaderboard placement\nWeekly recap content\nFinals content\nPlayer of the Match feature",
             "featured": true,
             "cta_text": "Sponsor a League"

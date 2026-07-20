@@ -3,7 +3,7 @@
     <div class="cort-tv-pipeline__header">
       <span class="cort-label reveal">{{ section.settings.eyebrow | default: 'Content Pipeline' }}</span>
       <h2 class="cort-tv-pipeline__title reveal reveal-delay-1">{{ section.settings.title | default: 'One night. A full content loop.' }}</h2>
-      <p class="cort-tv-pipeline__body reveal reveal-delay-2">{{ section.settings.body | default: 'From one night on court, CØRT TV creates a full content loop: match moments, sponsor visibility, social reels, player stories and community reach.' }}</p>
+      <p class="cort-tv-pipeline__body reveal reveal-delay-2">{{ section.settings.body | default: 'From one night on court, cørt TV creates a full content loop: match moments, sponsor visibility, social reels, player stories and community reach.' }}</p>
     </div>
     <div class="cort-pipeline">
       {% assign steps = "◉ Event or League Night,◈ Capture,▶ Live Clips,◼ Highlights,⊕ Social Reels,↑ Sponsor Report" | split: "," %}
@@ -27,7 +27,7 @@
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Content Pipeline" },
     { "type": "text", "id": "title", "label": "Title", "default": "One night. A full content loop." },
-    { "type": "textarea", "id": "body", "label": "Body copy", "default": "From one night on court, CØRT TV creates a full content loop: match moments, sponsor visibility, social reels, player stories and community reach." }
+    { "type": "textarea", "id": "body", "label": "Body copy", "default": "From one night on court, cørt TV creates a full content loop: match moments, sponsor visibility, social reels, player stories and community reach." }
   ],
   "presets": [{ "name": "CORT TV Pipeline" }]
 }
