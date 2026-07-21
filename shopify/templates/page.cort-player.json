@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "cort-player": {
+      "type": "cort-player",
+      "settings": {}
+    }
+  },
+  "order": [
+    "cort-player"
+  ]
+}
