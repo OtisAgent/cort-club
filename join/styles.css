@@ -23,6 +23,16 @@ h1 em{font-style:normal;color:var(--acc)}
 .hero .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
 .btn{display:inline-block;background:var(--y);color:#000;border:0;border-radius:100px;padding:14px 30px;font-size:14px;font-weight:800;cursor:pointer;text-decoration:none}
 .btn.ghost{background:none;border:1.5px solid var(--y);color:var(--acc)}
+/* hero doors */
+.doors{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:640px;margin:28px auto 0}
+@media(max-width:640px){.doors{grid-template-columns:1fr}}
+.door{display:block;background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:22px 20px;text-align:center;text-decoration:none;color:var(--text);transition:border-color .15s,transform .15s}
+.door:hover{border-color:var(--y);transform:translateY(-2px)}
+.door .ico{display:block;margin:0 auto}
+.door .ico svg{width:28px;height:28px;stroke:var(--acc);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.door b{display:block;font-size:16px;font-weight:900;margin:8px 0 6px;letter-spacing:-.01em}
+.door .d-sub{display:block;font-size:12px;color:var(--mut);line-height:1.55}
+.door .d-go{display:inline-block;margin-top:12px;font-size:12.5px;font-weight:800;color:var(--acc)}
 /* steps */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:40px 0 54px}
 .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 14px;text-align:center;position:relative}
@@ -102,11 +112,34 @@ html[data-theme="light"] .passport{background:linear-gradient(150deg,#111,#000)}
 .market .us li:before{content:"→";position:absolute;left:0;color:var(--acc);font-weight:900}
 .market .us li{color:var(--text)}
 .market .us li b{color:var(--acc)}
+/* clubs & venues */
+.cben{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:26px}
+@media(max-width:760px){.cben{grid-template-columns:1fr 1fr}}
+.club-form{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px 24px;max-width:560px;margin:0 auto}
+.club-form h3{font-size:19px;font-weight:900;margin-bottom:8px;text-align:center;letter-spacing:-.01em}
+.club-form .cf-lead{font-size:13px;color:var(--mut);line-height:1.6;text-align:center;margin-bottom:18px}
+.club-form .cf-lead b{color:var(--acc)}
+.cf-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.cf-grid{grid-template-columns:1fr}}
+.cf-field{display:flex;flex-direction:column;gap:5px}
+.cf-field.full{grid-column:1/-1}
+.cf-field label{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.cf-field input,.cf-field select{background:var(--input);border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;font-size:14px;color:var(--text);font-family:inherit;width:100%}
+.cf-field input:focus,.cf-field select:focus{outline:none;border-color:var(--y)}
+.club-form .btn{width:100%;margin-top:14px}
+.form-note{font-size:10.5px;color:var(--mut);text-align:center;margin-top:10px}
+.form-ok{background:var(--card);border:1.5px solid var(--y);border-radius:20px;padding:30px 24px;max-width:560px;margin:0 auto;text-align:center}
+.form-ok .ico{display:block;margin:0 auto 10px}
+.form-ok .ico svg{width:34px;height:34px;stroke:var(--ok);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.form-ok b{display:block;font-size:16px;font-weight:900;margin-bottom:6px}
+.form-ok span:not(.ico){font-size:13px;color:var(--mut);line-height:1.6}
 /* reassure / final cta */
 .reassure{background:var(--y);color:#000;border-radius:20px;padding:34px 28px;text-align:center}
 .reassure h2{font-size:22px;font-weight:900;margin-bottom:10px;letter-spacing:-.01em}
 .reassure p{font-size:14px;line-height:1.7;max-width:580px;margin:0 auto;font-weight:500}
 .reassure .btn{background:#000;color:var(--y);margin-top:20px}
+.reassure .alt-door{margin-top:14px;font-size:12.5px;font-weight:600}
+.reassure .alt-door a{color:#000;font-weight:800;text-decoration:underline}
 /* footer */
 .foot{text-align:center;color:var(--mut);font-size:11.5px;line-height:1.8;margin-top:52px}
 .foot a{color:var(--acc);font-weight:700;text-decoration:none}

@@ -18,9 +18,19 @@
     <div class="mark"><img class="logo-dark" src="https://brand.cortclub.co.uk/guide/cort-logo-dark.png" alt="cørt" width="329" height="104"><img class="logo-light" src="https://brand.cortclub.co.uk/guide/cort-logo-light.png" alt="cørt" width="329" height="104"></div>
     <h1>Where your padel<br>story gets <em>built.</em></h1>
     <p class="sub">Most padel apps just book you a court. <b>cørt gives you a competitive identity</b> — a player number, a level, a ranking, titles and a journey from your first club night all the way to a national championship. Play, climb, and be seen.</p>
-    <div class="cta-row">
-      <a href="#join" class="btn">Create your player account</a>
-      <a href="#tiers" class="btn ghost">See membership</a>
+    <div class="doors">
+      <a class="door" href="#tiers">
+        <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+        <b>I'm a player</b>
+        <span class="d-sub">Create your passport, pick a membership and start climbing the ranks</span>
+        <span class="d-go">Create your player account &rarr;</span>
+      </a>
+      <a class="door" href="#clubs">
+        <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 12h18M12 5v14"/></svg></span>
+        <b>I'm a club</b>
+        <span class="d-sub">Host cørt nights, fill your courts and put your venue on the map</span>
+        <span class="d-go">Register your club &rarr;</span>
+      </a>
     </div>
   </div>
 
@@ -202,12 +212,58 @@
     </div>
   </div>
 
+  <!-- CLUBS & VENUES -->
+  <div class="sec" id="clubs">
+    <div class="sec-head">
+      <p class="eyebrow">clubs &amp; venues</p>
+      <h2>Bring cørt to your courts</h2>
+      <p class="lead">Players sign up to play — <b>clubs sign up to host</b>. Put your venue on the cørt map and we bring the programming, the players and the pathway to you.</p>
+    </div>
+    <div class="cben">
+      <div class="jstep">
+        <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 12h18M12 4v16"/><circle cx="7.5" cy="8" r="1.3"/><circle cx="16.5" cy="16" r="1.3"/></svg></span>
+        <b>Fill quiet courts</b><span>Weekly club nights &amp; opens bring regular, repeat bookings</span>
+      </div>
+      <div class="jstep">
+        <span class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
+        <b>Get discovered</b><span>Every cørt player nearby sees your venue as a place to play</span>
+      </div>
+      <div class="jstep">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M6 4h12v5a6 6 0 0 1-12 0z"/><path d="M6 6H3.5v1.5A2.5 2.5 0 0 0 6 10M18 6h2.5v1.5A2.5 2.5 0 0 1 18 10"/></svg></span>
+        <b>Host the pathway</b><span>Club nights, local opens and league fixtures at your courts</span>
+      </div>
+      <div class="jstep">
+        <span class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="15" height="12" rx="2"/><path d="M17 10.5 22 8v8l-5-2.5z"/></svg></span>
+        <b>Be seen on cørt TV</b><span>Your venue featured in event coverage and highlights</span>
+      </div>
+    </div>
+    <form class="club-form" id="club-form">
+      <h3>Register your club</h3>
+      <p class="cf-lead">Founding venues get priority fixtures and a <b>Founding Venue</b> badge on the cørt map — earned by being here first.</p>
+      <div class="cf-grid">
+        <div class="cf-field full"><label for="cf-club">Club / venue name</label><input id="cf-club" name="club" type="text" required autocomplete="organization"></div>
+        <div class="cf-field"><label for="cf-name">Contact name</label><input id="cf-name" name="name" type="text" required autocomplete="name"></div>
+        <div class="cf-field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" required autocomplete="email"></div>
+        <div class="cf-field"><label for="cf-city">City</label><input id="cf-city" name="city" type="text" required autocomplete="address-level2"></div>
+        <div class="cf-field"><label for="cf-courts">Padel courts</label><select id="cf-courts" name="courts"><option>1–2</option><option>3–4</option><option>5+</option><option>Planning to build</option></select></div>
+      </div>
+      <button class="btn" type="submit">Register your club</button>
+      <p class="form-note">Preview — submissions switch on at launch.</p>
+    </form>
+    <div class="form-ok" id="club-ok" hidden>
+      <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></span>
+      <b>You're on the founding venues list.</b>
+      <span>The cørt team will be in touch to get your courts on the map.</span>
+    </div>
+  </div>
+
   <!-- FINAL CTA / JOIN -->
   <div class="sec" id="join">
     <div class="reassure">
       <h2>Be a founding cørt player</h2>
       <p>We're building this city by city. Get on the list now and you're in from day one — with a <b>Founding Player</b> badge on your passport that no one signing up later can ever earn.</p>
       <a href="https://cortclub.co.uk/#cort-join" class="btn">Join the founding players</a>
+      <p class="alt-door">Run a club? <a href="#clubs">Register your venue instead &rarr;</a></p>
     </div>
   </div>
 
@@ -225,6 +281,11 @@
   var saved;try{saved=localStorage.getItem('cort-theme');}catch(e){}
   set(saved||'dark');
   t.addEventListener('click',function(){set(h.getAttribute('data-theme')==='dark'?'light':'dark');});
+})();
+(function(){
+  var f=document.getElementById('club-form'),ok=document.getElementById('club-ok');
+  if(!f)return;
+  f.addEventListener('submit',function(e){e.preventDefault();f.hidden=true;ok.hidden=false;ok.scrollIntoView({behavior:'smooth',block:'center'});});
 })();
 </script>
 </body>
