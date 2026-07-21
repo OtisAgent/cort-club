@@ -1,0 +1,51 @@
+<!-- CØRT Mobile Navigation — hamburger + slide drawer -->
+{{ 'cort-mobile-nav.css' | asset_url | stylesheet_tag }}
+
+<!-- Hamburger toggle button -->
+<button id="cort-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="cort-nav-drawer">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<!-- Backdrop overlay -->
+<div id="cort-nav-overlay" aria-hidden="true"></div>
+
+<!-- Slide drawer -->
+<div id="cort-nav-drawer" role="dialog" aria-label="Navigation" aria-modal="true">
+  <div class="drawer-logo">c&oslash;rt<span>.</span></div>
+
+  <nav>
+    <a href="/pages/cort-club">
+      C&Oslash;RT Club
+      <span class="arrow">&rsaquo;</span>
+    </a>
+    <a href="/pages/cort-tv">
+      C&Oslash;RT TV
+      <span class="arrow">&rsaquo;</span>
+    </a>
+    <a href="/collections/all">
+      C&Oslash;RT Shop
+      <span class="arrow">&rsaquo;</span>
+    </a>
+    <a href="/pages/cort-play">
+      C&Oslash;RT Play
+      <span class="arrow">&rsaquo;</span>
+    </a>
+    <a href="/pages/cort-player">
+      C&Oslash;RT Player
+      <span class="arrow">&rsaquo;</span>
+    </a>
+    <a href="/pages/contact">
+      Contact
+      <span class="arrow">&rsaquo;</span>
+    </a>
+  </nav>
+
+  <div class="drawer-cta">
+    <a href="/pages/cort-play" class="btn-yellow">Join Waitlist</a>
+    <a href="/collections/all" class="btn-outline">Shop Now</a>
+  </div>
+</div>
+
+<script src="{{ 'cort-mobile-nav.js' | asset_url }}" defer></script>
