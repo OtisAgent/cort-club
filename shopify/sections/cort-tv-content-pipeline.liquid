@@ -6,20 +6,111 @@
       <p class="cort-tv-pipeline__body reveal reveal-delay-2">{{ section.settings.body | default: 'From one night on court, cørt TV creates a full content loop: match moments, sponsor visibility, social reels, player stories and community reach.' }}</p>
     </div>
     <div class="cort-pipeline">
-      {% assign steps = "◉ Event or League Night,◈ Capture,▶ Live Clips,◼ Highlights,⊕ Social Reels,↑ Sponsor Report" | split: "," %}
-      {% assign step_labels = "Event or League Night,Capture,Live Clips,Highlights,Social Reels,Sponsor Report" | split: "," %}
-      {% for step in steps %}
-        {% unless forloop.first %}
-          <div class="cort-pipeline__arrow"></div>
-        {% endunless %}
-        <div class="cort-pipeline__step reveal reveal-delay-{{ forloop.index }}">
-          <div class="cort-pipeline__circle">{{ step | split: " " | first }}</div>
-          <span class="cort-pipeline__label">{{ step_labels[forloop.index0] }}</span>
+
+      <div class="cort-pipeline__step reveal reveal-delay-1">
+        <div class="cort-pipeline__circle">
+          <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="6" y="10" width="28" height="20" fill="none" stroke="#FFEA00" stroke-width="2"/>
+            <line x1="20" y1="10" x2="20" y2="30" stroke="rgba(255,255,255,.6)" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <circle class="cp-pulse" cx="13" cy="17" r="2.4" fill="#FFEA00"/>
+            <circle class="cp-pulse cp-d2" cx="27" cy="24" r="2.4" fill="#fff"/>
+          </svg>
         </div>
-      {% endfor %}
+        <span class="cort-pipeline__label">Event or League Night</span>
+      </div>
+
+      <div class="cort-pipeline__arrow"></div>
+
+      <div class="cort-pipeline__step reveal reveal-delay-2">
+        <div class="cort-pipeline__circle">
+          <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="7" y="13" width="26" height="17" rx="2" fill="none" stroke="#FFEA00" stroke-width="2"/>
+            <path d="M15 13 L17 9 L23 9 L25 13" fill="none" stroke="#FFEA00" stroke-width="2" stroke-linejoin="round"/>
+            <circle class="cp-pulse" cx="20" cy="21" r="5" fill="none" stroke="#FFEA00" stroke-width="2"/>
+            <circle cx="20" cy="21" r="1.8" fill="#FFEA00"/>
+          </svg>
+        </div>
+        <span class="cort-pipeline__label">Capture</span>
+      </div>
+
+      <div class="cort-pipeline__arrow"></div>
+
+      <div class="cort-pipeline__step reveal reveal-delay-3">
+        <div class="cort-pipeline__circle">
+          <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle class="cp-ping" cx="20" cy="20" r="12" fill="none" stroke="#FFEA00" stroke-width="1.5"/>
+            <polygon points="16,13 29,20 16,27" fill="#FFEA00"/>
+          </svg>
+        </div>
+        <span class="cort-pipeline__label">Live Clips</span>
+      </div>
+
+      <div class="cort-pipeline__arrow"></div>
+
+      <div class="cort-pipeline__step reveal reveal-delay-4">
+        <div class="cort-pipeline__circle">
+          <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M20 7 L23.4 15.2 L32.2 15.8 L25.4 21.6 L27.6 30.2 L20 25.5 L12.4 30.2 L14.6 21.6 L7.8 15.8 L16.6 15.2 Z" fill="none" stroke="#FFEA00" stroke-width="2" stroke-linejoin="round" class="cp-star"/>
+          </svg>
+        </div>
+        <span class="cort-pipeline__label">Highlights</span>
+      </div>
+
+      <div class="cort-pipeline__arrow"></div>
+
+      <div class="cort-pipeline__step reveal reveal-delay-5">
+        <div class="cort-pipeline__circle">
+          <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <line class="cp-link" x1="13" y1="14" x2="27" y2="12" stroke="rgba(255,234,0,.7)" stroke-width="1.5"/>
+            <line class="cp-link cp-d2" x1="13" y1="14" x2="20" y2="28" stroke="rgba(255,234,0,.7)" stroke-width="1.5"/>
+            <line class="cp-link cp-d3" x1="27" y1="12" x2="20" y2="28" stroke="rgba(255,234,0,.7)" stroke-width="1.5"/>
+            <circle cx="13" cy="14" r="3.6" fill="#FFEA00"/>
+            <circle cx="27" cy="12" r="3.6" fill="#fff"/>
+            <circle cx="20" cy="28" r="3.6" fill="#FFEA00"/>
+          </svg>
+        </div>
+        <span class="cort-pipeline__label">Social Reels</span>
+      </div>
+
+      <div class="cort-pipeline__arrow"></div>
+
+      <div class="cort-pipeline__step reveal reveal-delay-5">
+        <div class="cort-pipeline__circle">
+          <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect class="cp-rise" x="9" y="22" width="5" height="10" fill="rgba(255,255,255,.5)"/>
+            <rect class="cp-rise cp-d2" x="17.5" y="16" width="5" height="16" fill="rgba(255,234,0,.65)"/>
+            <rect class="cp-rise cp-d3" x="26" y="9" width="5" height="23" fill="#FFEA00"/>
+          </svg>
+        </div>
+        <span class="cort-pipeline__label">Sponsor Report</span>
+      </div>
+
     </div>
   </div>
 </section>
+
+<style>
+.cort-pipeline__circle svg { width:28px; height:28px; display:block; }
+.cp-pulse, .cp-star, .cp-ping { transform-box:fill-box; transform-origin:center; }
+.cp-rise { transform-box:fill-box; transform-origin:center bottom; animation:cpRise 2.8s ease infinite; }
+.cp-pulse { animation:cpPulse 2.4s ease-in-out infinite; }
+@keyframes cpPulse { 0%,100% { transform:scale(1); opacity:1; } 50% { transform:scale(1.18); opacity:.75; } }
+.cp-ping { animation:cpPing 2.6s ease-out infinite; }
+@keyframes cpPing { 0% { transform:scale(.75); opacity:.9; } 75% { transform:scale(1.12); opacity:.25; } 100% { transform:scale(.75); opacity:.9; } }
+.cp-star { animation:cpStar 3.2s ease-in-out infinite; }
+@keyframes cpStar { 0%,100% { transform:rotate(0deg) scale(1); } 50% { transform:rotate(8deg) scale(1.06); } }
+.cp-link { stroke-dasharray:40; stroke-dashoffset:40; animation:cpLink 2.8s ease infinite; }
+@keyframes cpLink { 45%,75% { stroke-dashoffset:0; } 100% { stroke-dashoffset:-40; } }
+@keyframes cpRise { 0% { transform:scaleY(.3); } 45%,100% { transform:scaleY(1); } }
+.cp-d2 { animation-delay:.4s; }
+.cp-d3 { animation-delay:.8s; }
+.cort-pipeline__arrow { background:rgba(255,234,0,.3); }
+.cort-pipeline__arrow::after { color:rgba(255,234,0,.75); }
+@media (prefers-reduced-motion:reduce){
+  .cp-pulse, .cp-ping, .cp-star, .cp-link, .cp-rise { animation:none; }
+  .cp-link { stroke-dashoffset:0; }
+}
+</style>
 
 {% schema %}
 {
