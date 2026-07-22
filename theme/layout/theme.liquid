@@ -42,6 +42,7 @@
     {{ 'cort-brand.css' | asset_url | stylesheet_tag }}
     {{ 'cort-nav-fix.css' | asset_url | stylesheet_tag }}
     {{ 'cort-pdp-fix.css' | asset_url | stylesheet_tag }}
+    {{ 'cort-shop-enhance.css' | asset_url | stylesheet_tag }}
   </head>
 
   <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
@@ -148,6 +149,7 @@
     {% endif %}
     {% render 'cort-mobile-nav' %}
     {{ 'cort-form.js' | asset_url | script_tag }}
+    {{ 'cort-shop-enhance.js' | asset_url | script_tag }}
     {% if template contains 'product' %}
       {{ 'cort-bundle.js' | asset_url | script_tag }}
     {% endif %}
